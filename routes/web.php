@@ -18,6 +18,9 @@ use App\Http\Controllers\ProductCategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/transactions', function () {
+    return view('transaction');
+});
 
 Auth::routes(['verify' => true]);
 

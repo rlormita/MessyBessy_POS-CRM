@@ -18,17 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-=======
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-
->>>>>>> aaae523bb807bba310601d6d24239315da4a9756
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <!-- nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Messy Bessy') }}
@@ -38,14 +32,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                   
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -58,15 +52,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-<<<<<<< HEAD
-                                    {{ $user = \Auth::user() }}
-=======
-<<<<<<< HEAD
                                     {{ Auth::user()->firstName }}
-=======
-                                    {{ Auth::user()->firstame }}
->>>>>>> aaae523bb807bba310601d6d24239315da4a9756
->>>>>>> 3931316805f42cc9dd6d84a3c5e98f7c47e8331d
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -85,10 +71,15 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav -->
 
         <main class="py-4">
-            @yield('content')
+            <section class="col-md-6 d-inline">
+                @yield('accountHeader')
+            </section>
+            <section class="col-md-6 d-inline">
+                @yield('sidebar')
+            </section>
         </main>
     </div>
 </body>
