@@ -27,10 +27,10 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td>{{ $product->stock_defective }}</td>
-                                <td>{{ format_money($product->price) }}</td>
-                                <td>{{ format_money($product->solds->avg('price')) }}</td>
-                                <td>{{ $product->solds->sum('qty') }}</td>
-                                <td>{{ format_money($product->solds->sum('total_amount')) }}</td>
+                                <td>{{ ($product->price) }}</td>
+                                <td>{{ ($product->solds->('price')) }}</td>
+                                <td>{{ $product->solds->('qty') }}</td>
+                                <td>{{ ($product->solds->('total_amount')) }}</td>
                             </tr>
                         </tbody>
                     </table>

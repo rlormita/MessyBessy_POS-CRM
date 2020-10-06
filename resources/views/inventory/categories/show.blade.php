@@ -22,9 +22,9 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->products->sum('stock') }}</td>
-                                <td>{{ $category->products->sum('stock_defective') }}</td>
-                                <td>${{ round($category->products->avg('price'), 2) }}</td>
+                                <td>{{ $category->products->('stock') }}</td>
+                                <td>{{ $category->products->('stock_defective') }}</td>
+                                <td>${{ round($category->products->('price'), 2) }}</td>
                             </tr>
                         </tbody>
                     </table>
