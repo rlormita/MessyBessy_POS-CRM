@@ -14,8 +14,8 @@
                             <th>Category</th>
                             <th>Name</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Base price</th>
+                            <th>Minimum Stocks</th>
+                            <th>Price</th>
                             <th>Average Price</th>
                             <th>Total sales</th>
                             <th>Income Produced</th>

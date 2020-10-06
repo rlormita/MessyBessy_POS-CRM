@@ -14,8 +14,8 @@
                             <th>Name</th>
                             <th>products</th>
                             <th>Stocks</th>
-                            <th>Stocks Faulty</th>
-                            <th>Average Price</th>
+                            <th>Minimum Stocks</th>
+                            <th>Price</th>
                         </thead>
                         <tbody>
                             <tr>

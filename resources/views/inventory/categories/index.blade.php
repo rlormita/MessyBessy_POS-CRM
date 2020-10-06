@@ -13,6 +13,7 @@
                     <div class="col-4 text-right">
                         <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">New Category</a>
 
+<<<<<<< HEAD
                     </div>
                     <div class="card-body">
                         @include('alerts.success')
@@ -29,6 +30,20 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($categories as $category)
+=======
+                    <div class="">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <th scope="col">Name</th>
+                                <th scope="col">products</th>
+                                <th scope="col">Total Stock</th>
+                                <th scope="col">Minimum Stocks</th>
+                                <th scope="col">Price of Product</th>
+                                <th scope="col"></th>
+                            </thead>
+                            <tbody>
+                                @foreach ($categories as $category)
+>>>>>>> 7ce8816bf2b1ef3b31557842acf47ea155455ecc
                                     <tr>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ count($category->products) }}</td>
