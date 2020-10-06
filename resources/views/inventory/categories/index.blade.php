@@ -34,7 +34,11 @@
                                         <td>{{ count($category->products) }}</td>
                                         <td>{{ $category->products->sum('stock') }}</td>
                                         <td>{{ $category->products->sum('stock_defective') }}</td>
+<<<<<<< HEAD
+                                        <td>{{ $category->products->avg('price') }}</td>
+=======
                                         <td>{{($category->products->avg('price')) }}</td>
+>>>>>>> c2423cd6cf5ba5b50084f3ab26fd2ad007fd1550
                                         <td class="td-actions text-right">
                                             <a href="{{ route('categories.show', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                                 <i class="tim-icons icon-zoom-split"></i>
