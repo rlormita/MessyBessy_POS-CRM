@@ -55,10 +55,14 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 <<<<<<< HEAD
+                                    {{ $user = \Auth::user() }}
+=======
+<<<<<<< HEAD
                                     {{ Auth::user()->firstName }}
 =======
                                     {{ Auth::user()->firstame }}
 >>>>>>> aaae523bb807bba310601d6d24239315da4a9756
+>>>>>>> 3931316805f42cc9dd6d84a3c5e98f7c47e8331d
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
