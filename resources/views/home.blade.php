@@ -19,6 +19,7 @@
             </div>
             <div class="product">
             <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
+            <a href="{{ url('/categories') }}" class="text-sm text-gray-700 underline">Categories</a>
             </div>
         </div>
     </div>
