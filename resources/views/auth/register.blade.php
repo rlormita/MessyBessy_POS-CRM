@@ -85,17 +85,15 @@
                         <div class="form-group row terms {{ $errors->has('terms') ? ' has-error' : '' }}">
                             <input type="checkbox" id="terms-checkbox" name="terms" value="true"><label for="terms-checkbox">I understand and agree to the <a href='https://www.facebook.com/messybessycleaners'>Terms & Conditions</a> and Privacy Policy</label>
                         </div>
-<<<<<<< HEAD
-=======
+
 
                         <div class="col-md-4 offset-md-2">
                             @if ($errors->has('terms'))
-                                <span class="help-block">
+                            <span class="help-block">
                                 <strong>{{ $errors->first('terms') }}</strong>
-                                </span>
+                            </span>
                             @endif
                         </div>
->>>>>>> 4523e9a7a17aa403164ea01e71e6e1cd6a978b19
 
                         <div class="col-md-4 offset-md-2">
                             @if ($errors->has('terms'))
