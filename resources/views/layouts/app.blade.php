@@ -18,13 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 =======
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-
->>>>>>> aaae523bb807bba310601d6d24239315da4a9756
 </head>
 <body>
     <div id="app">
