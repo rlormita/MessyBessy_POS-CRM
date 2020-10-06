@@ -9,10 +9,8 @@
                     <div class="col-8">
                         <h4 class="card-title">Categories</h4>
                     </div>
-<<<<<<< HEAD
                     <div class="col-4 text-right">
                         <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">New Category</a>
-=======
                 </div>
                 <div class="card-body">
                     @include('alerts.success')
@@ -55,7 +53,6 @@
                                 @endforeach
                             </tbody>
                         </table>
->>>>>>> 4523e9a7a17aa403164ea01e71e6e1cd6a978b19
                     </div>
                 </div>
             </div>
