@@ -86,6 +86,25 @@
                                 <input type="checkbox" name="terms" value="true" id="terms-checkbox" {{ !old('terms') ?: 'checked' }}>
                                 <label for="terms-checkbox">I understand and agree to the <a href='https://www.facebook.com/messybessycleaners'>Terms & Conditions </a> and <a href='https://www.facebook.com/messybessycleaners'> Privacy Policy </a>.</label>
                             </div>
+                            <input type="checkbox" id="terms-checkbox" name="terms" value="true"><label for="terms-checkbox">I understand and agree to the <a href='https://www.facebook.com/messybessycleaners'>Terms & Conditions</a> and Privacy Policy</label>
+                        </div>
+
+
+                        <div class="col-md-4 offset-md-2">
+                            @if ($errors->has('terms'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('terms') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+
+                        <div class="col-md-4 offset-md-2">
+                            @if ($errors->has('terms'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('terms') }}</strong>
+                            </span>
+                            @endif
+                        </div>
 
                             <div class="col-md-4 offset-md-2">
                                 @if ($errors->has('terms'))
