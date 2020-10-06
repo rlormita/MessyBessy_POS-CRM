@@ -22,9 +22,9 @@
                         <thead class=" text-primary">
                             <th scope="col">Category</th>
                             <th scope="col">Product</th>
-                            <th scope="col">Base Price</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Stock</th>
-                            <th scope="col">Faulty</th>
+                            <th scope="col">Minimum Stocks</th>
                             <th scope="col">Total Sold</th>
                             <th scope="col"></th>
                         </thead>

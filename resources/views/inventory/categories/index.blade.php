@@ -23,8 +23,8 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">products</th>
                                 <th scope="col">Total Stock</th>
-                                <th scope="col">Defective Stock</th>
-                                <th scope="col">Average Price of Product</th>
+                                <th scope="col">Minimum Stocks</th>
+                                <th scope="col">Price of Product</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
