@@ -17,6 +17,9 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <div class="product">
+            <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
+            </div>
         </div>
     </div>
 </div>
