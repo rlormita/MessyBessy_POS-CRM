@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     background: #BFEAFF;
     font-family: Montserrat, Arial, sans-serif;
@@ -107,6 +108,53 @@ body {
     margin: 0 5px 0 0;
 }
 
+=======
+
+body { background: #f1f2f3; font-family: Montserrat, Arial, sans-serif; }
+
+.card-shadow { box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.05); }
+
+/* Messy Front Page */
+.messy-fp { position: fixed; top: 0; left: 0; width: 100%; }
+.messy-fp .messy-header { padding: 20px 0; }
+.messy-fp .messy-header .logo-pane { position: relative; }
+.messy-fp .messy-header .logo-pane img { height: 100px; }
+.messy-fp .messy-header .account-pane { text-align: right; }
+.messy-fp .messy-header .account-pane .account-details { width: calc(100% - 56px); padding: 35px 20px; }
+.messy-fp .messy-header .account-pane .account-details .account-name h4 { font-weight: bold; color: #212121; margin-bottom: 0px; }
+.messy-fp .messy-header .account-pane .account-icon { width: 50px; padding: 30px 0; cursor: pointer; }
+.messy-fp .messy-header .account-pane .account-icon:after { display: none; }
+.messy-fp .messy-header .account-pane .account-icon img { width: 100%; border-radius: 100px; }
+.messy-fp .messy-header .account-pane .account-dropdown { position: absolute; }
+
+.messy-fp-content { margin: 150px 0 20px 0; }
+.messy-fp-content .messy-branch { padding: 50px 20px; text-align: center; }
+.messy-fp-content .messy-branch .messy-branch-title span { font-size: 32px; font-weight: 900; }
+.messy-fp-content .messy-navigation { position: relative; margin: 20px 0 0 0; }
+.messy-fp-content .messy-navigation .messy-nav-item { background: #2D9DD5; margin: 10px; color: #fff; text-decoration: none; border-radius: 10px; position: relative; overflow: hidden; padding: 0; }
+.messy-fp-content .messy-navigation .messy-nav-item:hover { background: #0E7DB4; }
+.messy-fp-content .messy-navigation .messy-nav-item h3 { font-weight: bold; padding: 150px 20px 20px 20px; background-image: linear-gradient(top, transparent, rgba(0,0,0,0.5)); background-image: -webkit-linear-gradient(top, transparent, rgba(0,0,0,0.3)); position: relative; z-index: 3; margin: 0; }
+.messy-fp-content .messy-navigation .messy-nav-item img { position: absolute; top: -25px; right: -25px; height: 250px; transform: rotate(-30deg); z-index: 2; opacity: 0.5; }
+
+
+.messy-login-card { box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.05); border: 0; border-radius: 50px; }
+.messy-login-card .messy-login-header { background-color: transparent; text-align: center; padding: 2rem 1.25rem 0.75rem 1.25rem; border-bottom: 0; }
+.messy-login-card .messy-login-header .messy-logo { height: 80px; }
+.messy-login-card input { border: 0; height: 50px; font-size: 18px; }
+.messy-login-card input::not[type=checkbox] { border: 0; height: 50px; font-size: 18px; }
+.messy-login-card input[type=checkbox] { cursor: pointer; height: auto; }
+.messy-login-card .form-group { display: block; margin-right: 45px; margin-left: 45px; }
+.messy-login-card .form-group.label { margin-bottom: 0; }
+.messy-login-card .form-group .form-input.error { border-color: #f44336; }
+.messy-login-card .form-group .col-form-label { font-size: 18px; font-weight: 700; color: #306E8D; }
+.messy-login-card .form-group .form-input { border: 3px solid #B9D2DE; border-radius: 5px; padding: 0; }
+.messy-login-card .form-group .form-input .invalid-feedback { background: #f44336; padding: 4px 14px 0 14px; color: #fff; margin: 0 -1px 0 0; }
+.messy-login-card .form-group.terms input[type=checkbox] { height: 28px; width: 14px; margin: 0 .5rem 0 0; }
+.messy-login-card .form-group.terms label { width: calc(100% - 30px); line-height: 1; }
+.messy-login-card .form-group.submit { padding: 0 0 2rem 0; }
+.messy-login-card .form-group.submit a.btn, .messy-login-card .form-group.submit button[type=submit] { background: #5DA2C4; color: #fff; border: 0; font-weight: bold; width: calc(100% - 210px); height: 50px; font-size: 18px; }
+.messy-login-card .form-group.submit a.btn { background: #ADC3CE; width: 200px; line-height: 40px; margin: 0 5px 0 0; }
+>>>>>>> 58b729e50c2f28113f916d6851bcf3de2d51b448
 
 /* Messy - Verification */
 

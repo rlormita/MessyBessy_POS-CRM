@@ -24,7 +24,7 @@
                                 <td>{{ $category->products->count() }}</td>
                                 <td>{{ $category->products->('stock') }}</td>
                                 <td>{{ $category->products->('stock_defective') }}</td>
-                                <td>${{ round($category->products->('price'), 2) }}</td>
+                                <td>Php {{ round($category->products->('price'), 2) }}</td>
                             </tr>
                         </tbody>
                     </table>

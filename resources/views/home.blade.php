@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
 <!--
 <div class="container-fluid">
     <div class="row">
@@ -13,14 +14,77 @@
                         {{ session('status') }}
                     </div>
                     @endif
+=======
+<div class="messy-fp">
+    <div class="container">
+        <div class="messy-header row justify-content-center">
+            <div class="col logo-pane d-inline-block">
+                <img src="{{ asset('img/icon.png') }}"/>
+            </div>
+            <div class="col account-pane d-inline-block">
+                <div class="account-details d-inline-block align-top">
+                    <div class="account-name">
+                        <h4>{{ Auth::user()->firstName }}</h4>
+                    </div>
+                    <div class="account-role">
+                        <span id="account-role">Admin</span>
+                    </div>
+                </div>
+                <div id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <img src="{{ asset('img/user/default.jpg') }}"/>
+                </div>
 
-                    {{ __('You are logged in!') }}
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+>>>>>>> 58b729e50c2f28113f916d6851bcf3de2d51b448
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="product">
                 <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
                 <a href="{{ url('/categories') }}" class="text-sm text-gray-700 underline">Categories</a>
                 <a href="{{ url('/transactions') }}" class="text-sm text-gray-700 underline">Transactions</a>
+=======
+        </div>
+    </div>
+</div>
+<div class="messy-fp-content">
+    <div class="container">
+        <div class="messy-branch">
+            <div class="messy-branch-title">
+                <h3>Messy Bessy</h3>
+                <span id="branch-name">Mall of Asia</span>
+            </div>
+        </div>
+        <div class="messy-navigation">
+            <div class="row">
+                <a href="{{ url('/transactions') }}" class="col messy-nav-item">
+                    <img src="{{ asset('sprites/cart.svg') }}"/>
+                    <h3>Transaction</h3>
+                </a>
+                <a href="{{ url('/products') }}" class="col messy-nav-item">
+                    <img src="{{ asset('sprites/inventory.svg') }}"/>
+                    <h3>Inventory</h3>
+                </a>
+            </div>
+            <div class="row">
+                <a href="{{ url('/dashboard') }}" class="col messy-nav-item">
+                    <img src="{{ asset('sprites/dashboard.svg') }}"/>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="{{ url('/settings') }}" class="col messy-nav-item">
+                    <img src="{{ asset('sprites/settings.svg') }}"/>
+                    <h3>Settings</h3>
+                </a>
+>>>>>>> 58b729e50c2f28113f916d6851bcf3de2d51b448
             </div>
         </div>
     </div>
