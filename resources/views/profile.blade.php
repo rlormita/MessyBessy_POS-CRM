@@ -44,8 +44,9 @@
                                                 <img src="{{ url('img/uploads/profile_image') }}{{ Auth::user()->profile_image }}" style="width:150px; height:150px; float:left border-radius:50%; margin:25px"/><br>               
                                             @else
                                                 <img src="{{ asset('img/user/default.jpg') }}"><br>
+                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:center; border-radius:50%; margin:25px"/><br>
                                             @endif
-                                            <h2 class="title">{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</h2>
+                                            <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
                                             {{-- <label for="updateProfile">Update Profile Image</label><br>
                                             <input type="file"   name="profile_image">
                                             <input type="hidden"  name="_token" value="{{ csrf_token()}}">
