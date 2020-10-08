@@ -12258,6 +12258,13 @@ a[data-toggle="collapse"] {
     border-color: #3e64ff !important;
 }
 
+.userName {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    text-transform: capitalize;
+}
+
 
 /* Medium devices (tablets, 768px and up) */
 
