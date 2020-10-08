@@ -133,6 +133,7 @@ body {
 
 .messy-fp .messy-header .account-pane {
     text-align: right;
+    position: relative;
 }
 
 .messy-fp .messy-header .account-pane .account-details {
