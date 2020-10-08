@@ -1,5 +1,4 @@
 @extends('layouts.app', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
