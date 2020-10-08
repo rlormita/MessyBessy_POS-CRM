@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -42,7 +44,12 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, Product $model)
     {
+        $filename = $request->image->getClientOriginalName();
+        $request->image->storeAs('images', $filename, 'public');
+
         $model->create($request->all());
+
+        DB::table('products')->where('image', NULL)->update(['image' => $filename]);
 
         return redirect()
             ->route('products.index')

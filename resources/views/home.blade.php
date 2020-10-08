@@ -1,20 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-<!--
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-=======
 <div class="messy-fp">
     <div class="container">
         <div class="messy-header row justify-content-center">
@@ -40,7 +25,6 @@
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
->>>>>>> 58b729e50c2f28113f916d6851bcf3de2d51b448
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
