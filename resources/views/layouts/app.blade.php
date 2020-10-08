@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/messy.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -71,8 +72,12 @@
             </div>
         </nav -->
 
+<<<<<<< HEAD
  
         <main class="py-4">
+=======
+        <main class="py-4 main-content">
+>>>>>>> 6e01b9e431f1ea31beb2da29f27a2355dd470572
             @yield('content')
         </main>
     </div>

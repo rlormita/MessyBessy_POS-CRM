@@ -17,4 +17,4 @@
     </div>
 </div> -->
 
-{{ view('index.$products') }}
+<!-- {{ view('index.$products') }} -->

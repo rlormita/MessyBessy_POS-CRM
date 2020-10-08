@@ -25,6 +25,7 @@ class CreateProductTables extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('product_category_id');
+            $table->string('image')->nullable();
             $table->unsignedDecimal('price', 10, 2);
             $table->unsignedinteger('stock')->default(0);
             $table->unsignedinteger('stock_defective')->default(0);
