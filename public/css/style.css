@@ -111,8 +111,8 @@ body {
 }
 
 /* Messy Front Page */
-.messy-fp { position: fixed; top: 0; left: 0; width: 100%; }
-.messy-fp .messy-header { padding: 20px 0; }
+.messy-fp { position: fixed; top: 0; left: 0; width: 100%; z-index: 5; }
+.messy-fp .messy-header { padding: 20px 20px 0 20px; background: #f1f2f3; }
 .messy-fp .messy-header .logo-pane { position: relative; }
 .messy-fp .messy-header .logo-pane img { height: 100px; }
 .messy-fp .messy-header .account-pane { text-align: right; }
@@ -127,7 +127,7 @@ body {
 .messy-fp-content .messy-branch { padding: 50px 20px; text-align: center; }
 .messy-fp-content .messy-branch .messy-branch-title span { font-size: 32px; font-weight: 900; }
 .messy-fp-content .messy-navigation { position: relative; margin: 20px 0 0 0; }
-.messy-fp-content .messy-navigation .messy-nav-item { background: #2D9DD5; margin: 10px; color: #fff; text-decoration: none; border-radius: 10px; position: relative; overflow: hidden; padding: 0; }
+.messy-fp-content .messy-navigation .messy-nav-item { background: #2D9DD5; margin: 10px; color: #fff; text-decoration: none; border-radius: 10px; position: relative; overflow: hidden; padding: 0; cursor: pointer; }
 .messy-fp-content .messy-navigation .messy-nav-item:hover { background: #0E7DB4; }
 .messy-fp-content .messy-navigation .messy-nav-item h3 { font-weight: bold; padding: 150px 20px 20px 20px; background-image: linear-gradient(top, transparent, rgba(0,0,0,0.5)); background-image: -webkit-linear-gradient(top, transparent, rgba(0,0,0,0.3)); position: relative; z-index: 3; margin: 0; }
 .messy-fp-content .messy-navigation .messy-nav-item img { position: absolute; top: -25px; right: -25px; height: 250px; transform: rotate(-30deg); z-index: 2; opacity: 0.5; transition: all .2s ease; }
