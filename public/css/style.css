@@ -304,6 +304,9 @@ body {
 	padding: 0;
 	height: 0;
 }
+.messy-profile .messy-account-details .form-group .confirmbtn {
+
+}
 .messy-profile .card .edit-profile-btn {
 	border-radius: 20px;
 }
@@ -316,6 +319,9 @@ body {
 	border: 0;
 	border-radius: 20px;
 	font-size: 16px;
+}
+.messy-profile .card .edit-profile-btn a:hover {
+	color: #fff;
 }
 
 

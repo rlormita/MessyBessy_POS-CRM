@@ -77,7 +77,7 @@
 
                                 {{-- password verification not working yet --}}
 
-                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" hidden>
+                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                                 <label for="password">Password</label>
 
                                                 <div class="col-md-6">
@@ -88,6 +88,14 @@
                                                             <strong>{{ $errors->first('password') }}</strong>
                                                         </span>
                                                     @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="edit-profile-btn">
+                                                    <a class="btn btn-sm btn-primary confirmBtn" data-toggle="modal" data-target="#confirmation">
+                                                        {{ __('Update Profile') }}
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -116,13 +124,6 @@
     </div>
   </div>
 </div>
-
-                                            <div class="card footer">
-
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#confirmation">
-                                                    {{ __('Update Profile') }}
-                                                </a>
-                                            </div>
                                         </div>
                                     </form>
 
