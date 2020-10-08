@@ -97,7 +97,13 @@
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active">
-        <h1><a href="index.html" class="logo"><img src='img/uploads/profile_image{{ Auth::user()->profile_image }}'/></a></h1>
+        <h1><a href="{{url('/profile')}}" class="logo">
+                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
+                <img style="width: 50%; border-radius:50%" src='img/user/default.jpg'>
+                @else
+                <img style="width: 50%; border-radius:50%" src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' />
+                @endif
+            </a></h1>
         <h4>{{ Auth::user()->firstName }}</h4>
         <ul class="list-unstyled components mb-5">
             <li class="active">
@@ -152,6 +158,5 @@
         </nav>
         <h2 class="mb-4">Content</h2>
     </div>
-</div>
 
-@endsection
+    @endsection
