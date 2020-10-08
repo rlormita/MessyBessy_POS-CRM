@@ -23,6 +23,7 @@ class ProductController extends Controller
         $products = Product::paginate(25);
 
         return view('inventory.products.index', compact('products'));
+
         //return view('inventory.products')
     }
 
@@ -115,5 +116,11 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->withStatus('Product removed successfully.');
+    }
+
+    public function productList() {
+        $products = DB::select('select * from products');
+
+        return view('transactions\transaction',['products'=>$products]);
     }
 }

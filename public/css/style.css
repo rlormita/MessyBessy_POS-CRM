@@ -352,16 +352,21 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100px;
-    background: #f1f2f3;
+    height: 144px;
+    background: #f2994a;
     width: 100%;
-    z-index: 5;
+    z-index: 99;
 }
 
 .messy-transaction .messy-top-nav .messy-t-nav {
-    padding: 50px 20px 20px 20px;
+    padding: 50px 0px 20px 0px;
     text-align: center;
     width: 100%;
+    position: relative;
+}
+
+.messy-transaction .messy-top-nav .messy-t-nav .col {
+	vertical-align: top;
 }
 
 .messy-transaction .messy-top-nav .messy-t-nav .col.left {
@@ -371,6 +376,31 @@ body {
 .messy-transaction .messy-top-nav .messy-t-nav .col .back-btn {
     border: 0;
     padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.messy-transaction .messy-top-nav .messy-t-nav .title {
+    font-weight: bold;
+    font-size: 28px;
+    padding: 5px;
+    margin: 0 10px;
+    color: #fff;
+    display: inline-block;
+    width: 200px;
+    position: absolute;
+    top: 2px;
+    left: 50px;
+}
+.messy-transaction .messy-top-nav .messy-t-nav .row { 
+	display: block;
+}
+
+.messy-transaction .messy-top-nav .messy-t-nav .col.mid {
+    text-align: left;
 }
 
 .messy-transaction .messy-top-nav .messy-t-nav .col.right {
@@ -382,9 +412,109 @@ body {
     width: 50px;
 }
 
+.messy-transaction .messy-top-nav .messy-nav-pills {
+	display: block;
+	margin: 0 20px 0 20px;
+	overflow-x: auto;
+}
+
+.messy-transaction .messy-top-nav .messy-nav-pills ul {
+	overflow-x: auto;
+}
+
+.messy-transaction .messy-top-nav .messy-nav-pills li {
+	width: 25%;
+}
+
+.messy-transaction .messy-top-nav .messy-nav-pills li a {
+	padding: 10px 0;
+	color: rgba(0,0,0,0.5);
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	transition: all .2s ease;
+	border-bottom: 3px solid transparent;
+}
+
+.messy-transaction .messy-top-nav .messy-nav-pills li a.active{
+	border-color: #fff;
+	background: transparent;
+	border-radius: 0; 
+	color: #fff;
+}
+
 /* Messy Transaction - Body */
 .messy-transaction {
-	margin: 110px 0 100px 0;
+	margin: 150px 0 100px 0;
+}
+
+/* Messy Transaction - Products List */
+.messy-products-list {
+	position: relative;
+}
+.messy-products-list .tab-content {
+	width: 100%;
+}
+.messy-products-list .messy-product-item {
+	position: relative;
+	height: 200px;
+	width: 100%;
+	background: #f2994a; /* fallback for old browsers */
+  	background: -webkit-linear-gradient(to top, #f2994a, #f2c94c); /* Chrome 10-25, Safari 5.1-6 */
+  	background: linear-gradient(to top, #f2994a, #f2c94c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  	border-radius: 20px;
+  	overflow: hidden;
+  	padding: 20px;
+	margin-bottom: 10px;
+}
+.messy-products-list .messy-product-item .messy-product-image {
+	position: absolute;
+	z-index: 3;
+	width: 250px;
+	text-align: center;
+	margin: 0 auto;
+	top: 20px;
+	right: -70px;
+}
+.messy-products-list .messy-product-item .messy-product-image img {
+	width: 100%;
+}
+.messy-products-list .messy-product-item .messy-product-name {
+	position: relative;
+	z-index: 5;
+}
+.messy-products-list .messy-product-item .messy-product-name h4 {
+	font-weight: bold;
+	width: 70%;
+	font-size: 24px;
+	color: rgba(0,0,0,0.7);
+	z-index: 2;
+}
+.messy-products-list .messy-product-item .messy-product-price h4 {
+	font-size: 18px;
+}
+.messy-products-list .messy-product-item .messy-product-add {
+	height: 50px;
+	width: 50px;
+	background: #4CC591;
+	border-radius: 50px;
+	display: block;
+	position: absolute;
+	bottom: -50px;
+	right: 10px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 24px;
+	z-index: 3;
+	cursor: pointer;
+	color: #fff;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05), 0 0px 0px rgba(0, 0, 0, 0.05);
+    transition: all .2s ease;
+}
+.messy-products-list .messy-product-item:hover .messy-product-add {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(0, 0, 0, 0.05);
+	bottom: 10px;
+	right: 10px;
 }
 
 
@@ -623,7 +753,6 @@ body {
     margin: 0 5px 0 0;
 }
 
->>>>>>>58b729e50c2f28113f916d6851bcf3de2d51b448
 /* Messy - Verification */
 
 .messy-verify-card {
@@ -694,7 +823,7 @@ body {
 
 /* Messy Transactions - Cart */
 
-<<<<<<< HEAD .messy-t {
+.messy-t {
     position: relative;
 }
 
@@ -828,7 +957,7 @@ body {
     font-weight: bold;
 }
 
-=======.messy-t {
+.messy-t {
     position: relative;
 }
 
@@ -959,7 +1088,6 @@ body {
     font-weight: bold;
 }
 
->>>>>>>0353a26fc99068844f38099480b2255a2f96b1dd
 /* Messy Transactions - Account */
 
 .messy-account {
@@ -1004,50 +1132,52 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #2D9DD5;
+    background: #fff;
     height: 72px;
+    z-index: 7;
 }
 
 .bottom-nav .navigation {
     position: relative;
 }
 
-.bottom-nav .navigation .navbar-nav {
+.bottom-nav .navigation .nav {
     position: relative;
 }
-
-.bottom-nav .navigation .navbar-nav li {
-    display: inline-block;
-    width: 25%;
-    vertical-align: top;
+.bottom-nav .navigation .nav li {
+	width: 25%;
+	text-align: center;
 }
-
-.bottom-nav .navigation .navbar-nav li a {
-    display: block;
-    padding: 13px;
-    text-align: center;
-    text-decoration: none;
+.bottom-nav .navigation .nav li a {
+	padding: 18px 0;
+	opacity: .5;
+	transition: all .2s ease;
 }
-
-.bottom-nav .navigation .navbar-nav li a img {
-    position: relative;
-    filter: brightness(70%);
-    height: 24px;
-    margin-bottom: 5px;
+.bottom-nav .navigation .nav li a img {
+	width: 24px;
+	filter: grayscale(100%);
+	transition: all .2s ease;
+	margin: 8px;
 }
-
-.bottom-nav .navigation .navbar-nav li a span {
-    display: block;
-    color: #B2B2B2;
+.bottom-nav .navigation .nav li a span {
+	font-weight: bold;
+	color: #212121;
+	font-size: 12px;
+	display: block;
+	margin-top: 20px;
+	transition: all .2s ease;
 }
-
-.bottom-nav .navigation .navbar-nav li.active a img {
-    filter: brightness(100%);
+.bottom-nav .navigation .nav li a.active { 
+	background: transparent;
+	opacity: 1;
 }
-
-.bottom-nav .navigation .navbar-nav li.active a span {
-    color: #fff;
-    font-weight: bold;
+.bottom-nav .navigation .nav li a.active img {
+	filter: grayscale(0%);
+	margin: 0;
+}
+.bottom-nav .navigation .nav li a.active span { 
+	color: #f2994a;
+	margin-top: 0;
 }
 
 

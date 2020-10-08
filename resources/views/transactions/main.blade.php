@@ -25,18 +25,18 @@
 <body>
     <div id="app" class="messy-transaction">
         <main class="py-4">
-            <section class="d-block messy-top-nav">
+            <section class="d-block messy-top-nav card-shadow">
                 @yield('navigation')
             </section>
             <div class="messy-transaction-body">
                 <section class="col-md-6 d-none messy-account">
                     @yield('accountHeader')
                 </section>
-                <section class="col-md-6 d-inline messy-t">
-                    @yield('sidebar')
-                </section>
                 <section class="col-md-6 d-inline messy-store">
                     @yield('store')
+                </section>
+                <section class="col-md-6 d-inline messy-t">
+                    @yield('sidebar')
                 </section>
                 <section class="col-md-6 d-inline">
                     @yield('cart')

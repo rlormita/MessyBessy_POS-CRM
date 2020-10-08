@@ -26,6 +26,8 @@ Route::get('/dashboard', function () {
 });
 Auth::routes(['verify' => true]);
 
+Route::get('/transactions','App\Http\Controllers\ProductController@productList');
+
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
