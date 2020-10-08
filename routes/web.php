@@ -21,7 +21,9 @@ Route::get('/', function () {
 Route::get('/transactions', function () {
     return view('transactions\transaction');
 });
-
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
 Auth::routes(['verify' => true]);
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
