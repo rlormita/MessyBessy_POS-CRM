@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="messy-profile">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <a href="{{ url('/profile') }}" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
                 <div class="card">
-                    <div class="card-header">Edit Profile</div>
+                    <div class="card-header">
+                        <h2>Edit Profile</h2>
+                    </div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -30,22 +36,26 @@
                                         </div>
                                     @endif
 
-
+                                    <div class="messy-account-photo">
                                       <form action="{{ route('profile.upload') }}" class="uploader" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <center>
-                                            @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
-                                                <img src='img/user/default.jpg'><br>
-                                            @else
-                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:center; border-radius:50%; margin:25px"/><br>
-                                            @endif
-
-                                            <label for="updateProfile">Update Profile Image</label><br>
-                                            <input type="file"   name="profile_image">
-                                            <input type="hidden"  name="_token" value="{{ csrf_token()}}">
-                                            <input type="submit"  value="Upload"/>
+                                            <div class="account-photo">
+                                                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
+                                                    <img src="{{ asset('img/user/default.jpg') }}">
+                                                @else
+                                                    <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}"/>
+                                                @endif
+                                                <label class="editPhoto" for="profile_image" >
+                                                    <i class="fas fa-pencil"></i>
+                                                </label>
+                                            </div>
+                                            <input type="file" name="profile_image" id="profile_image"  onchange="form.submit()" hidden>
+                                            <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                                            <input type="submit"  value="Upload" hidden/>
                                         </center>
                                      </form>
+                                    </div>
                                         <form action="{{ route('profile.update') }}" method="POST" role="form" enctype="multipart/form-data">
                                             @csrf
                                         <div class="card-body">
@@ -67,7 +77,7 @@
 
                                 {{-- password verification not working yet --}}
 
-                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" hidden>
                                                 <label for="password">Password</label>
 
                                                 <div class="col-md-6">
@@ -81,19 +91,37 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="password-confirm">Confirm Password</label>
+<div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="confirmationLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationLabel">Confirm changes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="password-confirm">Confirm Password</label>
 
-                                                <div class="col-md-6">
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                                                </div>
-                                            </div>
+            <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
                                             <div class="card footer">
 
-                                                <button type="submit" class="btn btn-primary">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#confirmation">
                                                     {{ __('Update Profile') }}
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </form>
@@ -136,4 +164,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

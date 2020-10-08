@@ -64,7 +64,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return view('profile');
+        return view('profile.editProfile');
      }
 
     //     /**
