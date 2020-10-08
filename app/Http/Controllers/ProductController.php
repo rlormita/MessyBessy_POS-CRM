@@ -49,7 +49,8 @@ class ProductController extends Controller
     {
 
         $filename = $request->image->getClientOriginalName();
-        $request->image->storeAs('images', $filename, 'public');
+
+        $request->image->move(public_path('img/products'), $filename);
 
         $model->create($request->all());
 

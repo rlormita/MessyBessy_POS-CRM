@@ -1,4 +1,4 @@
-@extends('transactions\main')
+@extends('transactions\main', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('navigation')
 <div class="container">
@@ -31,7 +31,7 @@
                 @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
                 <img src='img/user/default.jpg'>
             @else
-                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}'/>
+                <img src="{{ url('img/uploads/profile_image') }}/{{ Auth::user()->profile_image }}'/>
             @endif
 
 			</div>
@@ -63,6 +63,10 @@
 @section('store')
 <div class="container">
 	<div class="messy-products-list">
+		@foreach ($products as $product)
+		<div class="messy-product-item">
+		</div>
+		@endforeach
 	</div>
 </div>
 @endsection
