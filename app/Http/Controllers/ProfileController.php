@@ -60,11 +60,11 @@ class ProfileController extends Controller
 
 
         $user = Auth::user();
-        $user->profile_image = $filename;
+        $user-> profile_image = $filename;
 
-        $user->save();
+        $user-> save();
 
-        return view('profile.editProfile');
+        return view('profile');
      }
 
     //     /**

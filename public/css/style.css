@@ -225,102 +225,119 @@ body {
     right: -30px;
 }
 
-/* Messy Profile */
-.messy-profile { 
-	margin: 50px 0; 
-}
-.messy-profile .back-btn { 
-	padding: 10px 15px; 
-	font-size: 24px; 
-	text-align: left;
-	border: 0;  
-	background: transparent;
-	color: #212121;
-}
-.messy-profile .card {
-	background: transparent;
-	padding: 0;
-	border: 0;
-}
-.messy-profile .card .card-header { 
-	background: transparent;
-	border-bottom: 0;
-	padding: 10px 15px;
-}
-.messy-profile .card .card-header h2 {
-	font-weight: 900;
-	font-size: 3rem;
-} 
-.messy-profile .messy-account-photo {
-	position: relative;
-}
-.messy-profile .messy-account-photo .account-photo {
-	margin: 0 auto;
-	height: 150px; 
-	width: 150px;
-	display: block;
-	position: relative;
-	background: #f1f2f3;
-	border-radius: 100px;
-}
-.messy-profile .messy-account-photo img {
-	border-radius: 100px;
-	margin-bottom: 20px;
-	display: block;
-	width: 100%;
-}
-.messy-profile .messy-account-photo .editPhoto {
-	padding: 10px;
-	height: 40px;
-	width: 40px;
-	border-radius: 30px;
-	background: #2D9DD5;
-	color: #fff;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	cursor: pointer;
-}
-.messy-profile .messy-account-details {
-	margin: 50px 0;
-}
-.messy-profile .messy-account-details .title h4 {
-	font-weight: bold;
-	margin: 0 0 10px 0;
-}
-.messy-profile .messy-account-details .form-group {
-	position: relative;
-	margin: 20px 0;
-}
-.messy-profile .messy-account-details .form-group span {
-	display: block;
-	font-weight: bold;
-}
-.messy-profile .messy-account-details .form-group input[type=text] {
-	background: transparent;
-	font-weight: bold;
-	border: 0;
-	padding: 0;
-	height: 0;
-}
-.messy-profile .messy-account-details .form-group .confirmbtn {
 
+/* Messy Profile */
+
+.messy-profile {
+    margin: 50px 0;
 }
+
+.messy-profile .back-btn {
+    padding: 10px 15px;
+    font-size: 24px;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    color: #212121;
+}
+
+.messy-profile .card {
+    background: transparent;
+    padding: 0;
+    border: 0;
+}
+
+.messy-profile .card .card-header {
+    background: transparent;
+    border-bottom: 0;
+    padding: 10px 15px;
+}
+
+.messy-profile .card .card-header h2 {
+    font-weight: 900;
+    font-size: 3rem;
+}
+
+.messy-profile .messy-account-photo {
+    position: relative;
+}
+
+.messy-profile .messy-account-photo .account-photo {
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+    display: block;
+    position: relative;
+    background: #f1f2f3;
+    border-radius: 100px;
+}
+
+.messy-profile .messy-account-photo img {
+    border-radius: 100px;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+}
+
+.messy-profile .messy-account-photo .editPhoto {
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    background: #2D9DD5;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.messy-profile .messy-account-details {
+    margin: 50px 0;
+}
+
+.messy-profile .messy-account-details .title h4 {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.messy-profile .messy-account-details .form-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.messy-profile .messy-account-details .form-group span {
+    display: block;
+    font-weight: bold;
+}
+
+.messy-profile .messy-account-details .form-group input[type=text] {
+    background: transparent;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 0;
+}
+
+.messy-profile .messy-account-details .form-group .confirmbtn {}
+
 .messy-profile .card .edit-profile-btn {
-	border-radius: 20px;
+    border-radius: 20px;
 }
+
 .messy-profile .card .edit-profile-btn a {
-	background: #2D9DD5;
-	display: block;
-	font-weight: bold;
-	color: #fff;
-	padding: 20px;
-	border: 0;
-	border-radius: 20px;
-	font-size: 16px;
+    background: #2D9DD5;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    padding: 20px;
+    border: 0;
+    border-radius: 20px;
+    font-size: 16px;
 }
+
 .messy-profile .card .edit-profile-btn a:hover {
-	color: #fff;
+    color: #fff;
 }
 
 
@@ -12238,6 +12255,13 @@ a[data-toggle="collapse"] {
 .btn.btn-primary:focus {
     background: #3e64ff !important;
     border-color: #3e64ff !important;
+}
+
+.userName {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    text-transform: capitalize;
 }
 
 

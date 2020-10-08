@@ -17,7 +17,11 @@
                     </div>
                 </div>
                 <div id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    <img src="{{ asset('img/user/default.jpg') }}"/>
+                    @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
+                        <img src="{{ asset('img/user/default.jpg') }}">
+                    @else
+                        <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
+                    @endif
                 </div>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
