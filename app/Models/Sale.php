@@ -13,9 +13,9 @@ class Sale extends Model
         return $this->belongsTo('App\Models\Client');
     }
     public function products() {
-        return $this->hasMany('App\SoldProduct');
+        return $this->hasMany('App\Models\SoldProduct');
     }
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 }
