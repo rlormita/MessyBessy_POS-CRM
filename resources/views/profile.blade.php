@@ -40,9 +40,9 @@
                                             @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
                                                 <img src='img/user/default.jpg'><br>
                                             @else
-                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:left border-radius:50%; margin:25px"/><br>
+                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:center; border-radius:50%; margin:25px"/><br>
                                             @endif
-                                            <h2 class="title">{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</h2>
+                                            <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
                                             {{-- <label for="updateProfile">Update Profile Image</label><br>
                                             <input type="file"   name="profile_image">
                                             <input type="hidden"  name="_token" value="{{ csrf_token()}}">
