@@ -38,7 +38,7 @@
                                 <td>{{ $product->stock }}</td>
                                 <td>{{ $product->stock_defective }}</td>
                                 <td>{{ $product->solds }}</td>
-                                <td><img src="http://127.0.0.1:8000/storage/images/{{$product->image}}"/></td>
+                                <td><img src="http://127.0.0.1:8000/storage/images/{{ $product->image }}"/></td>
                                 <td class="td-actions text-right">
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                         <i class="far fa-eye"></i>

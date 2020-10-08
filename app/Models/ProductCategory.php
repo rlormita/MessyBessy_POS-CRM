@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +11,6 @@ class ProductCategory extends Model
     protected $table = 'product_categories';
     protected $fillable = ['name'];
     public function products() {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Models\Product');
     }
 }
