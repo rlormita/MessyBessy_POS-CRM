@@ -44,6 +44,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, Product $model)
     {
+
         $filename = $request->image->getClientOriginalName();
         $request->image->storeAs('images', $filename, 'public');
 
