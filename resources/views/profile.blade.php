@@ -40,18 +40,26 @@
                                         <form action="{{ route('profile.upload') }}" class="uploader" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <center>
-                                                @if (File::exists(public_path("img/uploads/profile_image/
-                                                {{ Auth::user()->profile_image }}" )))
-                                                <img src="{{ url('img/uploads/profile_image') }}{{ Auth::user()->profile_image }}" style="width:150px; height:150px; float:left border-radius:50%; margin:25px" />
-                                                @else
-                                                <img src="{{ asset('img/user/default.jpg') }}">
-                                                @endif
-                                                <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
+                                                <div class="account-photo">
+                                                    @if (File::exists(public_path("img/uploads/profile_image/
+                                                    {{ Auth::user()->profile_image }}" )))
+                                                    <img src="{{ asset('img/user/default.jpg') }}">
 
-                                                {{-- <label for="updateProfile">Update Profile Image</label><br>
-                                            <input type="file"   name="profile_image">
-                                            <input type="hidden"  name="_token" value="{{ csrf_token()}}">
-                                                <input type="submit" value="Upload" /> --}}
+                                                    @else
+                                                    <img  style="margin:0 auto; border-radius: 50%;" src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' />
+
+                                                    @endif
+                                                    <label class="editPhoto" for="profile_image">
+                                                        <!-- <i class="fas fa-pencil"></i> -->
+                                                    </label>
+
+
+                                                    <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
+                                                </div>
+
+                                                <input type="file" name="profile_image" id="profile_image" onchange="form.submit()" hidden />
+                                                <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                                                <input type="submit" value="Upload" hidden/>
                                             </center>
                                         </form>
                                     </div>
