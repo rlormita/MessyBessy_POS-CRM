@@ -40,9 +40,9 @@
                                         <center>
                                             <div class="account-photo">
                                             @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
-                                                <img src="{{ url('img/uploads/profile_image') }}{{ Auth::user()->profile_image }}" style="width:150px; height:150px; float:left border-radius:50%; margin:25px" data-toggle="modal" data-target="#viewPhoto"/>             
+                                                <img src="{{ asset('img/user/default.jpg') }}">
                                             @else
-                                                <img src="{{ asset('img/user/default.jpg') }}" data-toggle="modal" data-target="#viewPhoto">
+                                                <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}"/>
                                             @endif
                                             </div>
                                             <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
