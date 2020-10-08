@@ -75,13 +75,11 @@
                                                     <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}">
                                             </div>
 
-                                {{-- password verification not working yet --}}
-
                                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                                 <label for="password">Password</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control" name="password">
+                                                    <input id="password" type="password" class="form-control"  value="{{ old('password', auth()->user()->password )}}" disabled>
 
                                                     @if ($errors->has('password'))
                                                         <span class="help-block">
@@ -119,7 +117,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <div class="edit-profile-btn card-shadow">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Save Changes') }}
+            </button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -127,34 +130,34 @@
                                         </div>
                                     </form>
 
-                                    {{-- change password not working yet --}}
 
-                                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
-                                            <div class="card-body">
-                                                @csrf
+                                    <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                                        <div class="card-body">
+                                            @csrf
+                                            @method('put')
 
-                                                @include('alerts.success', ['key' => 'password_status'])
+                                            @include('alerts.success', ['key' => 'password_status'])
 
-                                                <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                                                    <label>Current password</label>
-                                                    <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Current password" value="" required>
-                                                    @include('alerts.feedback', ['field' => 'old_password'])
-                                                </div>
-
-                                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                                    <label>New Password</label>
-                                                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="New password" value="" required>
-                                                    @include('alerts.feedback', ['field' => 'password'])
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Confirm new password</label>
-                                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm new password" value="" required>
-                                                </div>
+                                            <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
+                                                <label>Current password</label>
+                                                <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Current password" value="" required>
+                                                @include('alerts.feedback', ['field' => 'old_password'])
                                             </div>
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-fill btn-primary">Change Password</button>
+
+                                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                                <label>New Password</label>
+                                                <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="New password" value="" required>
+                                                @include('alerts.feedback', ['field' => 'password'])
                                             </div>
-                                        </form>
+                                            <div class="form-group">
+                                                <label>Confirm new password</label>
+                                                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm new password" value="" required>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-fill btn-primary">Change Password</button>
+                                        </div>
+                                    </form>
                                     </div>
 
                                 </div>

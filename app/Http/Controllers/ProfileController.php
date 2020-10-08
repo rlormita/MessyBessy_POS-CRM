@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Hash;
-// use App\Http\Requests\PasswordRequest;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image as Image;
+use Illuminate\Foundation\Auth\ConfirmsPasswords;
 // use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class ProfileController extends Controller
 {
-    //
+    use ConfirmsPasswords;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -32,19 +33,30 @@ class ProfileController extends Controller
     public function update(Request $request){
         $user = Auth::user();
 
+
+
         $data = $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required',
+            'password_confirmation' => 'required|min:6'
+
         ]);
+
 
         $user->firstName = $data['firstName'];
         $user->lastName = $data['lastName'];
         $user->email = $data['email'];
 
-        $user->save();
-        return view('profile');
+
+        // $password_confirmation = $request->input['password'];
+        if (Hash::check($data['password_confirmation'], Auth::user()->password)) {
+            $user->save();
+            return back()->withPasswordStatus('Updated profile successfully updated.');
+         }
+
         }
+
 
     public function upload(Request $request){
 
@@ -60,24 +72,24 @@ class ProfileController extends Controller
 
 
         $user = Auth::user();
-        $user-> profile_image = $filename;
+        $user->profile_image = $filename;
 
-        $user-> save();
+        $user->save();
 
         return view('profile');
      }
 
-    //     /**
-    //  * Change the password
-    //  *
-    //  * @param  \App\Http\Requests\PasswordRequest  $request
-    //  * @return \Illuminate\Http\RedirectResponse
-    //  */
-    // public function password(PasswordRequest $request)
-    // {
-    //     auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+        /**
+     * Change the password
+     *
+     * @param  \App\Http\Requests\PasswordRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function password(Request $request)
+    {
+        Auth::user()->update(['password' => Hash::make($request->get('password'))]);
 
-    //     return back()->withPasswordStatus('Password successfully updated.');
-    // }
-
+        return back()->withPasswordStatus('Password successfully updated.');
+    }
 }
+

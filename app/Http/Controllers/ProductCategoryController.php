@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SoldProduct;
+use App\Models\Client;
+use App\Models\Sale;
 use App\Http\Requests\ProductCategoryRequest;
 
 class ProductCategoryController extends Controller

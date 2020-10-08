@@ -30,7 +30,7 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])
 Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
 Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.password');
+Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
