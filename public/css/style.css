@@ -226,6 +226,50 @@ body {
     right: -30px;
 }
 
+/* Messy Profile */
+.messy-profile { 
+	margin: 50px 0; 
+}
+.messy-profile .back-btn { 
+	padding: 10px 15px; 
+	font-size: 24px; 
+	text-align: left;
+	border: 0;  
+}
+.messy-profile .card {
+	background: transparent;
+	padding: 0;
+	border: 0;
+}
+.messy-profile .card .card-header { 
+	background: transparent;
+	border-bottom: 0;
+	padding: 10px 15px;
+}
+.messy-profile .card .card-header h2 {
+	font-weight: 900;
+	font-size: 3rem;
+} 
+.messy-profile .messy-account-photo {
+	position: relative;
+}
+.messy-profile .messy-account-photo img {
+	border-radius: 100px;
+}
+.messy-profile .card .edit-profile-btn {
+	border-radius: 20px;
+}
+.messy-profile .card .edit-profile-btn a {
+	background: #2D9DD5;
+	display: block;
+	font-weight: bold;
+	color: #fff;
+	padding: 20px;
+	border: 0;
+	border-radius: 20px;
+	font-size: 16px;
+}
+
 
 /* Messy Transact - Navigation (Top) */
 
