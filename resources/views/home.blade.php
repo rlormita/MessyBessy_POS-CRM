@@ -154,6 +154,13 @@
             </div>
         </li>
         -->
+
+
+        <div class="product">
+            <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
+            <a href="{{ url('/categories') }}" class="text-sm text-gray-700 underline">Categories</a>
+            <a href="{{ url('/transactions') }}" class="text-sm text-gray-700 underline">Transactions</a>
+        </div>
         <li class="nav-item">
             <a class="dropdown-item" href="{{ url('/profile') }}">
                 {{ __('Profile') }}
@@ -171,9 +178,9 @@
     </ul>
 </nav>
 <!-- /.navbar -->
+<!-- </div>
 </div>
 </div>
-</div>
-</div>
+</div> -->
 
 @endsection
