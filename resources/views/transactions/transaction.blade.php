@@ -62,6 +62,8 @@
 
 @section('store')
 <div class="container">
+	<div class="messy-products-list">
+	</div>
 </div>
 @endsection
 
