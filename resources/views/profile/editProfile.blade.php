@@ -37,7 +37,7 @@
                                             @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
                                                 <img src='img/user/default.jpg'><br>
                                             @else
-                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:left border-radius:50%; margin:25px"/><br>
+                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:center; border-radius:50%; margin:25px"/><br>
                                             @endif
 
                                             <label for="updateProfile">Update Profile Image</label><br>

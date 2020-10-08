@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="messy-profile">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <button onclick="history.back()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
                 <div class="card">
-                    <div class="card-header">Profile</div><br>
-                    <div class="col-md-12 text-right">
-                        <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-primary">Edit</a>
+                    <div class="card-header">
+                        <h2>Profile</h2>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -33,22 +36,23 @@
                                         </div>
                                     @endif
 
-
+                                    <div class="messy-account-photo">
                                       <form action="{{ route('profile.upload') }}" class="uploader" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <center>
                                             @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
-                                                <img src='img/user/default.jpg'><br>
+                                                <img src="{{ url('img/uploads/profile_image') }}{{ Auth::user()->profile_image }}" style="width:150px; height:150px; float:left border-radius:50%; margin:25px"/>             
                                             @else
-                                                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}' style="width:150px; height:150px; float:left border-radius:50%; margin:25px"/><br>
+                                                <img src="{{ asset('img/user/default.jpg') }}">
                                             @endif
-                                            <h2 class="title">{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</h2>
+                                            <h2 class="title"><b>{{ Auth::user()->firstName}} {{ Auth::user()->lastName}}</b></h2>
                                             {{-- <label for="updateProfile">Update Profile Image</label><br>
                                             <input type="file"   name="profile_image">
                                             <input type="hidden"  name="_token" value="{{ csrf_token()}}">
                                             <input type="submit"  value="Upload"/> --}}
                                         </center>
-                                     </form>
+                                      </form>
+                                    </div>
                                         <form action="{{ route('profile.update') }}" method="POST" role="form" enctype="multipart/form-data">
                                             @csrf
                                         <div class="card-body">
@@ -71,6 +75,10 @@
                                         </div>
                                     </form>
 
+                                    <div class="edit-profile-btn card-shadow">
+                                        <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-primary">Update Information</a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -79,4 +87,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
