@@ -28,7 +28,12 @@
 		@else
 		<div class="messy-account-details card-shadow">
 			<div class="account-photo d-inline-block align-top">
-				<img src="{{ asset('img/user/eunace_rocamora.jpg') }}"/>
+                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
+                <img src='img/user/default.jpg'>
+            @else
+                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}'/>
+            @endif
+
 			</div>
 			<div class="account-details d-inline-block align-top">
 				<h5>Welcome</h5>
@@ -66,7 +71,7 @@
 		<div class="barcode-number">
 			<input type="text" class="d-inline-block" placeholder="84701764619376" maxlength="12"  autofocus>
 			<div class="barcode-icon d-inline-block">
-				<img src="{{ asset('img/barcode.svg') }}"/>     
+				<img src="{{ asset('img/barcode.svg') }}"/>
 			</div>
 		</div>
 	</div>
