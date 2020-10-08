@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/transactions', function () {
-    return view('transaction');
+    return view('transactions\transaction');
 });
 
 Auth::routes(['verify' => true]);
