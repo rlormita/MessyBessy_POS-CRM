@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+
 <div class="messy-fp">
     <div class="container">
         <div class="messy-header row justify-content-center">
@@ -20,6 +22,9 @@
                 </div>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url('/profile') }}">
+                        {{ __('Profile') }}
+                    </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -31,12 +36,6 @@
                     </form>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div class="product">
-                <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
-                <a href="{{ url('/categories') }}" class="text-sm text-gray-700 underline">Categories</a>
-                <a href="{{ url('/transactions') }}" class="text-sm text-gray-700 underline">Transactions</a>
-=======
         </div>
     </div>
 </div>
@@ -68,11 +67,12 @@
                     <img src="{{ asset('sprites/settings.svg') }}"/>
                     <h3>Settings</h3>
                 </a>
->>>>>>> 58b729e50c2f28113f916d6851bcf3de2d51b448
             </div>
         </div>
     </div>
-</div> -->
+</div>
+
+<!-- Edit ni Janjan -->
 <div class="row">
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -84,10 +84,10 @@
     </div>
     <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-home-tab">{{view('/transaction') }}</div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+            <div class="tab-pane fade show active" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-home-tab">Products</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Profile</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Messages</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Settings</div>
         </div>
     </div>
 </div>
