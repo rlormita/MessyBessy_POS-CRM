@@ -51,11 +51,7 @@ class ProductController extends Controller
 
         $filename = $request->image->getClientOriginalName();
 
-<<<<<<< HEAD
-        $request->image->storeAs('images', $filename, 'public');
-=======
         $request->image->move(public_path('img/products'), $filename);
->>>>>>> f583339170159c2824af737c505db734daa3c149
 
         $model->name = $request->name;
         $model->description = $request->description;
@@ -107,7 +103,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $filename_edit = $request->image->getClientOriginalName();
-        $request->image->storeAs('images', $filename_edit, 'public');
+        $request->image->move(public_path('img/products'), $filename_edit);
 
         $product->update($request->all());
 
