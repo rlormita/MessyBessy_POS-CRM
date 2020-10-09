@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SoldProduct;
+use App\Models\Client;
+use App\Models\Sale;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +23,7 @@ class ProductController extends Controller
         $products = Product::paginate(25);
 
         return view('inventory.products.index', compact('products'));
+
         //return view('inventory.products')
     }
 
@@ -47,7 +51,11 @@ class ProductController extends Controller
 
         $filename = $request->image->getClientOriginalName();
 
+<<<<<<< HEAD
         $request->image->storeAs('images', $filename, 'public');
+=======
+        $request->image->move(public_path('img/products'), $filename);
+>>>>>>> f583339170159c2824af737c505db734daa3c149
 
         $model->name = $request->name;
         $model->description = $request->description;
@@ -73,10 +81,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $solds = $product->solds()->latest()->limit(25)->get();
-
-        $receiveds = $product->receiveds()->latest()->limit(25)->get();
-
-        return view('inventory.products.show', compact('product', 'solds', 'receiveds'));
+        return view('inventory.products.show', compact('product','solds'));
     }
 
     /**
@@ -128,5 +133,11 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->withStatus('Product removed successfully.');
+    }
+
+    public function productList() {
+        $products = DB::select('select * from products');
+
+        return view('transactions\transaction',['products'=>$products]);
     }
 }

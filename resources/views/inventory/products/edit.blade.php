@@ -73,10 +73,17 @@
                                     </div>
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
+<<<<<<< HEAD
                                             <label class="form-control-label" for="input-image">Edit Uploaded Image</label>
                                             <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}" required>
                                         </div>
                                     </div>  
+=======
+                                            <label class="form-control-label" for="input-image">Upload Image</label>
+                                            <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}" required>
+                                        </div>
+                                    </div>
+>>>>>>> f583339170159c2824af737c505db734daa3c149
                                 </div>
 
                                 <div class="text-center">
