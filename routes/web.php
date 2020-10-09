@@ -18,13 +18,15 @@ use App\Http\Controllers\ProductCategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/transactions', function () {
+/* Route::get('/transactions', function () {
     return view('transactions\transaction');
-});
+}); */
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 Auth::routes(['verify' => true]);
+
+Route::view('/transactions','transactions/transaction');
 
 Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 

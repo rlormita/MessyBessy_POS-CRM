@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('categories', 'App\Http\Controllers\ProductCategoryController@result');
+Route::get('products', 'App\Http\Controllers\ProductController@result');

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Messy Bessy') }}</title>
+    <title>Transaction</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -47,5 +47,7 @@
             </div>
         </main>
     </div>
+
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ use App\Models\SoldProduct;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Http\Requests\ProductRequest;
+use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -135,5 +136,10 @@ class ProductController extends Controller
         $products = DB::select('select * from products');
 
         return view('transactions\transaction',['products'=>$products]);
+    }
+
+    /* Show all products - Ding */
+    public function result() {
+        return ProductResource::collection(Product::all());
     }
 }
