@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'product_category_id' => ['required'],
             'description' => [],
             'stock' => ['required'],
-            'image' => ['required'],
+            'image' => [],
             'price' => ['required'],
             'price_wholesaler' => [],
         ];

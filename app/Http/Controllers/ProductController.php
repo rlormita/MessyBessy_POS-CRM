@@ -46,11 +46,18 @@ class ProductController extends Controller
     {
 
         $filename = $request->image->getClientOriginalName();
+
         $request->image->storeAs('images', $filename, 'public');
 
-        $model->create($request->all());
+        $model->name = $request->name;
+        $model->description = $request->description;
+        $model->stock_defective = $request ->stock_defective;
+        $model->product_category_id = $request->product_category_id;
+        $model->stock = $request->stock;
+        $model->price = $request->price;
+        $model->image = $filename;
 
-        DB::table('products')->where('image', NULL)->update(['image' => $filename]);
+        $model->save();
 
         return redirect()
             ->route('products.index')
@@ -94,7 +101,14 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+        $filename_edit = $request->image->getClientOriginalName();
+        $request->image->storeAs('images', $filename_edit, 'public');
+
         $product->update($request->all());
+
+        $product->image = $filename_edit;
+
+        $product->save();
 
         return redirect()
             ->route('products.index')
