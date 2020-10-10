@@ -26,9 +26,10 @@ Route::get('/dashboard', function () {
 });
 Auth::routes(['verify' => true]);
 
-Route::view('/transactions','transactions/transaction');
+// Route::view('/transactions','transactions/transaction');
+Route::view('/transactions','shop.index');
 
-Route::get('/transactions','App\Http\Controllers\ProductController@productList');
+// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');

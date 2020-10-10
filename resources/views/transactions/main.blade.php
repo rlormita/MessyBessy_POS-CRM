@@ -33,7 +33,7 @@
                     @yield('accountHeader')
                 </section>
                 <section class="col-md-6 d-inline messy-store">
-                    @yield('store')
+                    @yield('app')
                 </section>
                 <section class="col-md-6 d-inline messy-t">
                     @yield('sidebar')
@@ -49,5 +49,12 @@
     </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
+<script>
+$(document).ready(function(){
+    $(".messy-cart-header .back-icon").on('click', function(e) {
+        $(".messy-cart").toggleClass("active");
+    });
+});
+</script>
 </body>
 </html>

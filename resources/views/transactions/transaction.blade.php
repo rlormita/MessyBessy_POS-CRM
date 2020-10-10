@@ -89,27 +89,7 @@
 		<div class="tab-content">
 			<div class="tab-pane fade show active" id="babycare" role="tabpanel" aria-labelledby="babycare-tab">
 				<div class="row">
-					@foreach ($products as $product)
-						<!-- messy-item :name="{{$product->name}}"
-							link=""
-							image="{{ asset('img/products/$product->image') }}"></messy-item -->
-						<div class="col-md-6">
-							<div class="messy-product-item">
-								<div class="messy-product-image">
-									<img src="{{ url('img/products') }}/{{ ($product->image) }}"/>
-								</div>
-								<div class="messy-product-name">
-									<h4>{{ $product->name }}</h4>
-								</div>
-								<div class="messy-product-price">
-									<h4>₱{{ $product->price }}</h4>
-								</div>
-								<a class="messy-product-add card-shadow">
-									<i class="fas fa-plus"></i>
-								</a>
-							</div>
-						</div>
-					@endforeach
+					<messy-item></messy-item>
 				</div>
 			</div>
 		</div>
@@ -182,13 +162,6 @@
 
 @section('cart')
 <div class="messy-cart active d-none">
-	<script>
-	$(document).ready(function(){
-		$(".messy-cart-header .back-icon").on('click', function(e) {
-	  		$(".messy-cart").toggleClass("active");
-		});
-	});
-	</script>
 	<div class="container">
 		<div class="messy-cart-header row">
 			<div class="col">

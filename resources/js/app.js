@@ -22,8 +22,14 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 // ProductList vue components
-Vue.component('messy-item', require('./components/productList.vue').default);
-
+Vue.component('messy-transact', require('./components/shop/FrontPage.vue').default);
+Vue.component('messy-trans-catnav', require('./components/shop/TransCatNav.vue').default);
+Vue.component('messy-trans-botnav', require('./components/shop/TransBotNav.vue').default);
+Vue.component('messy-main', require('./components/shop/FrontPage.vue').default);
+Vue.component('messy-shop', require('./components/shop/ShopFront.vue').default);
+Vue.component('messy-item', require('./components/shop/ProductItem.vue').default);
+Vue.component('messy-cart', require('./components/shop/ShoppingCart.vue').default);
+Vue.component('messy-scan', require('./components/shop/CodeScan.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
