@@ -30,6 +30,7 @@ Vue.component('messy-shop', require('./components/shop/ShopFront.vue').default);
 Vue.component('messy-item', require('./components/shop/ProductItem.vue').default);
 Vue.component('messy-cart', require('./components/shop/ShoppingCart.vue').default);
 Vue.component('messy-scan', require('./components/shop/CodeScan.vue').default);
+Vue.component('product-modal', require('./components/shop/ProductModal.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="messy-shop active" aria-labelledby="shop" role="tabpanel" id="shop">
+        <div class="messy-shop" aria-labelledby="shop" role="tabpanel" id="shop">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -48,10 +48,11 @@
                             <div class="messy-product-price">
                                 <h4>₱ {{ product.price }}</h4>
                             </div>
-                            <a class="messy-product-add card-shadow">
+                            <a class="messy-product-add card-shadow" @button_click="launchModal">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </div>
+                        <product-modal></product-modal>
                     </div>
                 </div>
             </div>
@@ -69,6 +70,7 @@
             return {
                 categories: [],
                 products: [],
+                message: '',
             }
         },
         mounted() {
@@ -93,6 +95,10 @@
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            launchModal() {
+                this.$emit('button_click');
+                console.log('Button clicked');
             }
         }
     }
