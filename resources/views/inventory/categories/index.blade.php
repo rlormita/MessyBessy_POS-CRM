@@ -1,6 +1,10 @@
 @extends('layouts.app', ['page' => 'List of Categories', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
+<div class="sidenav">
+    <a href="{{ route('categories.index') }}"> Categories </a>
+    <a href="{{ route('products.index') }}"> Products </a>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="card ">
@@ -34,18 +38,19 @@
                                     <td>{{ $category->products->sum('stock_defective') }}</td>
                                     <td>{{ $category->products->avg('price') }}</td>
 
+
                                     <td class="td-actions text-right">
                                         <a href="{{ route('categories.show', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                            <i class="tim-icons icon-zoom-split"></i>
+                                            <i class="far fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Category">
-                                            <i class="tim-icons icon-pencil"></i>
+                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
+                                            <i class="far fa-edit"></i>
                                         </a>
                                         <form action="{{ route('categories.destroy', $category) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Category" onclick="confirm('Are you sure you want to delete this category? All products belonging to it will be deleted and the records that contain it will not be accurate.') ? this.parentElement.submit() : ''">
-                                                <i class="tim-icons icon-simple-remove"></i>
+                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                                <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
                                     </td>

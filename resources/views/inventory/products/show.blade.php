@@ -1,6 +1,10 @@
 @extends('layouts.app', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
+<div class="sidenav">
+    <a href="{{ route('categories.index') }}"> Categories </a>
+    <a href="{{ route('products.index') }}"> Products </a>
+</div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
