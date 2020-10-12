@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="messy-product-item" v-for="(product, index) in products">
+                        <div class="messy-product-item" v-for="(product, index) in products" :key="product.id">
                             <div class="messy-product-image">
                                 <img :src="`/img/products/${product.image}`"/>
                             </div>
@@ -54,49 +54,7 @@
                             <a class="messy-product-add card-shadow" data-toggle="modal" :data-target="`#productModal-${product.id}`">
                                 <i class="fas fa-plus"></i>
                             </a>
-                            <div class="productModal">
-                                <div class="modal card-shadow fade" :id="`productModal-${product.id}`" tabindex="-1" role="dialog">
-                                  <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-body">
-                                        <div class="modal-actions row">
-                                            <div class="col-6">
-                                                <a data-dismiss="modal">
-                                                    <i class="fas fa-chevron-left"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="modal-image">
-                                            <img :src="`/img/products/${product.image}`"/>
-                                        </div>
-                                        <div class="modal-details">
-                                            <h4 class="product-title">
-                                                {{ product.name }}
-                                            </h4>
-                                            <h4 class="product-price">
-                                                Php {{ product.price }}
-                                            </h4>
-                                            <div class="product-size">
-                                                <h6>Size</h6>
-                                                <div class="size-group">
-                                                    <input type="radio" :id="`${product.id}-2L`" name="product-size" value="2L" hidden checked/>
-                                                    <label :for="`${product.id}-2L`" class="sizeSelect">2L</label>
-                                                </div>
-                                                <div class="size-group">
-                                                    <input type="radio" :id="`${product.id}-500mL`" name="product-size" value="500mL" hidden/>
-                                                    <label :for="`${product.id}-500mL`" class="sizeSelect">500mL</label>
-                                                </div>
-                                            </div>
-                                            <p>{{ product.description }}</p>
-                                        </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <a class="addCart-btn btn btn-primary" data-dismiss="modal"><span>Add to Cart</span></a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
+                            <product-modal :id="`${product.id}`" :name="`${product.name}`" :description="`${product.description}`" :image="`${product.image}`" :price="`${product.price}`"></product-modal>
                         </div>
                         
                     </div>
@@ -110,6 +68,7 @@
 </template>
 
 <script>
+    import ProductModal from './ProductModal.vue'
 
     export default {
         data: function () {
@@ -121,6 +80,7 @@
                 productDesc: ''
             }
         },
+        props: ['name', 'price', 'image'],
         mounted() {
             this.loadCategories();
             this.loadProducts();

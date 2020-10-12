@@ -1,0 +1,70 @@
+@charset "UTF-8";
+body {
+    background: #2D9DD5;
+    font-family: Montserrat, Arial, sans-serif;
+    color: #141414;
+}
+
+.main-content {
+	margin: 200px 0 0 0;
+}
+.card-shadow, .card-shadow-hover:hover {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 0px 0px, rgba(0, 0, 0, 0.14) 0px 2px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 0px 0px;
+}
+
+.welcome-header {
+	position: relative;
+	display: block;
+	height: 200px;
+}
+.welcome-header .header-logo {
+	height: 60px;
+	text-align: center;
+}
+.welcome-header .header-logo img {
+	height: 100%;
+}
+.welcome-header .header-title {
+	font-weight: 900;
+	font-family: 'Poppins', Montserrat, Arial, sans-serif;
+	font-size: 3em;
+	margin: 50px 0 5px 0;
+	color: #fff;
+}
+.welcome-header .header-subtitle {
+	color: #fff;
+	margin: 0 0 50px 0;
+}
+.welcome-login { 
+	margin: 50px 0 50px 0;
+}
+.welcome-login .login-btn {
+	 display: block;
+	 margin: 0 100px 20px 100px;
+}
+.welcome-login .login-btn a {
+	display: block;
+	margin: 0 auto;
+	background: #FFCB77;
+	border-radius: 20px;
+	border: 0;
+	color: #212121; 
+	font-weight: 900;
+	padding: 15px 50px;
+	font-size: 24px;
+	text-align: left;
+	position: relative;
+	max-width: 500px;
+}
+.welcome-login .login-btn a i {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 50px;
+	width: 50px;
+	border-radius: 20px;
+	display: block;
+	background: rgba(0,0,0,0.10);
+	text-align:center;
+	line-height: 50px;
+}

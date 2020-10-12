@@ -641,6 +641,7 @@ body {
     width: 100%;
     background: #f1f2f3;
     transition: all .25s ease-in-out;
+    padding: 20px;
 }
 
 .messy-shopping-cart.active,
