@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('transactions\transaction');
 }); */
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.dashboard');
 });
 Auth::routes(['verify' => true]);
 

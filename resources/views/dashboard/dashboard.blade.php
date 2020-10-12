@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('content')
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active">
@@ -10,8 +9,8 @@
                 <img style="width: 50%; border-radius:50%;" src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
                 @endif
             </a></h1>
-        <h4 class="userName" style="text-align: center; ">{{ Auth::user()->firstName }}
-        {{ Auth::user()->lastName }}</h4>
+        <h4 class="userName" style="text-align: center;text-align: center;font-size: 15px;text-transform: capitalize;color: white; ">{{ Auth::user()->firstName }}
+            {{ Auth::user()->lastName }}</h4>
         <ul class="list-unstyled components mb-5">
             <li class="active">
                 <a href="{{ url('/products') }}">Products</a>
@@ -66,5 +65,3 @@
         <h2 class="mb-4">Content</h2>
     </div>
 </div>
-
-@endsection
