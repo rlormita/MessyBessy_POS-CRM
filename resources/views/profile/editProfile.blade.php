@@ -39,12 +39,13 @@
                                     <div class="messy-account-photo">
                                       <form action="{{ route('profile.upload') }}" class="uploader" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @include('alerts.success', ['key' => 'password_status'])
                                         <center>
                                             <div class="account-photo">
                                                 @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}" )))
-                                                    <img src="{{ asset('img/user/default.jpg') }}">
-                                                @else
                                                     <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}"/>
+                                                @else
+                                                    <img src="{{ asset('img/user/default.jpg') }}">
                                                 @endif
                                                 <label class="editPhoto" for="profile_image" >
                                                     <i class="fas fa-pencil"></i>
@@ -73,20 +74,6 @@
                                             <div class="form-group">
                                                 <label for="email">Email</label>
                                                     <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}">
-                                            </div>
-
-                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                <label for="password">Password</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control"  value="{{ old('password', auth()->user()->password )}}" disabled>
-
-                                                    @if ($errors->has('password'))
-                                                        <span class="help-block">
-                                                            <strong>{{ $errors->first('password') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                </div>
                                             </div>
 
                                             <div class="form-group">
@@ -135,8 +122,6 @@
                                         <div class="card-body">
                                             @csrf
                                             @method('put')
-
-                                            @include('alerts.success', ['key' => 'password_status'])
 
                                             <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                                                 <label>Current password</label>
