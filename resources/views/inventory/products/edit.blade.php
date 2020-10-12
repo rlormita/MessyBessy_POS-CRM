@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('products.update', $product) }}" autocomplete="off">
+                        <form method="post" action="{{ route('products.update', $product) }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
                             @method('put')
 
@@ -69,6 +69,12 @@
                                             <label class="form-control-label" for="input-price">Price</label>
                                             <input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price', $product->price) }}" required>
                                             
+                                        </div>
+                                    </div>
+                                    <div class="col-4">                                    
+                                        <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-image">Upload Image</label>
+                                            <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}" required>
                                         </div>
                                     </div>
                                 </div>

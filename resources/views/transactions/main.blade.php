@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Messy Bessy') }}</title>
+    <title>Transaction</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,18 +25,18 @@
 <body>
     <div id="app" class="messy-transaction">
         <main class="py-4">
-            <section class="d-block messy-top-nav">
+            <section class="d-block messy-top-nav card-shadow">
                 @yield('navigation')
             </section>
             <div class="messy-transaction-body">
                 <section class="col-md-6 d-none messy-account">
                     @yield('accountHeader')
                 </section>
+                <section class="col-md-6 d-inline messy-store">
+                    @yield('app')
+                </section>
                 <section class="col-md-6 d-inline messy-t">
                     @yield('sidebar')
-                </section>
-                <section class="col-md-6 d-inline messy-store">
-                    @yield('store')
                 </section>
                 <section class="col-md-6 d-inline">
                     @yield('cart')
@@ -47,5 +47,14 @@
             </div>
         </main>
     </div>
+
+<script src="{{ mix('js/app.js') }}"></script>
+<script>
+$(document).ready(function(){
+    $(".messy-cart-header .back-icon").on('click', function(e) {
+        $(".messy-cart").toggleClass("active");
+    });
+});
+</script>
 </body>
 </html>

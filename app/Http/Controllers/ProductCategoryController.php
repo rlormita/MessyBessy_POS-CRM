@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SoldProduct;
+use App\Models\Client;
+use App\Models\Sale;
 use App\Http\Requests\ProductCategoryRequest;
+use App\Http\Resources\ProductCategoryResource;
 
 class ProductCategoryController extends Controller
 {
@@ -99,5 +103,10 @@ class ProductCategoryController extends Controller
         return redirect()
             ->route('categories.index')
             ->withStatus('Category successfully deleted.');
+    }
+
+    /* Show all categories - Ding */
+    public function result() {
+        return ProductCategoryResource::collection(ProductCategory::all());
     }
 }

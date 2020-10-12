@@ -1,6 +1,11 @@
 @extends('layouts.app', ['page' => 'Category Information', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
+<div class="sidenav">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('categories.index') }}"> Categories </a>
+    <a href="{{ route('products.index') }}"> Products </a>
+</div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -14,17 +19,17 @@
                             <th>Name</th>
                             <th>products</th>
                             <th>Stocks</th>
-                            <th>Minimum Stocks</th>
-                            <th>Price</th>
+                            <th>Stocks Faulty</th>
+                            <th>Average Price</th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->products->('stock') }}</td>
-                                <td>{{ $category->products->('stock_defective') }}</td>
-                                <td>Php {{ round($category->products->('price'), 2) }}</td>
+                                <td>{{ $category->products->sum('stock') }}</td>
+                                <td>{{ $category->products->sum('stock_defective') }}</td>
+                                <td>${{ round($category->products->avg('price'), 2) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -46,7 +51,6 @@
                             <th>Stock</th>
                             <th>Defective Stock</th>
                             <th>Base price</th>
-                            <th>Average Price</th>
                             <th>Total sales</th>
                             <th>Income Produced</th>
                             <th></th>
@@ -58,10 +62,9 @@
                                     <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
                                     <td>{{ $product->stock }}</td>
                                     <td>{{ $product->stock_defective }}</td>
-                                    <td>{{ format_money($product->price) }}</td>
-                                    <td>{{ format_money($product->solds->avg('price')) }}</td>
+                                    <td>{{ $product->price }}</td>
                                     <td>{{ $product->solds->sum('qty') }}</td>
-                                    <td>{{ format_money($product->solds->sum('total_amount')) }}</td>
+                                    <td>{{ $product->solds->sum('total_amount') }}</td>
                                     <td class="td-actions text-right">
                                         <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                             <i class="tim-icons icon-zoom-split"></i>

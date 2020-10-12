@@ -1,5 +1,10 @@
 @extends('layouts.app', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
 @section('content')
+<div class="sidenav">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('categories.index') }}"> Categories </a>
+    <a href="{{ route('products.index') }}"> Products </a>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="card ">
@@ -37,7 +42,7 @@
                                 <td>{{ $product->stock }}</td>
                                 <td>{{ $product->stock_defective }}</td>
                                 <td>{{ $product->solds }}</td>
-                                <td><img src="http://127.0.0.1:8000/storage/images/{{ $product->image }}" width=75; height=75;/></td>
+                                <td><img src="{{ url('img/products') }}/{{ ($product->image) }}" width=75; height=75;/></td>
                                 <td class="td-actions text-right">
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                         <i class="far fa-eye"></i>

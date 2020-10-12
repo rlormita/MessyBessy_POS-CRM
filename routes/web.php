@@ -18,17 +18,24 @@ use App\Http\Controllers\ProductCategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/transactions', function () {
+/* Route::get('/transactions', function () {
     return view('transactions\transaction');
+}); */
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
 });
-
 Auth::routes(['verify' => true]);
+
+// Route::view('/transactions','transactions/transaction');
+Route::view('/transactions','shop.index');
+
+// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
 Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.password');
+Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

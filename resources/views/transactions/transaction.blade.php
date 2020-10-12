@@ -1,19 +1,41 @@
-@extends('transactions\main')
+@extends('transactions\main', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('navigation')
 <div class="container">
-	<div class="messy-t-nav row">
-		<div class="col left">
-			<button onclick="history.back()" class="back-btn">
-				<i class="fas fa-chevron-left"></i>
-			</button>
+	<div class="messy-t-nav">
+		<div class="row">
+			<div class="col col-6 left">
+				<a onclick="history.back()" class="back-btn">
+					<i class="fas fa-arrow-left"></i>
+				</a>
+				<h3 class="title">Products</h3>
+			</div>
+			<div class="col col-6 right d-none">
+				<div class="cart-item-count">
+					<span>1</span>
+				</div>
+			</div>
 		</div>
-		<div class="col mid">
-			<h3 class="title">Products</h3>
+		<div class="row">
+			<div class="col mid">
+			</div>
 		</div>
-		<div class="col right">
-			<div class="cart-item-count">
-				<span>1</span>
+		<div class="row">
+			<div class="messy-nav-pills">
+				<ul class="nav nav-pills nav-justified" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href="#babycare">Baby Care</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href="#bathandbody">Bath & Body</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href="#homecare">Home Care</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" href="#menscare">Men's Care</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -28,11 +50,13 @@
 		@else
 		<div class="messy-account-details card-shadow">
 			<div class="account-photo d-inline-block align-top">
-                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                <img src='img/user/default.jpg'>
-            @else
-                <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}'/>
-            @endif
+				<a id="navbarDropdown" data-toggle="profileDropdown" aria-haspopup="true" aria-expanded="false">
+	                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
+		                <img src='img/user/default.jpg'>
+		            @else
+		                <img src="{{ url('img/uploads/profile_image') }}/{{ Auth::user()->profile_image }}'"/>
+		            @endif
+		        </a>
 
 			</div>
 			<div class="account-details d-inline-block align-top">
@@ -41,19 +65,18 @@
 					<h4>{{ Auth::user()->firstName }}</h4>
 				</div>
 			</div>
-            <a id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+			    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+			    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                     <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
+                	</a>
                 </form>
-            </div>
+		  	</div>
         @endguest
 	</div>
 </div>
@@ -62,6 +85,15 @@
 
 @section('store')
 <div class="container">
+	<div class="messy-products-list">
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="babycare" role="tabpanel" aria-labelledby="babycare-tab">
+				<div class="row">
+					<messy-item></messy-item>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection
 
@@ -115,7 +147,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="messy-t-total">
+	<div class="messy-t-total d-none">
 		<div class="total">
 				<div class="total-title">
 					<h5>total</h5>
@@ -130,13 +162,6 @@
 
 @section('cart')
 <div class="messy-cart active d-none">
-	<script>
-	$(document).ready(function(){
-		$(".messy-cart-header .back-icon").on('click', function(e) {
-	  		$(".messy-cart").toggleClass("active");
-		});
-	});
-	</script>
 	<div class="container">
 		<div class="messy-cart-header row">
 			<div class="col">
@@ -203,29 +228,23 @@
 @section('b-nav')
 <div class="container">
 	<nav class="navigation">
-		<ul class="nav navbar-nav row">
-			<li class="col active">
-				<a href="#">
-					<img src="{{ asset('sprites/cart.svg') }}"/>
-					<span>Transaction</span>
+		<ul class="nav nav-pills nav-justified" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="true">
+					<img src="{{ asset('sprites/grid-orange.svg') }}"/>
+					<span>Shop</span>
 				</a>
 			</li>
-			<li class="col">
-				<a href="#">
-					<img src="{{ asset('sprites/inventory.svg') }}"/>
-					<span>Inventory</span>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="true">
+					<img src="{{ asset('sprites/barcode-orange.svg') }}"/>
+					<span>Scan</span>
 				</a>
 			</li>
-			<li class="col">
-				<a href="#">
-					<img src="{{ asset('sprites/dashboard.svg') }}"/>
-					<span>Dashboard</span>
-				</a>
-			</li>
-			<li class="col">
-				<a href="#">
-					<img src="{{ asset('sprites/settings.svg') }}"/>
-					<span>Settings</span>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="true">
+					<img src="{{ asset('sprites/cart-filled-orange.svg') }}"/>
+					<span>Cart</span>
 				</a>
 			</li>
 		</ul>

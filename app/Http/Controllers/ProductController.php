@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SoldProduct;
+use App\Models\Client;
+use App\Models\Sale;
 use App\Http\Requests\ProductRequest;
+use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +24,7 @@ class ProductController extends Controller
         $products = Product::paginate(25);
 
         return view('inventory.products.index', compact('products'));
+
         //return view('inventory.products')
     }
 
@@ -46,11 +51,18 @@ class ProductController extends Controller
     {
 
         $filename = $request->image->getClientOriginalName();
-        $request->image->storeAs('images', $filename, 'public');
 
-        $model->create($request->all());
+        $request->image->move(public_path('img/products'), $filename);
 
-        DB::table('products')->where('image', NULL)->update(['image' => $filename]);
+        $model->name = $request->name;
+        $model->description = $request->description;
+        $model->stock_defective = $request ->stock_defective;
+        $model->product_category_id = $request->product_category_id;
+        $model->stock = $request->stock;
+        $model->price = $request->price;
+        $model->image = $filename;
+
+        $model->save();
 
         return redirect()
             ->route('products.index')
@@ -66,10 +78,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $solds = $product->solds()->latest()->limit(25)->get();
-
-        $receiveds = $product->receiveds()->latest()->limit(25)->get();
-
-        return view('inventory.products.show', compact('product', 'solds', 'receiveds'));
+        return view('inventory.products.show', compact('product','solds'));
     }
 
     /**
@@ -94,7 +103,14 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+        $filename_edit = $request->image->getClientOriginalName();
+        $request->image->move(public_path('img/products'), $filename_edit);
+
         $product->update($request->all());
+
+        $product->image = $filename_edit;
+
+        $product->save();
 
         return redirect()
             ->route('products.index')
@@ -114,5 +130,16 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->withStatus('Product removed successfully.');
+    }
+
+    public function productList() {
+        $products = DB::select('select * from products');
+
+        return view('transactions\transaction',['products'=>$products]);
+    }
+
+    /* Show all products - Ding */
+    public function result() {
+        return ProductResource::collection(Product::all());
     }
 }

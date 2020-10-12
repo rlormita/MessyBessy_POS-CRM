@@ -1,13 +1,6 @@
 @extends('layouts.app')
-@section('content')
-<!-- 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                
+@section('content')
 <div class="messy-fp">
     <div class="container">
         <div class="messy-header row justify-content-center">
@@ -23,17 +16,15 @@
                         <span id="account-role">Admin</span>
                     </div>
                 </div>
-                <div id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                    <img src='img/user/default.jpg'>
-                @else
-                    <img src='img/uploads/profile_image/{{ Auth::user()->profile_image }}'/>
-                @endif
-
-                </div>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url('/profile') }}">
+                        <img src="{{ asset('img/user/default.jpg') }}">
+                    @else
+                        <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
+                    @endif
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('profile') }}">
                         {{ __('Profile') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -47,18 +38,9 @@
                     </form>
                 </div>
             </div>
-
-
-            <div class="product">
-                <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Product</a>
-                <a href="{{ url('/categories') }}" class="text-sm text-gray-700 underline">Categories</a>
-                <a href="{{ url('/transactions') }}" class="text-sm text-gray-700 underline">Transactions</a>
-
-
         </div>
     </div>
-</div> -->
-<!--
+</div>
 <div class="messy-fp-content">
     <div class="container">
         <div class="messy-branch">
@@ -87,13 +69,10 @@
                     <img src="{{ asset('sprites/settings.svg') }}"/>
                     <h3>Settings</h3>
                 </a>
-
-
             </div>
         </div>
-    </div>
-</div> -->
 
+<<<<<<< HEAD
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active">
@@ -161,6 +140,17 @@
             </div>
         </nav>
         <h2 class="mb-4">Content</h2>
+=======
+        <!-- Temporary Placement until fixed -->
+        <a class="dropdown-item" href="{{ route('profile') }}">
+            {{ __('Profile') }}
+        </a>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+>>>>>>> 4f7fdd2a37ee92e54fbf6531f964e652894d8bd5
     </div>
-
-    @endsection
+</div>
+@endsection
