@@ -16,21 +16,34 @@
                         <span id="account-role">Admin</span>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <a href = "#" id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
                     <img src="{{ asset('img/user/default.jpg') }}">
                     @else
+=======
+                <a id="navbarDropdown" class="nav-link dropdown-toggle d-inline-block account-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
+>>>>>>> 93e764512f7b0440ede1c6df1ea0e1cefd722393
                     <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
-                    @endif
+                @else
+                    <img src="{{ asset('img/user/default.jpg') }}">
+                @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('profile') }}">
                         {{ __('Profile') }} Profile
                     </a>
+<<<<<<< HEAD
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }} Logout
+=======
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+>>>>>>> 93e764512f7b0440ede1c6df1ea0e1cefd722393
                     </a>
+                </div>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -70,4 +83,13 @@
                 </a>
             </div>
         </div>
+        <a class="dropdown-item" href="{{ route('profile') }}">
+            {{ __('Profile') }}
+        </a>
+        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+    </div>
+</div>
 @endsection
