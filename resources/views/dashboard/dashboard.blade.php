@@ -128,9 +128,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</span>
                             @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                            <img class="img-profile rounded-circle" src="{{ asset('img/user/default.jpg') }}">
+                                <img class="img-profile rounded-circle" src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
                             @else
-                            <img class="img-profile rounded-circle" src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
+                                <img class="img-profile rounded-circle" src="{{ asset('img/user/default.jpg') }}">
                             @endif
                         </a>
                         <!-- Dropdown - User Information -->

@@ -38,7 +38,7 @@ Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, '
 Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 	Route::resource('products', ProductController::class);
 	Route::resource('categories', ProductCategoryController::class);
 });

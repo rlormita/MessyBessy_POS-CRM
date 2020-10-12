@@ -945,6 +945,11 @@ body {
     padding: 4px 14px 0 14px;
     color: #fff;
     margin: 0 -1px 0 0;
+    font-size: 14px;
+}
+
+.messy-login-card .form-group .form-input .form-control:invalid {
+    padding-right: 0 !important;
 }
 
 .messy-login-card .form-group.terms input[type=checkbox] {
