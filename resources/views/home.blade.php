@@ -105,8 +105,11 @@
                 @endif
             </a></h1>
         <h4 class="userName" style="text-align: center; ">{{ Auth::user()->firstName }}
-        {{ Auth::user()->lastName }}</h4>
+            {{ Auth::user()->lastName }}</h4>
         <ul class="list-unstyled components mb-5">
+            <li class="active">
+                <a href="#">Dashboard</a>
+            </li>
             <li class="active">
                 <a href="{{ url('/products') }}">Products</a>
             </li>
