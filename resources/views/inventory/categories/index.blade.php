@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="sidenav">
-    <a href="{{ route('home') }}">Hpme</a>
+    <a href="{{ route('home') }}">Home</a>
     <a href="{{ route('categories.index') }}"> Categories </a>
     <a href="{{ route('products.index') }}"> Products </a>
 </div>
