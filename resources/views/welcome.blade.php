@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <script src="{{ mix('js/app.js') }}"></script>
 
@@ -30,29 +31,7 @@
 <body>
     <div id="app">
         <main class="py-4 main-content">
-            <div class="container">
-                <section class="welcome-header">
-                    <div class="header-logo">
-                        <img src="{{ asset('img/mb_logo.png') }}"/>
-                        <h3 class="header-title">Welcome</h3>
-                        <p class="header-subtitle">To start, press below</p>
-                    </div>
-                </section>
-                <section class="welcome-login">
-                    <div class="login-btn">
-                        <a href="{{ route('login') }}" class="btn btn-primary card-shadow-hover">
-                            Login
-                            <i class="far fa-chevron-right"></i>
-                        </a>
-                    </div>
-                    <div class="login-btn">
-                        <a href="{{ route('register') }}" class="btn btn-primary card-shadow-hover">
-                            Register
-                            <i class="far fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </section>
-            </div>
+            @yield('content')
         </main>
     </div>
 

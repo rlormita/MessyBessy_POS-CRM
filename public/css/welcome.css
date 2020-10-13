@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-    background: #2D9DD5;
+    background: #2D9DD5 url('../img/wb-background.svg') center;
     font-family: Montserrat, Arial, sans-serif;
     color: #141414;
 }
@@ -67,4 +67,145 @@ body {
 	background: rgba(0,0,0,0.10);
 	text-align:center;
 	line-height: 50px;
+}
+
+/* Form */
+.form {
+	position: fixed;
+	bottom: -100%;
+	left: 50%;
+	width: 100%;
+	transition: bottom .5s ease;
+}
+.form.show, .form.with-error {
+	bottom: 50%;
+}
+.form .card {
+	transform: translate(-50%, 0%);
+	height: 500px;
+	max-width: 500px;
+	border: 0;
+	border-radius: 20px;
+}
+.form.show .card, .form.with-error .card {
+	transform: translate(-50%, 50%);
+}
+.form .card .card-header {
+	padding: 50px 50px 15px 50px;
+	background: transparent;
+	border-bottom: 0;
+}
+.form .card .card-header .card-nav-back {
+	vertical-align: top;
+	padding: 10px;
+	font-size: 24px; 
+	display: inline-block;
+	height: 42px;
+	width: 42px;
+	margin: 0 20px 0 0;
+	transition: all .2s ease;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.form .card .card-header .card-nav-back:hover {
+	background: rgba(0,0,0,0.15);
+}
+.form .card .card-header .header-title {
+	margin: 0;
+	font-weight: 900;
+	display: inline-block;
+}
+.form .card .card-body {
+	padding: 25px 50px 75px 50px;
+}
+.form .card .card-body .form-group {
+	margin: 0 0 30px 0;
+	display: block;
+}
+.form .card .card-body .form-group input[type=email],
+.form .card .card-body .form-group input[type=password] {
+	border: 3px solid rgba(0,0,0,0.15);
+	padding: 20px;
+	border-radius: 10px;
+	width: 100%;
+	font-size: 18px;
+	outline: none;
+	height: auto;
+}
+.form .card .card-body .form-group input[type=email].is-invalid,
+.form .card .card-body .form-group input[type=password].is-invalid {
+	border-color: #f03434;
+}
+.form .card .card-body .form-group input[type=checkbox] {
+	margin: 0 0 20px 0;
+}
+.form .card .card-body .form-group input:focus {
+	border-color: #2D9DD5;
+}
+.form .card .card-body .form-group input[type=checkbox] ~ label {
+	font-weight: bold;
+	color: #b1b2b3;
+	cursor: pointer;
+	position: relative;
+	vertical-align: top;
+}
+.form .card .card-body .form-group input[type=checkbox] ~ label:before {
+	content: '';
+	height: 24px;
+	width: 24px;
+	margin: 0 20px 0 0;
+	border-radius: 5px;
+	background: rgba(0,0,0,0.15);
+	transition: all .2s ease;
+	display: inline-block;
+	vertical-align: top;
+}
+.form .card .card-body .form-group input[type=checkbox]:checked ~ label:before {
+	content: '\f00c';
+	font-family: 'Font Awesome 5 Pro';
+	font-weight: 900;
+	background: #288DBF;
+	text-align: center;
+	color: #fff;
+}
+.form .card .card-body .form-group button[type=submit] {
+	padding: 20px;
+	display: block;
+	width: 100%;
+	background: #288DBF;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	border-radius: 10px;
+	border: 0;
+}
+
+/* Form Animation */
+.form.showm {
+	animation: slideForm .35s;
+}
+
+@keyframes slideForm {
+	from {
+		bottom: -100%;
+	}
+	to {
+		bottom: 50%;
+	}
+}
+
+/* Web Sizing Styling */
+@media screen and (max-width: 375px) {
+
+	/* Form */
+	.form.show, .form.with-error {
+		left: 0;
+		bottom: 0;
+	}
+	.form .card, .form.show .card, .form.with-error .card {
+		transform: translate(0,0);
+		border-radius: 20px 20px 0 0;
+	}
+
 }
