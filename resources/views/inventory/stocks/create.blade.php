@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'New Product', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Add Stock', 'pageSlug' => 'stocks', 'section' => 'inventory'])
 
 @section('content')
 <div id="wrapper">
@@ -83,22 +83,29 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">New Product</h3>
+                                <h3 class="mb-0">Add Stocks</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('products.index') }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('stocks.index') }}" class="btn btn-sm btn-primary">Back to List</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('products.store') }}" autocomplete="off" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('stocks.store') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
 
-                            <h6 class="heading-small text-muted mb-4">Product Information</h6>
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">Name</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name') }}" required autofocus>
+                            <h6 class="heading-small text-muted mb-4">Stock Information</h6>
+                            <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">Product</label>
+                                    <select name="product_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                        @foreach ($products as $product)
+                                            @if($product['id'] == old('document'))
+                                                <option value="{{$product['id']}}" selected>{{$product['name']}}</option>
+                                            @else
+                                                <option value="{{$product['id']}}">{{$product['name']}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                     
                                 </div>
 
@@ -116,9 +123,17 @@
                                     
                                 </div>
 
-                                <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-description">Description</label>
-                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description') }}" required>
+                                <div class="form-group{{ $errors->has('branch_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">Branch</label>
+                                    <select name="branch_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                        @foreach ($branches as $branch)
+                                            @if($branch['id'] == old('document'))
+                                                <option value="{{$category['id']}}" selected>{{$branch['branch_name']}}</option>
+                                            @else
+                                                <option value="{{$category['id']}}">{{$branch['branch_name']}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                     
                                 </div>
                                 <div class="row">
@@ -135,21 +150,6 @@
                                             <input type="number" name="stock_defective" id="input-stock_defective" class="form-control form-control-alternative" placeholder="Defective Stock" value="{{ old('stock_defective') }}" required>
                                             
                                         </div>
-                                    </div>
-                                    <div class="col-4">                                    
-                                        <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="input-price">Price</label>
-                                            <input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price') }}" required>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-4">                                    
-                                        <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="input-image">Upload Image</label>
-                                            <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}" required>
-                                        </div>
-                                    </div>                                 
-                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Save</button>
                                 </div>

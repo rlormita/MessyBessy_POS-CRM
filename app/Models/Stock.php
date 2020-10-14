@@ -23,6 +23,6 @@ class Stock extends Model
     }
     public function branch()
     {
-        return $this->belongsTo('App\Models\branch', 'branch_id')->withTrashed();
+        return $this->belongsTo('App\Models\Branch', 'branch_id')->withTrashed();
     }
 }

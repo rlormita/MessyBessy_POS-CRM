@@ -24,7 +24,7 @@ class CreateStockTable extends Migration
             $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('product_category_id')->references('id')->on('product_categories');
-            $table->foreign('branch_id')->references('id')->on('branch');
+            $table->foreign('branch_id')->references('id')->on('branches');
         });
     }
 

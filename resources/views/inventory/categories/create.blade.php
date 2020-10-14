@@ -49,6 +49,12 @@
                     <span>Categories</span>
                 </a>
             </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Stocks</span>
+                </a>
+            </li>
         </div>
 
 

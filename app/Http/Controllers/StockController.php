@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\Branch;
 
 class StockController extends Controller
 {
@@ -26,7 +29,11 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        $categories = ProductCategory::all();
+        $branches = Branch::all();
+
+        return view('inventory.stocks.create', compact('products','categories','branches'));
     }
 
     /**
@@ -35,9 +42,13 @@ class StockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Stock $stock)
     {
-        //
+        $stock->create($request->all());
+
+        return redirect()
+            ->route('stocks.index')
+            ->withStatus('Stocks has been added successfully.');
     }
 
     /**
