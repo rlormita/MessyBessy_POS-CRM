@@ -42,10 +42,10 @@
                                         @include('alerts.success', ['key' => 'password_status'])
                                         <center>
                                             <div class="account-photo">
-                                                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                                                    <img src="{{ asset('img/user/default.jpg') }}">
+                                                @if (is_null(Auth::user()->profile_image))
+                                                    <img src="{{ asset('img/user/default.jpg') }}" style="border-radius:50%;">
                                                 @else
-                                                    <img src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
+                                                    <img src="{{ asset('./img/uploads/profile_image/'.Auth::user()->profile_image) }}" style="border-radius:50%;" />
                                                 @endif
                                                 <label class="editPhoto" for="profile_image" >
                                                     <i class="fas fa-pencil"></i>
