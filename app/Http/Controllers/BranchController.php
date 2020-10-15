@@ -62,7 +62,7 @@ class BranchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(branch $branch)
     {
         return view('branches.edit', compact('branch'));
     }
@@ -72,11 +72,21 @@ class BranchController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\dResponse
      */
-    public function update(branch $branch, BranchRequest $request)
+    public function update(BranchRequest $request, branch $branch)
     {
         $branch->update($request->all());
+
+        $branch->branch_name = $request->branch_name;
+        $branch->branch_street = $request->branch_street;
+        $branch->branch_city = $request->branch_city;
+        $branch->branch_state = $request->branch_state;
+        $branch->branch_post_code = $request->branch_post_code;
+        $branch->branch_country =  $request->branch_country;
+        $branch->branch_contact_number = $request->branch_contact_number;
+        $branch->branch_operating_hours = $request->branch_operating_hours;
+        $branch->branch_other_info = $request->branch_other_info;
 
         return redirect()
             ->route('branches.index')

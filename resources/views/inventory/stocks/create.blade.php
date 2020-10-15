@@ -54,6 +54,12 @@
                     <span>Stocks</span>
                 </a>
             </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Branches</span>
+                </a>
+            </li>
         </div>
 
 

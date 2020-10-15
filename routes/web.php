@@ -46,6 +46,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('stocks', StockController::class);
     Route::resource('branches', BranchController::class);
 });
-// Route::get('/products', function(){
-// 	return view('inventory.products.index');
-// });
