@@ -21,7 +21,9 @@ class ProductResource extends JsonResource
             'category' => $this->product_category_id,
             'image' => $this->image,
             'price' => $this->price,
-            'in_stock' => $this->stock
+            'in_stock' => $this->stock,
+            'min_stock' => $this->stock_defective,
+            'total_sold' => count($this->solds),
         ];
     }
 }

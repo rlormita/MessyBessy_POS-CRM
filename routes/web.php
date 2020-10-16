@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,7 @@ Route::get('/', function () {
     return view('transactions\transaction');
 }); */
 Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+    return view('dashboard.dashboard2');
 });
 Auth::routes(['verify' => true]);
 
@@ -37,11 +40,13 @@ Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 
 Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 
+Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
+
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-	Route::resource('products', ProductController::class);
-	Route::resource('categories', ProductCategoryController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+    Route::resource('products', ProductController::class);
+    Route::resource('categories', ProductCategoryController::class);
+    Route::resource('employee', EmployeeController::class);
+    Route::resource('stocks', StockController::class);
+    Route::resource('branches', BranchController::class);
 });
-// Route::get('/products', function(){
-// 	return view('inventory.products.index');
-// });

@@ -32,6 +32,14 @@ Vue.component('messy-cart', require('./components/shop/ShoppingCart.vue').defaul
 Vue.component('messy-scan', require('./components/shop/CodeScan.vue').default);
 Vue.component('product-modal', require('./components/shop/ProductModal.vue').default);
 Vue.component('welcome', require('./components/screens/Welcome.vue').default);
+
+/* Dashboard Components */
+Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
+Vue.component('dashboard-sidebar', require('./components/dashboard/DashboardSidebar.vue').default);
+Vue.component('dashboard-products', require('./components/dashboard/DashboardProducts.vue').default);
+Vue.component('dashboard-categories', require('./components/dashboard/DashboardCategories.vue').default);
+Vue.component('product-index', require('./components/dashboard/products/indexProduct.vue').default);
+Vue.component('category-index', require('./components/dashboard/categories/indexCategory.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

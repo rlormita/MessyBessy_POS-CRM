@@ -16,7 +16,11 @@ class ProductCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'product_count' => count($this->products),
+            'total_stock' => $this->products->sum('stock'),
+            'defective_stock' => $this->products->sum('stock_defective'),
+            'ave_price' => round($this->products->avg('price'), 2)
         ];
     }
 }
