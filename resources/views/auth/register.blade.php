@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card messy-login-card">
                 <div class="card-header messy-login-header">
-                   <img src="{{ asset('img/mb_logo.png') }}" class="messy-logo"/>                     
+                   <img src="{{ asset('img/mb_logo.png') }}" class="messy-logo"/>
                 </div>
 
                 <div class="card-body">
@@ -56,6 +56,23 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row label">
+                            <label class="col-form-label">User Type</label>
+                                <div class="col-lg-10">
+                                    <div class='radio'>
+                                        <label>
+                                            <input type="radio" name="user_type" id="optionsRadio1" value="Admin" checked=""> Admin
+                                        </label>
+                                    </div>
+
+                                    <div class='radio'>
+                                        <label>
+                                            <input type="radio" name="user_type" id="optionsRadio2" value="Cashier" checked=""> Cashier
+                                        </label>
+                                    </div>
+                                </div>
                         </div>
 
                         <div class="form-group row label">

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Branch Information', 'pageSlug' => 'branches'])
 
 @section('content')
 <div id="wrapper">
@@ -86,71 +86,35 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product Information</h4>
+                    <h4 class="card-title">Category Information</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
-                            <th>Stock</th>
-                            <th>Minimum Stocks</th>
-                            <th>Price</th>
-                            <th>Average Price</th>
-                            <th>Total sales</th>
-                            <th>Income Produced</th>
+                            <th>Branch ID</th>
+                            <th>Branch Name</th>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Post Code</th>
+                            <th>Country</th>
+                            <th>Contact Number</th>
+                            <th>Operating Hours</th>
+                            <th>Additional Information</th>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $product->id }}</td>
-                                <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->stock }}</td>
-                                <td>{{ $product->stock_defective }}</td>
-                                <td>{{ $product->price }}</td>
-                                <td>{{ $product->solds->avg('price') }}</td>
-                                <td>{{ $product->solds->sum('qty') }}</td>
-                                <td>{{ $product->solds->sum('total_amount') }}</td>
+                                    <td>{{ $branch->id }}</td>
+                                    <td>{{ $branch->branch_name }}</td>
+                                    <td>{{ $branch->branch_street }}</td>
+                                    <td>{{ $branch->branch_city }}</td>
+                                    <td>{{ $branch->branch_state }}</td>
+                                    <td>{{ $branch->branch_post_code }}</td>
+                                    <td>{{ $branch->branch_country }}</td>
+                                    <td>{{ $branch->branch_contact_number }}</td>
+                                    <td>{{ $branch->branch_operating_hours }}</td>
+                                    <td>{{ $branch->branch_other_info }}</td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Latest Sales</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <th>Date</th>
-                            <th>Sale ID</th>
-                            <th>Quantity</th>
-                            <th>Price Unit</th>
-                            <th>Total Amount</th>
-                            <th></th>
-                        </thead>
-                        <tbody>
-                            @foreach ($solds as $sold)
-                                <tr>
-                                    <td>{{ date('d-m-y', strtotime($sold->created_at)) }}</td>
-                                    <td><a href="{{ route('sales.show', $sold->sale_id) }}">{{ $sold->sale_id }}</a></td>
-                                    <td>{{ $sold->qty }}</td>
-                                    <td>{{ format_money($sold->price) }}</td>
-                                    <td>{{ format_money($sold->total_amount) }}</td>
-                                    <td class="td-actions text-right">
-                                        <a href="{{ route('sales.show', $sold->sale_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="tim-icons icon-zoom-split"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>

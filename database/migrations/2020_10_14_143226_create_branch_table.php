@@ -13,7 +13,7 @@ class CreateBranchTable extends Migration
      */
     public function up()
     {
-        Schema::create('branch', function (Blueprint $table) {
+        Schema::create('branches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('branch_name');
             $table->string('branch_street');
@@ -25,6 +25,7 @@ class CreateBranchTable extends Migration
             $table->string('branch_operating_hours');
             $table->string('branch_other_info')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,6 +36,6 @@ class CreateBranchTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch');
+        Schema::dropIfExists('branches');
     }
 }
