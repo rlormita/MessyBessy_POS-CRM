@@ -115,7 +115,7 @@
                             @foreach ($stocks as $stock)
                             <tr>
                                 <td>{{ $stock->product->name }}</td>
-                                <td>{{ $stock->category->name }}</td>
+                                <td>{{ $stock->product->category->name }}</td>
                                 <td>{{ $stock->branch->branch_name }}</td>
                                 <td>{{ $stock->stock }}</td>
                                 <td>{{ $stock->stock_defective }}</td>
