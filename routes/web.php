@@ -29,18 +29,7 @@ Route::get('/dashboard', function () {
 });
 Auth::routes(['verify' => true]);
 
-// Route::view('/transactions','transactions/transaction');
-Route::view('/transactions','shop.index');
 
-// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
-
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
-Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
-
-Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
@@ -49,4 +38,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('employee', EmployeeController::class);
     Route::resource('stocks', StockController::class);
     Route::resource('branches', BranchController::class);
+    // Route::view('/transactions','transactions/transaction');
+	Route::view('/transactions','shop.index');
+
+	// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
+
+	Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+	Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+	Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
+	Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+	Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
+
+	Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
 });
