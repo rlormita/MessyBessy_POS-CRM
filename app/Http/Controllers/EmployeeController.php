@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\EmployeeResource;
 
 class EmployeeController extends Controller
 {
@@ -31,6 +32,11 @@ class EmployeeController extends Controller
         $user->delete();
 
         return back()->withStatus('User successfully deleted.');
+    }
+
+    /* Show all employees - Ding */
+    public function result() {
+        return EmployeeResource::collection(User::all());
     }
 
 

@@ -3,10 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import router from './routes';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -40,6 +44,11 @@ Vue.component('dashboard-products', require('./components/dashboard/DashboardPro
 Vue.component('dashboard-categories', require('./components/dashboard/DashboardCategories.vue').default);
 Vue.component('product-index', require('./components/dashboard/products/indexProduct.vue').default);
 Vue.component('category-index', require('./components/dashboard/categories/indexCategory.vue').default);
+
+/* Vue Router */
+Vue.use(VueRouter);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -48,4 +57,5 @@ Vue.component('category-index', require('./components/dashboard/categories/index
 
 const app = new Vue({
     el: '#app',
+    router
 });

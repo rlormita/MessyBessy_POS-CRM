@@ -21,6 +21,12 @@ use App\Http\Controllers\EmployeeController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('employees', [
+   'middleware' => 'auth',
+   'uses' => 'App\Http\Controllers\EmployeeController@result'
+]);
+
 /* Route::get('/transactions', function () {
     return view('transactions\transaction');
 }); */
@@ -30,7 +36,7 @@ Route::get('/dashboard', function () {
 Auth::routes(['verify' => true]);
 
 // Route::view('/transactions','transactions/transaction');
-Route::view('/transactions','shop.index');
+Route::view('/transactions', 'shop.index');
 
 // Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
@@ -46,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::resource('products', ProductController::class);
     Route::resource('categories', ProductCategoryController::class);
-    Route::resource('employee', EmployeeController::class);
     Route::resource('stocks', StockController::class);
     Route::resource('branches', BranchController::class);
 });
+

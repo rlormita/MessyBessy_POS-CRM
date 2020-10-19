@@ -12,6 +12,8 @@ use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
+// Functions from https://laraveldaily.com/quick-start-laravel-5-5-vue-js-simple-crud-project/
+
 class ProductController extends Controller
 {
     /**
@@ -21,9 +23,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(25);
 
-        return view('inventory.products.index', compact('products'));
+        return Product::all();
+        // $products = Product::paginate(25);
+
+        // return view('inventory.products.index', compact('products'));
 
         //return view('inventory.products')
     }
@@ -35,9 +39,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
+        return Product::findOrFail($id);
+        // $categories = ProductCategory::all();
 
-        return view('inventory.products.create', compact('categories'));
+        // return view('inventory.products.create', compact('categories'));
     }
 
     /**
@@ -50,7 +55,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request, Product $model)
     {
 
-        $filename = $request->image->getClientOriginalName();
+        /* $filename = $request->image->getClientOriginalName();
 
         $request->image->move(public_path('img/products'), $filename);
 
@@ -64,9 +69,24 @@ class ProductController extends Controller
 
         $model->save();
 
-        return redirect()
+        return response()->json($model, 200);
+
+        /* return redirect()
             ->route('products.index')
-            ->withStatus('Product successfully registered.');
+            ->withStatus('Product successfully registered.'); */
+
+        /* $product = Product::create($request->all());
+        return $product; */
+
+        return Product::create([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'stock_defective' => $request['stock_defective'],
+            'product_category_id' => $request['product_category_id'],
+            'stock' => $request['stock'],
+            'price' => $request['price'],
+            'image' => $request['image'],
+        ]);
     }
 
     /**
@@ -108,7 +128,9 @@ class ProductController extends Controller
             $filename_edit = time() . '.' . $edit_image->getClientOriginalExtension();
             $request->image->move(public_path('img/products'), $filename_edit);
             $product->image = $filename_edit;
-    }
+        }
+
+        /* 
         $product->name = $request->name;
         $product->description = $request->description;
         $product->stock_defective = $request ->stock_defective;
@@ -120,7 +142,12 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product updated successfully.');
+            ->withStatus('Product updated successfully.'); */
+
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        return $product;
     }
 
     /**
@@ -131,11 +158,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        /* $product->delete();
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product removed successfully.');
+            ->withStatus('Product removed successfully.'); */
+
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return '';
+
     }
 
     public function productList() {
@@ -146,6 +178,6 @@ class ProductController extends Controller
 
     /* Show all products - Ding */
     public function result() {
-        return ProductResource::collection(Product::all());
+        return Product::all();
     }
 }

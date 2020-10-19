@@ -12,7 +12,7 @@
 						</a>
 					</div>
 				</div>
-				<form class="card-form" v-on:submit.prevent="createProduct" method="post">
+				<form class="card-form" v-on:submit.prevent="createProduct()" method="post">
 					<div class="card-body">
 						<div class="form-group">
 							<input type="text" id="name" v-model="product.name" required pattern="\S+.*">
@@ -88,7 +88,7 @@
             	console.log(event.target.files);
             },
             loadCategories: function() {
-                axios.get('/api/categories')
+                axios.get('/api/v1/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })
@@ -97,14 +97,24 @@
                     });
             },
             createProduct: function() {
-            	axios.get('/api/products/create',this.product)
+            	event.preventDefault();
+            	var app = this;
+            	var newProduct = app.product;
+            	axios.post('/products', newProduct)
             		.then((response) => {
-            			this.product.push(new Product(data));
-            			console.log(response.data)
+            			console.log(response.data);
+                        this.$emit('update:is', '')
+                        axios.get('/products')
+                            .then((response) => {
+                                this.products = response.data;
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
             		})
             		.catch((response) => {
-            			this.product = response.data.product;
-            			console.log(response.data)
+            			console.log(response.data);
+            			alert(response);
             		});
             }
         }

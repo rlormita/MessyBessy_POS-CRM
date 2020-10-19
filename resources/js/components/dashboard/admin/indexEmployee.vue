@@ -3,12 +3,12 @@
 		<div class="overview-content">
 			<div class="overview-header">
 				<h3 class="overview-header-title">
-					<strong>Categories</strong> Overview
+					<strong>Manage</strong> Employees
 				</h3>
 				<div class="overview-new">
-					<button class="new-item" @click="component = 'addCategory'">
+					<button class="new-item" @click="component = 'addEmployee'">
 						<i class="fas fa-plus"></i>
-						<span>New Category</span>
+						<span>New Employee</span>
 					</button>
 				</div>
 			</div>
@@ -17,27 +17,27 @@
 					<div class="row row-header">
 						<div class="col">
 							<span class="col-title">
-								Name
+								Profile Photo
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Product Count
+								Last Name
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Stock Count
+								First Name
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Defective Stock Count
+								Email
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Product Average Price
+								Last Login
 							</span>
 						</div>
 						<div class="col">
@@ -46,30 +46,30 @@
 							</span>
 						</div>
 					</div>
-					<div class="row" v-for="(category, index) in categories" :key="category.id">
+					<div class="row" v-for="(user, index) in user" :key="user.id">
 						<div class="col">
 							<span class="col-title">
-								{{ category.name }}
+								<img :src="`img/uploads/profile_image/${ user.image }`" style="border-radius: 50px;" />
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ category.product_count }}
+								<strong>{{ user.lastName }}</strong>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ category.total_stock }}
+								<strong>{{ user.firstName }}</strong>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ category.defective_stock }}
+								<strong>{{ user.email }}</strong>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ category.ave_price }}
+								<strong>{{ user.last_log }}</strong>
 							</span>
 						</div>
 						<div class="col">
@@ -85,27 +85,21 @@
 	</div>
 </template>
 
-
 <script>
-	import addCategory from './addCategory.vue';
+	import addEmployee from './addEmployee.vue';
 
     export default {
     	components: {
-    		'addCategory': addCategory,
+    		'addEmployee': addEmployee,
     	},
         data: function () {
             return {
-                categories: [],
-                products: [],
-                message: '',
-                productName: '',
-                productDesc: '',
 				component: '',
+				user: []
             }
         },
         mounted() {
-            this.loadCategories();
-            this.loadProducts();
+            this.loadEmployees();
         },
         methods: {
             /* launchModal() {
@@ -113,15 +107,18 @@
                 this.productDesc = 'Product Description 1';
                 $('#productModal').modal('show');
             }, */
-            loadCategories: function() {
-                axios.get('/api/v1/categories')
+            loadEmployees: function() {
+                axios.get('/employees')
                     .then((response) => {
-                        this.categories = response.data.data;
+                        this.user = response.data.data;
+                        console.log(this.user);
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
             }
+            
         }
     }
+
 </script>
