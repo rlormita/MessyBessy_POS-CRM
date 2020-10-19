@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use App\Rules\CurrentPasswordCheckRule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\StockRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -25,12 +27,10 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'product_category_id' => ['required'],
-            'description' => [],
-            'image' => [],
-            'price' => ['required'],
-            'price_wholesaler' => [],
+            'stock' => ['required'],
+            'stock_defective' => ['required'],
+            'product_id' => ['required|unique:stocks,product_id'],
+            'branch_id' => ['required|unique:stocks,branch_id']
         ];
     }
 

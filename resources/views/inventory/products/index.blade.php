@@ -106,8 +106,6 @@
                             <th scope="col">Category</th>
                             <th scope="col">Product</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Minimum Stocks</th>
                             <th scope="col">Total Sold</th>
                             <th scope="col">Image</th>
                             <th scope="col"></th>
@@ -117,9 +115,7 @@
                             <tr>
                                 <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ ($product->price) }}</td>
-                                <td>{{ $product->stock }}</td>
-                                <td>{{ $product->stock_defective }}</td>
+                                <td>{{ $product->price }}</td>
                                 <td>{{ $product->solds }}</td>
                                 <td><img src="{{ url('img/products') }}/{{ ($product->image) }}" width=75; height=75;/></td>
                                 <td class="td-actions text-right">

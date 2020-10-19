@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SoldProduct;
+use App\Models\Stock;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Http\Requests\ProductRequest;
@@ -28,6 +29,10 @@ class ProductController extends Controller
         // $products = Product::paginate(25);
 
         // return view('inventory.products.index', compact('products'));
+        $products = Product::paginate(25);
+        $stocks = Stock::all();
+
+        return view('inventory.products.index', compact('products','stocks'));
 
         //return view('inventory.products')
     }
@@ -61,9 +66,7 @@ class ProductController extends Controller
 
         $model->name = $request->name;
         $model->description = $request->description;
-        $model->stock_defective = $request ->stock_defective;
         $model->product_category_id = $request->product_category_id;
-        $model->stock = $request->stock;
         $model->price = $request->price;
         $model->image = $filename;
 
@@ -133,9 +136,7 @@ class ProductController extends Controller
         /* 
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->stock_defective = $request ->stock_defective;
         $product->product_category_id = $request->product_category_id;
-        $product->stock = $request->stock;
         $product->price = $request->price;
 
         $product->save();

@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Branch;
+use Illuminate\Support\Facades\Auth;
 
 class StockController extends Controller
 {
@@ -18,7 +19,6 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::paginate(25);
-
         return view('inventory.stocks.index', compact('stocks'));
     }
 
@@ -30,10 +30,10 @@ class StockController extends Controller
     public function create()
     {
         $products = Product::all();
-        $categories = ProductCategory::all();
         $branches = Branch::all();
+        $stocks = Stock::all();
 
-        return view('inventory.stocks.create', compact('products','categories','branches'));
+        return view('inventory.stocks.create', compact('products','branches','stocks'));
     }
 
     /**
@@ -57,9 +57,12 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Stock $stock)
     {
-        //
+        return view('inventory.stocks.index', [
+            'stock' => $stock,
+            'products' => Product::where('product_category_id', $category->id)->paginate(25)
+        ]);
     }
 
     /**
@@ -68,9 +71,13 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Stock $stock)
     {
-        //
+
+        $products = Product::all();
+        $branches = Branch::all();
+
+        return view('inventory.stocks.edit', compact('products','stock','branches'));
     }
 
     /**
@@ -80,9 +87,13 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Stock $stock)
     {
-        //
+        $stock->update($request->all());
+
+        return redirect()
+            ->route('stocks.index')
+            ->withStatus('Stock successfully updated.');
     }
 
     /**

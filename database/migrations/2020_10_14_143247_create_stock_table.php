@@ -18,12 +18,10 @@ class CreateStockTable extends Migration
             $table->unsignedinteger('stock')->default(0);
             $table->unsignedinteger('stock_defective')->default(0);
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('product_category_id');
             $table->unsignedBigInteger('branch_id');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('product_category_id')->references('id')->on('product_categories');
             $table->foreign('branch_id')->references('id')->on('branches');
         });
     }

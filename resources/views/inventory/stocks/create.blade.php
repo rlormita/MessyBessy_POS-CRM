@@ -103,7 +103,7 @@
                             <h6 class="heading-small text-muted mb-4">Stock Information</h6>
                             <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Product</label>
-                                    <select name="product_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                    <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
                                             @if($product['id'] == old('document'))
                                                 <option value="{{$product['id']}}" selected>{{$product['name']}}</option>
@@ -115,28 +115,14 @@
                                     
                                 </div>
 
-                                <div class="form-group{{ $errors->has('product_category_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">Category</label>
-                                    <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
-                                        @foreach ($categories as $category)
-                                            @if($category['id'] == old('document'))
-                                                <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
-                                            @else
-                                                <option value="{{$category['id']}}">{{$category['name']}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                    
-                                </div>
-
                                 <div class="form-group{{ $errors->has('branch_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Branch</label>
-                                    <select name="branch_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                    <select name="branch_id" id="input-branch" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
                                         @foreach ($branches as $branch)
                                             @if($branch['id'] == old('document'))
-                                                <option value="{{$category['id']}}" selected>{{$branch['branch_name']}}</option>
+                                                <option value="{{$branch['id']}}" selected>{{$branch['branch_name']}}</option>
                                             @else
-                                                <option value="{{$category['id']}}">{{$branch['branch_name']}}</option>
+                                                <option value="{{$branch['id']}}">{{$branch['branch_name']}}</option>
                                             @endif
                                         @endforeach
                                     </select>

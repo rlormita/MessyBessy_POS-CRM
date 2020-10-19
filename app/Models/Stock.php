@@ -17,10 +17,6 @@ class Stock extends Model
     {
         return $this->belongsTo('App\Models\Product', 'product_id')->withTrashed();
     }
-    public function category()
-    {
-        return $this->belongsTo('App\Models\ProductCategory', 'product_category_id')->withTrashed();
-    }
     public function branch()
     {
         return $this->belongsTo('App\Models\Branch', 'branch_id')->withTrashed();
