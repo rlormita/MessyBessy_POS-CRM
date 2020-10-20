@@ -105,7 +105,7 @@
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Name</label>
                                     <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name') }}" required autofocus>
-                                    
+                                    @include('alerts.feedback', ['field' => 'name'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_category_id') ? ' has-danger' : '' }}">
@@ -119,28 +119,45 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    
+                                    @include('alerts.feedback', ['field' => 'product_category_id'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-description">Description</label>
                                     <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description') }}" required>
-                                    
+                                    @include('alerts.feedback', ['field' => 'description'])
                                 </div>
+                                <div class="row">
+                                    <div class="col-4">                                    
+                                        <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-stock">Stock</label>
+                                            <input type="number" name="stock" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock') }}" required>
+                                            @include('alerts.feedback', ['field' => 'stock'])
+                                        </div>
+                                    </div>                            
+                                    <div class="col-4">                                    
+                                        <div class="form-group{{ $errors->has('stock_minimum') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-stock_minimum">Minimum Stock</label>
+                                            <input type="number" name="stock_minimum" id="input-stock_minimum" class="form-control form-control-alternative" placeholder="Minimum Stock" value="{{ old('stock_minimum') }}" required>
+                                            @include('alerts.feedback', ['field' => 'stock_minimum'])
+                                        </div>
+                                    </div>
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-price">Price</label>
                                             <input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price') }}" required>
-                                            
+                                            @include('alerts.feedback', ['field' => 'price'])
                                         </div>
-                                    </div>
-                                    <div class="col-4">                                    
+                                    </div>                            
+                                </div>
+                                <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-image">Upload Image</label>
                                             <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}" required>
+                                            @include('alerts.feedback', ['field' => 'image'])
                                         </div>
-                                    </div>                                 
-                                </div>
+                                    </div>  
+
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Save</button>
                                 </div>

@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CashierRoleController;
+use App\Http\Controllers\CashierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +23,13 @@ use App\Http\Controllers\EmployeeController;
 Route::get('/', function () {
     return view('auth.login');
 });
-
-Route::get('employees', [
-   'middleware' => 'auth',
-   'uses' => 'App\Http\Controllers\EmployeeController@result'
-]);
-
 /* Route::get('/transactions', function () {
     return view('transactions\transaction');
 }); */
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard2');
 });
+
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
@@ -40,6 +37,14 @@ Route::get('/transactions', function () {
 });
 
 Route::resource('/products', ProductController::class);
+Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
+Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
+Route::post('employee/cashier/store', [App\Http\Controllers\CashierController::class, 'store'])->name('cashier.store');
+
+Route::get('employee/cashier/role', [App\Http\Controllers\CashierRoleController::class, 'view'])->name('cashier_role.view');
+Route::get('employee/cashier/role/create',  [App\Http\Controllers\CashierRoleController::class, 'create'])->name('cashier_role.create');
+Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
+Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
 Route::get('/products2', function () {
     return view('inventory.products.index');
@@ -47,12 +52,18 @@ Route::get('/products2', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('products', ProductController::class);
     Route::resource('categories', ProductCategoryController::class);
+    Route::resource('employee', EmployeeController::class);
+    Route::resource('cashier_role', CashierRoleController::class);
+    // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
     Route::resource('stocks', StockController::class);
+    Route::get('/stocks/{id}', 'StockController@show');
     Route::resource('branches', BranchController::class);
     // Route::view('/transactions','transactions/transaction');
 
-	// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
+    // Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
 	Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 	Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,6 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 	Route::match(['put', 'patch'], 'profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 
-	Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
-});
+    Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
+    Route::post('employee/cashier/role/update', [App\Http\Controllers\CashierRoleController::class, 'update'])->name('cashier_role.update');
 
+    Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
+    Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
+
+
+
+});

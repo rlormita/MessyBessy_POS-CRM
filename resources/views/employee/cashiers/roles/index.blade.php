@@ -1,7 +1,6 @@
-@extends('layouts.app', ['page' => 'List of Stocks', 'pageSlug' => 'stocks', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'List of Categories', 'pageSlug' => 'categories', 'section' => 'inventory'])
+
 @section('content')
-
-
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -83,64 +82,60 @@
         </div>
 
     </ul>
-
 <div class="row">
     <div class="col-md-12">
         <div class="card ">
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Stocks</h4>
+                        <h4 class="card-title">Cashier Roles</h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('stocks.create') }}" class="btn btn-sm btn-primary">Add stock</a>
+                        <a href="{{ route('cashier_role.create')}}" class="btn btn-sm btn-primary">New Cashier Role</a>
+                </div>
+                <div class="card-body">
+                    @include('alerts.success')
+
+                    <div class="">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <th scope="col">Cashier Role</th>
+                                <th scope="col">Description</th>
+                                <th scope="col"></th>
+                            </thead>
+                            <tbody>
+                                @foreach ($roles as $role)
+                                <tr>
+                                    <td>{{ $role->cashier_role_title }}</td>
+                                    <td>{{ $role->description }}</td>
+
+                                    <td class="td-actions text-right">
+                                        {{-- <a href="{{ route('categories.show', $role) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                            <i class="far fa-eye"></i>
+                                        </a> --}}
+                                        <a href="{{ route('cashier_role.edit', $role) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('cashier_role.destroy', $role) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Cashier Role" onclick="confirm('Are you sure you want to remove this Cashier Role? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-            <div class="card-body">
-                @include('alerts.success')
-
-                <div class="">
-                    <table class="table tablesorter " id="">
-                        <thead class=" text-primary">
-                            <th scope="col">Branch</th>
-                            <th scope="col">Stocks of Branch</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </thead>
-                        <tbody>
-                            @foreach ($stocks as $stock)
-                            <tr>
-                                <td>{{ $stock->branch->branch_name }}</td>
-                                <td><a href="{{ route('stocks.show', $stock->branch_id ) }}">{{ $stock->sum('stock_qty') }}</a></td>
-                                <td class="td-actions text-right">
-                                    <a href="{{ route('stocks.show', $stock->branch_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                        <i class="far fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('stocks.edit', $stock) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('stocks.destroy', $stock) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="card-footer py-4">
+                    <nav class="d-flex justify-content-end" aria-label="...">
+                        {{ $roles->links() }}
+                    </nav>
                 </div>
-            </div>
-            <div class="card-footer py-4">
-                <nav class="d-flex justify-content-end">
-                    {{ $stocks->links() }}
-                </nav>
             </div>
         </div>
     </div>
-</div>
-</div>
-@endsection
+    @endsection

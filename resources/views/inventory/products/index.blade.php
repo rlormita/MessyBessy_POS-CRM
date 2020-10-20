@@ -106,6 +106,8 @@
                             <th scope="col">Category</th>
                             <th scope="col">Product</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Warehouse Stock</th>
+                            <th scope="col">Minimum Allowable Stock</th>
                             <th scope="col">Total Sold</th>
                             <th scope="col">Image</th>
                             <th scope="col"></th>
@@ -114,10 +116,12 @@
                             @foreach ($products as $product)
                             <tr>
                                 <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->product_name }}</td>
+                                <td>{{ $product->product_price }}</td>
+                                <td>{{ $product->product_qty }}</td>
+                                <td>{{ $product->product_minimum }}</td>
                                 <td>{{ $product->solds }}</td>
-                                <td><img src="{{ url('img/products') }}/{{ ($product->image) }}" width=75; height=75;/></td>
+                                <td><img src="{{ url('img/products') }}/{{ ($product->product_image) }}" width=75; height=75;/></td>
                                 <td class="td-actions text-right">
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                         <i class="far fa-eye"></i>

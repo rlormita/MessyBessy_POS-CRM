@@ -25,6 +25,12 @@ class ProductController extends Controller
         $products = Product::all();
 
         return $products;
+        return Product::all();
+        // $products = Product::paginate(25);
+
+        // return view('inventory.products.index', compact('products'));
+        $products = Product::paginate(25);
+
 
         //return view('inventory.products')
     }

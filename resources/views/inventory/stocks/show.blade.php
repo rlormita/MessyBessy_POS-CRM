@@ -92,9 +92,6 @@
                     <div class="col-8">
                         <h4 class="card-title">Stocks</h4>
                     </div>
-                    <div class="col-4 text-right">
-                        <a href="{{ route('stocks.create') }}" class="btn btn-sm btn-primary">Add stock</a>
-                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -103,20 +100,23 @@
                 <div class="">
                     <table class="table tablesorter " id="">
                         <thead class=" text-primary">
+                            <th scope="col">Product</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Branch</th>
-                            <th scope="col">Stocks of Branch</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Defective Stock</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </thead>
                         <tbody>
-                            @foreach ($stocks as $stock)
+                            @foreach ($stockser as $stock)
                             <tr>
+                                <td>{{ $stock->product->product_name }}</td>
+                                <td>{{ $stock->product->category->name }}</td>
                                 <td>{{ $stock->branch->branch_name }}</td>
-                                <td><a href="{{ route('stocks.show', $stock->branch_id ) }}">{{ $stock->sum('stock_qty') }}</a></td>
+                                <td>{{ $stock->stock_qty }}</td>
+                                <td>{{ $stock->stock_minimum }}</td>
                                 <td class="td-actions text-right">
-                                    <a href="{{ route('stocks.show', $stock->branch_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                        <i class="far fa-eye"></i>
-                                    </a>
                                     <a href="{{ route('stocks.edit', $stock) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
                                         <i class="far fa-edit"></i>
                                     </a>
@@ -136,7 +136,7 @@
             </div>
             <div class="card-footer py-4">
                 <nav class="d-flex justify-content-end">
-                    {{ $stocks->links() }}
+                    {{ $stockser->links() }}
                 </nav>
             </div>
         </div>
