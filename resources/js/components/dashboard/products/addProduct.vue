@@ -12,7 +12,7 @@
 						</a>
 					</div>
 				</div>
-				<form class="card-form" v-on:submit.prevent="createProduct()" method="post">
+				<form class="card-form" v-on:submit.prevent="createProduct()">
 					<div class="card-body">
 						<div class="form-group">
 							<input type="text" id="name" v-model="product.name" required pattern="\S+.*">
@@ -29,11 +29,11 @@
 							<label for="description">Description</label>
 						</div>
 						<div class="form-group">
-							<input type="text" id="stock" v-model="product.in_stock" required pattern="\S+.*">
+							<input type="text" id="stock" v-model="product.stock" required pattern="\S+.*">
 							<label for="stock">Stock Count</label>
 						</div>
 						<div class="form-group">
-							<input type="text" id="min_stock" v-model="product.min_stock" required pattern="\S+.*">
+							<input type="text" id="min_stock" v-model="product.stock_defective" required pattern="\S+.*">
 							<label for="min_stock">Defective Stock</label>
 						</div>
 						<div class="form-group">
@@ -88,7 +88,7 @@
             	console.log(event.target.files);
             },
             loadCategories: function() {
-                axios.get('/api/v1/categories')
+                axios.get('/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })
@@ -98,19 +98,17 @@
             },
             createProduct: function() {
             	event.preventDefault();
-            	var app = this;
-            	var newProduct = app.product;
-            	axios.post('/products', newProduct)
+            	axios.post('/products', {
+                    name : 'test',
+                    category : '1',
+                    description : 'test',
+                    in_stock : '1',
+                    min_stock : '1',
+                    price : '100',
+                    })
             		.then((response) => {
             			console.log(response.data);
                         this.$emit('update:is', '')
-                        axios.get('/products')
-                            .then((response) => {
-                                this.products = response.data;
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
             		})
             		.catch((response) => {
             			console.log(response.data);

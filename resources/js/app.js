@@ -45,6 +45,10 @@ Vue.component('dashboard-categories', require('./components/dashboard/DashboardC
 Vue.component('product-index', require('./components/dashboard/products/indexProduct.vue').default);
 Vue.component('category-index', require('./components/dashboard/categories/indexCategory.vue').default);
 
+/* Transaction Components */
+Vue.component('transaction', require('./components/transaction/TransactionMain.vue').default);
+
+
 /* Vue Router */
 Vue.use(VueRouter);
 

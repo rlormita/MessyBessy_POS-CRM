@@ -35,18 +35,22 @@ Route::get('/dashboard', function () {
 });
 Auth::routes(['verify' => true]);
 
-// Route::view('/transactions','transactions/transaction');
-Route::view('/transactions', 'shop.index');
+Route::get('/transactions', function () {
+    return view('shop.app');
+});
 
+Route::resource('/products', ProductController::class);
+
+Route::get('/products2', function () {
+    return view('inventory.products.index');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-    Route::resource('products', ProductController::class);
     Route::resource('categories', ProductCategoryController::class);
     Route::resource('stocks', StockController::class);
     Route::resource('branches', BranchController::class);
     // Route::view('/transactions','transactions/transaction');
-	Route::view('/transactions','shop.index');
 
 	// Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 

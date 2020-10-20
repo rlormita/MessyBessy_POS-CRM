@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SoldProduct;
-use App\Models\Stock;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-
-// Functions from https://laraveldaily.com/quick-start-laravel-5-5-vue-js-simple-crud-project/
 
 class ProductController extends Controller
 {
@@ -24,15 +22,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = Product::all();
 
-        return Product::all();
-        // $products = Product::paginate(25);
-
-        // return view('inventory.products.index', compact('products'));
-        $products = Product::paginate(25);
-        $stocks = Stock::all();
-
-        return view('inventory.products.index', compact('products','stocks'));
+        return $products;
 
         //return view('inventory.products')
     }
@@ -44,10 +36,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Product::findOrFail($id);
-        // $categories = ProductCategory::all();
+        $categories = ProductCategory::all();
 
-        // return view('inventory.products.create', compact('categories'));
+        return view('inventory.products.create', compact('categories'));
     }
 
     /**
@@ -60,36 +51,23 @@ class ProductController extends Controller
     public function store(ProductRequest $request, Product $model)
     {
 
-        /* $filename = $request->image->getClientOriginalName();
+        $filename = $request->image->getClientOriginalName();
 
         $request->image->move(public_path('img/products'), $filename);
 
-        $model->name = $request->name;
-        $model->description = $request->description;
+        $model->product_name = $request->name;
+        $model->product_description = $request->description;
         $model->product_category_id = $request->product_category_id;
-        $model->price = $request->price;
-        $model->image = $filename;
+        $model->product_qty = $request->stock;
+        $model->product_minimum = $request->stock_minimum;
+        $model->product_price = $request->price;
+        $model->product_image = $filename;
 
         $model->save();
 
-        return response()->json($model, 200);
-
-        /* return redirect()
+        return redirect()
             ->route('products.index')
-            ->withStatus('Product successfully registered.'); */
-
-        /* $product = Product::create($request->all());
-        return $product; */
-
-        return Product::create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'stock_defective' => $request['stock_defective'],
-            'product_category_id' => $request['product_category_id'],
-            'stock' => $request['stock'],
-            'price' => $request['price'],
-            'image' => $request['image'],
-        ]);
+            ->withStatus('Product successfully registered.');
     }
 
     /**
@@ -131,9 +109,7 @@ class ProductController extends Controller
             $filename_edit = time() . '.' . $edit_image->getClientOriginalExtension();
             $request->image->move(public_path('img/products'), $filename_edit);
             $product->image = $filename_edit;
-        }
-
-        /* 
+    }
         $product->name = $request->name;
         $product->description = $request->description;
         $product->product_category_id = $request->product_category_id;
@@ -143,12 +119,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product updated successfully.'); */
-
-        $product = Product::findOrFail($id);
-        $product->update($request->all());
-
-        return $product;
+            ->withStatus('Product updated successfully.');
     }
 
     /**
@@ -159,16 +130,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        /* $product->delete();
+        $product->delete();
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product removed successfully.'); */
-
-        $product = Product::findOrFail($id);
-        $product->delete();
-        return '';
-
+            ->withStatus('Product removed successfully.');
     }
 
     public function productList() {
@@ -179,6 +145,6 @@ class ProductController extends Controller
 
     /* Show all products - Ding */
     public function result() {
-        return Product::all();
+        return ProductResource::collection(Product::all());
     }
 }
