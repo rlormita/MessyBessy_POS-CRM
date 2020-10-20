@@ -16,33 +16,41 @@
 				</div>
 				<div class="sidebar-body">
 					<div class="sidebar-item-group">
-						<div class="sidebar-item">
-							<a class="nav-link item active" @click="component = ''">
-								<i class="far fa-chart-line"></i>
-								<span>Dashboard</span>
-							</a>
-						</div>
+							<div class="sidebar-item">
+								<router-link to="/dashboard" class="nav-link item" tag="a" exact>
+									<i class="far fa-chart-line"></i>
+									<span>Dashboard</span>
+								</router-link>
+							</div>
 					</div>
 					<div class="sidebar-item-group">
 						<div class="sidebar-item">
-							<a class="nav-link item" @click="component = 'products'">
+							<router-link to="/dashboard/shop/products" tag="a" class="nav-link item" exact>
 								<i class="far fa-shopping-bag"></i>
 								<span>Products</span>
-							</a>
+							</router-link>
 						</div>
 						<div class="sidebar-item">
-							<a class="nav-link item" @click="component = 'categories'">
+							<router-link to="/dashboard/shop/categories" tag="a" class="nav-link item" exact>
 								<i class="far fa-table"></i>
 								<span>Categories</span>
-							</a>
+							</router-link>
 						</div>
 					</div>
 					<div class="sidebar-item-group">
 						<div class="sidebar-item">
-							<a class="nav-link item" @click="component = ''">
+							<router-link to="/dashboard/admin/employees" tag="a" class="nav-link item" exact>
+								<i class="far fa-user"></i>
+								<span>Employees</span>
+							</router-link>
+						</div>
+					</div>
+					<div class="sidebar-item-group">
+						<div class="sidebar-item">
+							<router-link to="/dashboard/shop/settings" tag="a" class="nav-link item" exact>
 								<i class="fas fa-cogs"></i>
 								<span>Settings</span>
-							</a>
+							</router-link>
 						</div>
 					</div>
 				</div>
@@ -53,42 +61,29 @@
 				<div class="account-pane">
 				</div>
 			</div>
-	        <component v-bind:is="component"></component>
+			<div class="dashboard-content">
+	        	<router-view></router-view>
+	        </div>
 	    </div>
     </main>
 </template>
 
 <script>
+	import DashboardMain from './DashboardMain.vue';
 	import DashboardProducts from './DashboardProducts.vue';
 	import DashboardCategories from './DashboardCategories.vue';
 
 	export default {
 		components: {
+			'dashmain': DashboardMain,
 			'products': DashboardProducts,
 			'categories': DashboardCategories
 		},
 		data() {
 			return {
 				reactive: true,
-				component: '',
+				component: 'dashmain',
 			}
 		}
 	}
-	$(document).ready(function() {
-		$('.nav-link').click(function() {
-			if($(this).is('#link-dashboard')) {
-				$(this).removeClass('active');
-				$('.link-dashboard').addClass('active');
-			} else if($(this).is('#link-products')) {
-				$(this).removeClass('active');
-				$('.link-products').addClass('active');
-			} else if($(this).is('#link-categories')) {
-				$(this).removeClass('active');
-				$('.link-categories').addClass('active');
-			} else if($(this).is('#link-settings')) {
-				$(this).removeClass('active');
-				$('.link-settings').addClass('active');
-			}
-		});
-	});
 </script>

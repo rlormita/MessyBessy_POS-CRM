@@ -59,23 +59,6 @@
                         </div>
 
                         <div class="form-group row label">
-                            <label class="col-form-label">User Type</label>
-                                <div class="col-lg-10">
-                                    <div class='radio'>
-                                        <label>
-                                            <input type="radio" name="user_type" id="optionsRadio1" value="Admin" checked=""> Admin
-                                        </label>
-                                    </div>
-
-                                    <div class='radio'>
-                                        <label>
-                                            <input type="radio" name="user_type" id="optionsRadio2" value="Cashier" checked=""> Cashier
-                                        </label>
-                                    </div>
-                                </div>
-                        </div>
-
-                        <div class="form-group row label">
                             <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
                         </div>
                         <div class="form-group row">

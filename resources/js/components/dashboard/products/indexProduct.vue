@@ -17,37 +17,37 @@
 					<div class="row row-header">
 						<div class="col">
 							<span class="col-title">
-								Category
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
 								Product
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Price
+								<center>Category</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Stock
+								<center>Price</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Minimum Stocks
+								<center>Stock</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Total Sold
+								<center>Minimum Stocks</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								Image
+								<center>Total Sold</center>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								<center>Image</center>
 							</span>
 						</div>
 						<div class="col">
@@ -59,37 +59,37 @@
 					<div class="row" v-for="(product, index) in products" :key="product.id">
 						<div class="col">
 							<span class="col-title">
-								{{ product.category }}
+								<strong>{{ product.name }}</strong>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title" v-for="category in categories">
+								<center>{{ product.product_category_id }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ product.name }}
+								<center>{{ product.price }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ product.price }}
+								<center>{{ product.in_stock }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ product.stock_count }}
+								<center>{{ product.min_stock }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ product.min_stock }}
+								<center>{{ product.total_sold }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								{{ product.total_sold }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								<img :src="`img/products/${ product.image }`"/>
+								<center><img :src="`img/products/${ product.image }`"/></center>
 							</span>
 						</div>
 						<div class="col">
@@ -133,7 +133,7 @@
                 $('#productModal').modal('show');
             }, */
             loadCategories: function() {
-                axios.get('/api/categories')
+                axios.get('/api/v1/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })
@@ -142,9 +142,10 @@
                     });
             },
             loadProducts: function() {
-                axios.get('/api/products')
+            	this.loader = true;
+                axios.get('/products')
                     .then((response) => {
-                        this.products = response.data.data;
+                        this.products = response.data;
                     })
                     .catch(function (error) {
                         console.log(error);
