@@ -10,7 +10,7 @@ class Stock extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'product_id' , 'product_category_id', 'branch_id', 'stock', 'stock_defective'
+        'product_id' , 'product_category_id', 'branch_id', 'stock_qty', 'stock_minimum'
     ];
 
     public function product()

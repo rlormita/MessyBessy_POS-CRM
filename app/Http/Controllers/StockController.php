@@ -19,7 +19,8 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::paginate(25);
-        return view('inventory.stocks.index', compact('stocks'));
+        $branches = Branch::paginate(25);
+        return view('inventory.stocks.index', compact('stocks','branches'));
     }
 
     /**
@@ -57,12 +58,10 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Stock $stock)
+    public function show(Stock $stocks, $id)
     {
-        return view('inventory.stocks.index', [
-            'stock' => $stock,
-            'products' => Product::where('product_category_id', $category->id)->paginate(25)
-        ]);
+        $stockser = Stock::where('branch_id', $id)->paginate(25);
+        return view('inventory.stocks.show', compact('stockser'));
     }
 
     /**

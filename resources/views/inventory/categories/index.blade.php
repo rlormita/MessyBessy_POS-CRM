@@ -100,9 +100,9 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <th scope="col">Name</th>
-                                <th scope="col">products</th>
+                                <th scope="col">Products</th>
                                 <th scope="col">Total Stock</th>
-                                <th scope="col">Defective Stock</th>
+                                <th scope="col">Average Minimum Stock of Product</th>
                                 <th scope="col">Average Price of Product</th>
                                 <th scope="col"></th>
                             </thead>
@@ -111,9 +111,9 @@
                                 <tr>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ count($category->products) }}</td>
-                                    <td>{{ $category->products->sum('stock') }}</td>
-                                    <td>{{ $category->products->sum('stock_defective') }}</td>
-                                    <td>{{ $category->products->avg('price') }}</td>
+                                    <td>{{ $category->products->sum('product_qty') }}</td>
+                                    <td>{{ $category->products->avg('product_minimum') }}</td>
+                                    <td>{{ $category->products->avg('product_price') }}</td>
 
 
                                     <td class="td-actions text-right">

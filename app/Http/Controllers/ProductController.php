@@ -30,9 +30,8 @@ class ProductController extends Controller
 
         // return view('inventory.products.index', compact('products'));
         $products = Product::paginate(25);
-        $stocks = Stock::all();
 
-        return view('inventory.products.index', compact('products','stocks'));
+        return view('inventory.products.index', compact('products'));
 
         //return view('inventory.products')
     }
@@ -64,11 +63,13 @@ class ProductController extends Controller
 
         $request->image->move(public_path('img/products'), $filename);
 
-        $model->name = $request->name;
-        $model->description = $request->description;
+        $model->product_name = $request->name;
+        $model->product_description = $request->description;
         $model->product_category_id = $request->product_category_id;
-        $model->price = $request->price;
-        $model->image = $filename;
+        $model->product_qty = $request->stock;
+        $model->product_minimum = $request->stock_minimum;
+        $model->product_price = $request->price;
+        $model->product_image = $filename;
 
         $model->save();
 

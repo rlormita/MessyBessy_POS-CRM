@@ -107,9 +107,9 @@
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('product_id', $stock->product_id) }}">
                                         @foreach ($products as $product)
                                             @if($product['id'] == old('product_id'))
-                                                <option value="{{$product['id']}}"  selected>{{$product['name']}}</option>
+                                                <option value="{{$product['id']}}"  selected>{{$product['product_name']}}</option>
                                             @else
-                                                <option value="{{$product['id']}}" hidden>{{$product['name']}}</option>
+                                                <option value="{{$product['id']}}" hidden>{{$product['product_name']}}</option>
                                             @endif
                                         @endforeach
                                     </select>
