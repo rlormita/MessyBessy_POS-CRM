@@ -94,7 +94,7 @@
                             <th>ID</th>
                             <th>Category</th>
                             <th>Name</th>
-                            <th>Stock</th>
+                            <th>Warehouse Stocks</th>
                             <th>Minimum Stocks</th>
                             <th>Price</th>
                             <th>Average Price</th>
@@ -105,11 +105,11 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->stock }}</td>
-                                <td>{{ $product->stock_defective }}</td>
-                                <td>{{ $product->price }}</td>
-                                <td>{{ $product->solds->avg('price') }}</td>
+                                <td>{{ $product->product_name }}</td>
+                                <td>{{ $product->product_qty }}</td>
+                                <td>{{ $product->product_minimum }}</td>
+                                <td>{{ $product->product_price }}</td>
+                                <td>{{ $product->solds->avg('product_price') }}</td>
                                 <td>{{ $product->solds->sum('qty') }}</td>
                                 <td>{{ $product->solds->sum('total_amount') }}</td>
                             </tr>

@@ -94,8 +94,8 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>products</th>
-                            <th>Stocks</th>
-                            <th>Stocks Faulty</th>
+                            <th>Total Warehouse Stock</th>
+                            <th>Average Minimum Product</th>
                             <th>Average Price</th>
                         </thead>
                         <tbody>
@@ -103,8 +103,8 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->products->sum('stock') }}</td>
-                                <td>{{ $category->products->sum('stock_defective') }}</td>
+                                <td>{{ $category->products->sum('product_qty') }}</td>
+                                <td>{{ $category->products->avg('product_minimum') }}</td>
                                 <td>${{ round($category->products->avg('price'), 2) }}</td>
                             </tr>
                         </tbody>
@@ -124,8 +124,8 @@
                         <thead>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Stock</th>
-                            <th>Defective Stock</th>
+                            <th>Warehouse Stock</th>
+                            <th>Minimum Allowable Stock</th>
                             <th>Base price</th>
                             <th>Total sales</th>
                             <th>Income Produced</th>
@@ -135,10 +135,10 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td><a href="{{ route('products.show', $product) }}">{{ $product->id }}</a></td>
-                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td>{{ $product->stock_defective }}</td>
-                                    <td>{{ $product->price }}</td>
+                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->product_name }}</a></td>
+                                    <td>{{ $product->product_qty }}</td>
+                                    <td>{{ $product->product_minimum }}</td>
+                                    <td>{{ $product->product_price }}</td>
                                     <td>{{ $product->solds->sum('qty') }}</td>
                                     <td>{{ $product->solds->sum('total_amount') }}</td>
                                     <td class="td-actions text-right">
