@@ -99,14 +99,30 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
+                                <th scope="col">Branch ID</th>
                                 <th scope="col">Branch Name</th>
+                                <th scope="col">Street</th>
                                 <th scope="col">City</th>
+                                <th scope="col">State</th>
+                                <th scope="col">Post Code</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Operating Hours</th>
+                                <th scope="col">Additional Information</th>
                             </thead>
                             <tbody>
                                 @foreach ($branches as $branch)
                                 <tr>
+                                    <td>{{ $branch->id }}</td>
                                     <td>{{ $branch->branch_name }}</td>
+                                    <td>{{ $branch->branch_street }}</td>
                                     <td>{{ $branch->branch_city }}</td>
+                                    <td>{{ $branch->branch_state }}</td>
+                                    <td>{{ $branch->branch_post_code }}</td>
+                                    <td>{{ $branch->branch_country }}</td>
+                                    <td>{{ $branch->branch_contact_number }}</td>
+                                    <td>{{ $branch->branch_operating_hours }}</td>
+                                    <td>{{ $branch->branch_other_info }}</td>
                                 
                                     <td class="td-actions text-right">
                                         <a href="{{ route('branches.show', $branch) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">

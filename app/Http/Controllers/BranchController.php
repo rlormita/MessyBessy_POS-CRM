@@ -27,7 +27,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('branches.create');
+        $cashiers = Cashier::paginate(25);
+        return view('branches.create', compact('cashiers'));
     }
 
     /**
