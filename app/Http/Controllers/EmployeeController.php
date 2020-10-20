@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     {
         $users = User::paginate(25);
 
-        return view('employee.view', compact('users'));
+        return view('employee.index', compact('users'));
     }
 
     public function create()

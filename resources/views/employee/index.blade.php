@@ -10,9 +10,16 @@
                             <div class="col-8">
                                 <h3 class="mb-0">{{ __('Employee Management') }}</h3>
                             </div>
-                            <div class="login-btn">
+                            <div class="createAccount-btn">
                                 <a href="{{ route('employee.create') }}" class="btn btn-primary card-shadow-hover">
-                                    Add Employee Account
+                                    + Admin Account
+                                    <i class="far fa-chevron-right"></i>
+                                </a>
+                            </div>
+
+                            <div class="login-btn">
+                                <a href="{{ route('cashier.index') }}" class="btn btn-primary card-shadow-hover">
+                                    View Cashiers
                                     <i class="far fa-chevron-right"></i>
                                 </a>
                             </div>
