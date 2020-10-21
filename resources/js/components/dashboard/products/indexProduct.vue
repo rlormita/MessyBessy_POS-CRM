@@ -133,7 +133,7 @@
                 $('#productModal').modal('show');
             }, */
             loadCategories: function() {
-                axios.get('/api/v1/categories')
+                axios.get('/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })

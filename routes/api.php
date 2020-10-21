@@ -23,12 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('categories', 'ProductCategoryController@result');
-Route::get('products', 'ProductController@result');
-Route::post('products', 'ProductController@store');
+Route::resource('/products', ProductController::class);
 
 Route::group(['prefix' => '/v1', 'namespace' => 'App\Http\Controllers', 'as' => 'api.', ], function () {
-    Route::resource('products', 'ProductController', ['except' => ['create', 'edit']]);
-    Route::resource('categories', 'ProductCategoryController', ['except' => ['create', 'edit']]);
 });
 
 

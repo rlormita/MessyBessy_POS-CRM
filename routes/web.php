@@ -32,6 +32,11 @@ Route::get('/dashboard', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/transactions', function () {
+    return view('shop.app');
+});
+
+Route::resource('/products', ProductController::class);
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
 Route::post('employee/cashier/store', [App\Http\Controllers\CashierController::class, 'store'])->name('cashier.store');
@@ -41,8 +46,12 @@ Route::get('employee/cashier/role/create',  [App\Http\Controllers\CashierRoleCon
 Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
 Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
+Route::get('/products2', function () {
+    return view('inventory.products.index');
+});
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('products', ProductController::class);
     Route::resource('categories', ProductCategoryController::class);
@@ -53,7 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/stocks/{id}', 'StockController@show');
     Route::resource('branches', BranchController::class);
     // Route::view('/transactions','transactions/transaction');
-	Route::view('/transactions','shop.index');
 
     // Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
