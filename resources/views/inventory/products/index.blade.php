@@ -61,6 +61,12 @@
                     <span>Branches</span>
                 </a>
             </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Employees</span>
+                </a>
+            </li>
         </div>
 
 
