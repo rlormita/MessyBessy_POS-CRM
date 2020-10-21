@@ -92,7 +92,7 @@
                                 <h3 class="mb-0">Add Cashier</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('cashier.create') }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('cashier.index') }}" class="btn btn-sm btn-primary">Back to List</a>
                             </div>
                         </div>
                     </div>
