@@ -36,7 +36,9 @@ Route::get('/transactions', function () {
     return view('shop.app');
 });
 
-Route::resource('/products', ProductController::class);
+Route::get('/products', 'App\Http\Controllers\ProductController@result');
+Route::post('/products/add', 'App\Http\Controllers\ProductController@store');
+
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
 Route::post('employee/cashier/store', [App\Http\Controllers\CashierController::class, 'store'])->name('cashier.store');
@@ -53,7 +55,7 @@ Route::get('/products2', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('products', ProductController::class);
+    // Route::resource('products', ProductController::class);
     Route::resource('categories', ProductCategoryController::class);
     Route::resource('employee', EmployeeController::class);
     Route::resource('cashier_role', CashierRoleController::class);

@@ -116,10 +116,10 @@
                             @foreach ($products as $product)
                             <tr>
                                 <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->product_name }}</td>
-                                <td>{{ $product->product_price }}</td>
-                                <td>{{ $product->product_qty }}</td>
-                                <td>{{ $product->product_minimum }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td>{{ $product->stock_defective }}</td>
                                 <td>{{ $product->solds }}</td>
                                 <td><img src="{{ url('img/products') }}/{{ ($product->product_image) }}" width=75; height=75;/></td>
                                 <td class="td-actions text-right">

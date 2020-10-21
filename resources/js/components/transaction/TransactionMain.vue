@@ -28,7 +28,7 @@
 				<div class="shop-body">
 					<!-- List of products -->
 					<div class="product-categories row">
-						<router-link tag="a" :to="`?cat=${category.id}`" class="category-item col" v-for="category in categories" exact>
+						<router-link tag="a" :to="`?cat=${category.id}`" class="category-item col" key="category.id" v-for="category in categories" exact>
 							<div class="item-info">
 								<div class="item-main-info">
 									<h6 class="item-name">
@@ -129,7 +129,7 @@
             	this.loader = true;
                 axios.get('/products')
                     .then((response) => {
-                        this.products = response.data;
+                        this.products = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);

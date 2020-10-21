@@ -22,8 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('categories', 'ProductCategoryController@result');
-Route::resource('/products', ProductController::class);
+Route::get('/products', 'App\Http\Controllers\ProductController@result');
 
 Route::group(['prefix' => '/v1', 'namespace' => 'App\Http\Controllers', 'as' => 'api.', ], function () {
 });

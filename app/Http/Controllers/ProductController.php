@@ -22,14 +22,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        // $products = Product::all();
 
-        return $products;
-        return Product::all();
-        // $products = Product::paginate(25);
-
-        // return view('inventory.products.index', compact('products'));
+        // return $products;
         $products = Product::paginate(25);
+
+        return view('inventory.products.index', compact('products'));
 
 
         //return view('inventory.products')
@@ -54,10 +52,9 @@ class ProductController extends Controller
      * @param  App\Product  $model
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, Product $model)
+    public function store(ProductRequest $request, Product $products)
     {
-
-        $filename = $request->image->getClientOriginalName();
+        /* $filename = $request->image->getClientOriginalName();
 
         $request->image->move(public_path('img/products'), $filename);
 
@@ -73,7 +70,21 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product successfully registered.');
+            ->withStatus('Product successfully registered.'); */
+
+        /* $products->name = $request->name;
+        $products->category = $request->category;
+        $products->price = $request->price;
+        $products->stock = $request->stock;
+        $products->stock_defective = $request->stock_defective;
+        $products->image = $request->image;
+        $products->description = $request->description; */
+
+        $products->create($request->all());
+
+        // $products->save();
+
+        return response()->json(['message' => 'New product added']);
     }
 
     /**

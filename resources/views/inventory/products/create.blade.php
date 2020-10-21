@@ -111,13 +111,8 @@
                                 <div class="form-group{{ $errors->has('product_category_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Category</label>
                                     <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
-                                        @foreach ($categories as $category)
-                                            @if($category['id'] == old('document'))
-                                                <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
-                                            @else
-                                                <option value="{{$category['id']}}">{{$category['name']}}</option>
-                                            @endif
-                                        @endforeach
+                                        
+                                                <option value="1" selected>Man's Care</option>
                                     </select>
                                     @include('alerts.feedback', ['field' => 'product_category_id'])
                                 </div>
