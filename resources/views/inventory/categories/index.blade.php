@@ -111,9 +111,9 @@
                                 <tr>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ count($category->products) }}</td>
-                                    <td>{{ $category->products->sum('product_qty') }}</td>
-                                    <td>{{ $category->products->avg('product_minimum') }}</td>
-                                    <td>{{ $category->products->avg('product_price') }}</td>
+                                    <td>{{ $category->products->sum('stock_qty') }}</td>
+                                    <td>{{ $category->products->avg('minimum_stock') }}</td>
+                                    <td>{{ $category->products->avg('price') }}</td>
 
 
                                     <td class="td-actions text-right">

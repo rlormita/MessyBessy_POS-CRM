@@ -100,6 +100,7 @@
                             <th>Country</th>
                             <th>Contact Number</th>
                             <th>Operating Hours</th>
+                            <th>Cashier</th>
                             <th>Additional Information</th>
                         </thead>
                         <tbody>
@@ -113,7 +114,9 @@
                                     <td>{{ $branch->branch_country }}</td>
                                     <td>{{ $branch->branch_contact_number }}</td>
                                     <td>{{ $branch->branch_operating_hours }}</td>
+                                    <td> {{ $branch->cashier_id }}</td>
                                     <td>{{ $branch->branch_other_info }}</td>
+
                             </tr>
                         </tbody>
                     </table>

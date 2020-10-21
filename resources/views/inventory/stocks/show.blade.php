@@ -103,19 +103,19 @@
                             <th scope="col">Product</th>
                             <th scope="col">Category</th>
                             <th scope="col">Branch</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Defective Stock</th>
+                            <th scope="col">Stock of Branch</th>
+                            <th scope="col">Minimum Stock of Product</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </thead>
                         <tbody>
                             @foreach ($stockser as $stock)
                             <tr>
-                                <td>{{ $stock->product->product_name }}</td>
+                                <td>{{ $stock->product->name }}</td>
                                 <td>{{ $stock->product->category->name }}</td>
                                 <td>{{ $stock->branch->branch_name }}</td>
-                                <td>{{ $stock->stock_qty }}</td>
-                                <td>{{ $stock->stock_minimum }}</td>
+                                <td>{{ $stock->branch_stock }}</td>
+                                <td>{{ $stock->branch_minimum_stock }}</td>
                                 <td class="td-actions text-right">
                                     <a href="{{ route('stocks.edit', $stock) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
                                         <i class="far fa-edit"></i>

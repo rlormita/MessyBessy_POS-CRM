@@ -126,15 +126,15 @@
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-stock">Stock</label>
-                                            <input type="number" name="stock" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock') }}" required>
-                                            @include('alerts.feedback', ['field' => 'stock'])
+                                            <input type="number" name="stock_qty" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock_qty') }}" required>
+                                            @include('alerts.feedback', ['field' => 'stock_qty'])
                                         </div>
                                     </div>                            
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock_minimum') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-stock_minimum">Minimum Stock</label>
-                                            <input type="number" name="stock_minimum" id="input-stock_minimum" class="form-control form-control-alternative" placeholder="Minimum Stock" value="{{ old('stock_minimum') }}" required>
-                                            @include('alerts.feedback', ['field' => 'stock_minimum'])
+                                            <input type="number" name="minimum_stock" id="input-stock_minimum" class="form-control form-control-alternative" placeholder="Minimum Stock" value="{{ old('minimum_stock') }}" required>
+                                            @include('alerts.feedback', ['field' => 'minimum_stock'])
                                         </div>
                                     </div>
                                     <div class="col-4">                                    

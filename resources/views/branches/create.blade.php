@@ -143,6 +143,19 @@
                                     <input type="text" name="branch_operating_hours" id="input-branch_operating_hours" class="form-control form-control-alternative" placeholder="Operating_Hours" value="{{ old('branch_operating_hours') }}" required>
                                     
                                 </div>
+                                <div class="form-group{{ $errors->has('cashier_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">Cashiers</label>
+                                    <select name="cashier_id" id="input-cashier" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" >
+                                        @foreach ($cashiers as $cashier)
+                                            @if($cashier['id'] == old('document'))
+                                                <option value="{{$cashier['id']}}" selected>{{$cashier['firstName']}}</option>
+                                            @else
+                                                <option value="{{$cashier['id']}}">{{$cashier['firstame']}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @include('alerts.feedback', ['field' => 'cashier_id'])
+                                </div>
                                 <div class="form-group{{ $errors->has('branch_other_info') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-branch_other_info">Additional Information</label>
                                     <input type="text" name="branch_other_info" id="input-branch_other_info" class="form-control form-control-alternative" placeholder="Other_Info" value="{{ old('branch_other_info') }}" >

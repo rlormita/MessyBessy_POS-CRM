@@ -1,7 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt--7">
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <img style="width: 90%;" src="{{ asset('img/icon.png') }}" />
+            </div>
+            <div class="sidebar-brand-text mx-3">EasyBessy Admin</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="{{url('/dashboard')}}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Interface
+        </div>
+
+
+        <div class="nav-items">
+            <!-- Nav Item - Product Menu -->
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/products')}}">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/categories')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Stocks</span>
+                </a>
+            </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Branches</span>
+                </a>
+            </li>
+        </div>
+
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -92,5 +153,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

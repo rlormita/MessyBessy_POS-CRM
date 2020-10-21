@@ -107,26 +107,14 @@
                             <th scope="col">Stocks of Branch</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </thead>
                         <tbody>
-                            @foreach ($stocks as $stock)
+                            @foreach ($branches as $branch)
                             <tr>
-                                <td>{{ $stock->branch->branch_name }}</td>
-                                <td><a href="{{ route('stocks.show', $stock->branch_id ) }}">{{ $stock->sum('stock_qty') }}</a></td>
+                                <td>{{ $branch->branch_name }}</td>
+                                <td><a href="{{ route('stocks.show', $branch->id ) }}">View Stock Level</a></td>
                                 <td class="td-actions text-right">
-                                    <a href="{{ route('stocks.show', $stock->branch_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                        <i class="far fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('stocks.edit', $stock) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('stocks.destroy', $stock) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -136,7 +124,7 @@
             </div>
             <div class="card-footer py-4">
                 <nav class="d-flex justify-content-end">
-                    {{ $stocks->links() }}
+                    {{ $branches->links() }}
                 </nav>
             </div>
         </div>

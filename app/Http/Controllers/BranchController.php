@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\branch;
+use App\Models\Cashier;
 use App\Http\Requests\BranchRequest;
+use App\Http\Controllers\CashierController;
 
 class BranchController extends Controller
 {
@@ -16,18 +18,19 @@ class BranchController extends Controller
     public function index()
     {
         $branches = branch::paginate(25);
+        $cashiers = Cashier::paginate(25);
 
-        return view('branches.index', compact('branches'));
+        return view('branches.index', compact('branches','cashiers'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for crfgfeating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $cashiers = Cashier::paginate(25);
+        $cashiers = Cashier::all();
         return view('branches.create', compact('cashiers'));
     }
 
@@ -54,7 +57,10 @@ class BranchController extends Controller
      */
     public function show(branch $branch)
     {
-        return view('branches.show', compact('branch'));
+        return view('branches.show',  [
+            'branch' => $branch,
+            'cashiers'=> Cashier::where('cashier_id', $branch->id)->paginate(25)
+        ]);
     }
 
     /**

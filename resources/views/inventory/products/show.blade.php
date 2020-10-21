@@ -105,10 +105,10 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->product_name }}</td>
-                                <td>{{ $product->product_qty }}</td>
-                                <td>{{ $product->product_minimum }}</td>
-                                <td>{{ $product->product_price }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->stock_qty }}</td>
+                                <td>{{ $product->minimum_stock }}</td>
+                                <td>{{ $product->price }}</td>
                                 <td>{{ $product->solds->avg('product_price') }}</td>
                                 <td>{{ $product->solds->sum('qty') }}</td>
                                 <td>{{ $product->solds->sum('total_amount') }}</td>

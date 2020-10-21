@@ -120,8 +120,10 @@
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td>{{ $product->stock_defective }}</td>
+                                <td>{{ $product->stock_qty }}</td>
+                                <td>{{ $product->minimum_stock }}</td>
                                 <td>{{ $product->solds }}</td>
-                                <td><img src="{{ url('img/products') }}/{{ ($product->product_image) }}" width=75; height=75;/></td>
+                                <td><img src="{{ url('img/products') }}/{{ ($product->image) }}" width=75; height=75;/></td>
                                 <td class="td-actions text-right">
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                         <i class="far fa-eye"></i>

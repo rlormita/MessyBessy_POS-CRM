@@ -18,9 +18,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::paginate(25);
         $branches = Branch::paginate(25);
-        return view('inventory.stocks.index', compact('stocks','branches'));
+        return view('inventory.stocks.index', compact('branches'));
     }
 
     /**
@@ -75,6 +74,7 @@ class StockController extends Controller
 
         $products = Product::all();
         $branches = Branch::all();
+        $stocks = Stock::all();
 
         return view('inventory.stocks.edit', compact('products','stock','branches'));
     }
@@ -101,8 +101,12 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Stock $stock)
     {
-        //
+        $stock->delete();
+
+        return redirect()
+            ->route('stocks.index')
+            ->withStatus('Stock removed successfully.');
     }
 }

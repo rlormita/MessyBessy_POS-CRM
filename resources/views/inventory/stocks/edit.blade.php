@@ -107,9 +107,9 @@
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('product_id', $stock->product_id) }}">
                                         @foreach ($products as $product)
                                             @if($product['id'] == old('product_id'))
-                                                <option value="{{$product['id']}}"  selected>{{$product['product_name']}}</option>
+                                                <option value="{{$product['id']}}" >{{$product['name']}}</option>
                                             @else
-                                                <option value="{{$product['id']}}" hidden>{{$product['product_name']}}</option>
+                                                <option value="{{$product['id']}}" selected hidden>{{$product['name']}}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -121,9 +121,9 @@
                                     <select name="branch_id" id="input-branch" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }} " value="{{ old('branch_id', $stock->branch_id) }}" >
                                         @foreach ($branches as $branch)
                                             @if($branch['id'] == old('branch_id'))
-                                                <option value="{{$branch['id']}}" selected>{{$branch['branch_name']}}</option>
+                                                <option value="{{$branch['id']}}" >{{$branch['branch_name']}}</option>
                                             @else
-                                                <option value="{{$branch['id']}}" hidden>{{$branch['branch_name']}}</option>
+                                                <option value="{{$branch['id']}}" selected hidden>{{$branch['branch_name']}}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -133,14 +133,14 @@
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-stock">Stock</label>
-                                            <input type="number" name="stock" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock', $stock->stock) }}" required>
+                                            <input type="number" name="branch_stock" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock', $stock->branch_stock) }}" required>
                                             
                                         </div>
                                     </div>                            
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock_defective') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-stock_defective">Minimum Stocks</label>
-                                            <input type="number" name="stock_defective" id="input-stock_defective" class="form-control form-control-alternative" placeholder="Defective Stock" value="{{ old('stock_defective', $stock->stock_defective) }}" required>
+                                            <input type="number" name="branch_minimum_stock" id="input-stock_defective" class="form-control form-control-alternative" placeholder="Defective Stock" value="{{ old('stock_defective', $stock->branch_minimum_stock) }}" required>
                                             
                                         </div>
                                 <div class="text-center">

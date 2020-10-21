@@ -104,16 +104,16 @@
                             <h6 class="heading-small text-muted mb-4">Product Information</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $product->name) }}" required autofocus>
-                                   
+                                    <label class="form-control-label" for="input-name">Name</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', $product->name) }}" required autofocus>
+                                    @include('alerts.feedback', ['field' => 'name'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_category_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Category</label>
                                     <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
                                         @foreach ($categories as $category)
-                                            @if($category['id'] == old('document') or $category['id'] == $product->product_category_id)
+                                            @if($category['id'] == old('document'))
                                                 <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
                                             @else
                                                 <option value="{{$category['id']}}">{{$category['name']}}</option>
@@ -123,28 +123,41 @@
                                     @include('alerts.feedback', ['field' => 'product_category_id'])
                                 </div>
 
-
                                 <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-description">Description</label>
                                     <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description', $product->description) }}" required>
-                                    
-
+                                    @include('alerts.feedback', ['field' => 'description'])
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-4">                                    
+                                        <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-stock">Stock</label>
+                                            <input type="number" name="stock_qty" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock_qty', $product->stock_qty) }}" required>
+                                            @include('alerts.feedback', ['field' => 'stock_qty'])
+                                        </div>
+                                    </div>                            
+                                    <div class="col-4">                                    
+                                        <div class="form-group{{ $errors->has('stock_minimum') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-stock_minimum">Minimum Stock</label>
+                                            <input type="number" name="minimum_stock" id="input-stock_minimum" class="form-control form-control-alternative" placeholder="Minimum Stock" value="{{ old('minimum_stock', $product->minimum_stock) }}" required>
+                                            @include('alerts.feedback', ['field' => 'minimum_stock'])
+                                        </div>
+                                    </div>
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-price">Price</label>
                                             <input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price', $product->price) }}" required>
-                                            
+                                            @include('alerts.feedback', ['field' => 'price'])
                                         </div>
-                                    </div>
-                                    <div class="col-4">                                    
+                                    </div>                            
+                                </div>
+                                <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-image">Upload Image</label>
-                                            <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image') }}">
+                                            <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image', $product->image) }}" >
+                                            @include('alerts.feedback', ['field' => 'image'])
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>  
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Save</button>
