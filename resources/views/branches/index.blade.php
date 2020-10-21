@@ -108,6 +108,7 @@
                                 <th scope="col">Country</th>
                                 <th scope="col">Contact Number</th>
                                 <th scope="col">Operating Hours</th>
+                                <th scope="col">Branch Cashier</th>
                                 <th scope="col">Additional Information</th>
                             </thead>
                             <tbody>
@@ -122,6 +123,7 @@
                                     <td>{{ $branch->branch_country }}</td>
                                     <td>{{ $branch->branch_contact_number }}</td>
                                     <td>{{ $branch->branch_operating_hours }}</td>
+                                    <td>{{ $branch->cashier_id }}</td>
                                     <td>{{ $branch->branch_other_info }}</td>
                                 
                                     <td class="td-actions text-right">
