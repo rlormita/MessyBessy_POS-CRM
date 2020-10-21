@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCashiersTable extends Migration
+class CreateBranchTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,28 @@ class CreateCashiersTable extends Migration
      */
     public function up()
     {
+        Schema::create('branches', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('branch_name');
+            $table->string('branch_street');
+            $table->string('branch_city');
+            $table->string('branch_state');
+            $table->integer('branch_post_code');
+            $table->string('branch_country');
+            $table->string('branch_contact_number');
+            $table->string('branch_operating_hours');
+            $table->string('branch_other_info')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('cashier_roles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('cashier_role_title');
+            $table->string('description')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
         Schema::create('cashiers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cashier_role_id');
@@ -30,6 +52,7 @@ class CreateCashiersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**
@@ -39,6 +62,8 @@ class CreateCashiersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('branches');
         Schema::dropIfExists('cashiers');
+        Schema::dropIfExists('cashier_roles');
     }
 }

@@ -61,7 +61,34 @@
                     <span>Branches</span>
                 </a>
             </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Employees</span>
+                </a>
+            </li>
         </div>
+
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Addons
+        </div>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
 
         <div class="row">
             <div class="col-xl-12 order-xl-1">

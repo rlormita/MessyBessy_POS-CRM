@@ -60,6 +60,12 @@
                     <span>Branches</span>
                 </a>
             </li>
+            <li style="margin-bottom: 0px !important;" class="nav-item">
+                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
+                    <i class="fas fa-table"></i>
+                    <span>Employees</span>
+                </a>
+            </li>
         </div>
 
 
@@ -92,7 +98,7 @@
                                 <h3 class="mb-0">Add Cashier</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('cashier.create') }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('cashier.index') }}" class="btn btn-sm btn-primary">Back to List</a>
                             </div>
                         </div>
                     </div>
