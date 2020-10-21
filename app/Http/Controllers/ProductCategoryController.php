@@ -19,11 +19,11 @@ class ProductCategoryController extends Controller
      */
     public function index(ProductCategory $model)
     {
-        // $categories = ProductCategory::paginate(25);
+        $categories = ProductCategory::paginate(25);
 
-        // return view('inventory.categories.index', compact('categories'));
+        return view('inventory.categories.index', compact('categories'));
 
-        return ProductCategoryResource::collection(ProductCategory::all());
+        // return ProductCategoryResource::collection(ProductCategory::all());
     }
 
     /**

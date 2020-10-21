@@ -103,8 +103,8 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->products->sum('product_qty') }}</td>
-                                <td>{{ $category->products->avg('product_minimum') }}</td>
+                                <td>{{ $category->products->sum('stock_qty') }}</td>
+                                <td>{{ $category->products->avg('minimum_stock') }}</td>
                                 <td>${{ round($category->products->avg('price'), 2) }}</td>
                             </tr>
                         </tbody>
@@ -135,10 +135,10 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td><a href="{{ route('products.show', $product) }}">{{ $product->id }}</a></td>
-                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->product_name }}</a></td>
-                                    <td>{{ $product->product_qty }}</td>
-                                    <td>{{ $product->product_minimum }}</td>
-                                    <td>{{ $product->product_price }}</td>
+                                    <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
+                                    <td>{{ $product->stock_qty }}</td>
+                                    <td>{{ $product->minimum_stock }}</td>
+                                    <td>{{ $product->price }}</td>
                                     <td>{{ $product->solds->sum('qty') }}</td>
                                     <td>{{ $product->solds->sum('total_amount') }}</td>
                                     <td class="td-actions text-right">

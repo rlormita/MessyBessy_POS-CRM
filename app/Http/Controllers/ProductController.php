@@ -22,17 +22,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        // $products = Product::all();
 
-        return $products;
-        return Product::all();
+        // return $products;
+        // return Product::all();
         // $products = Product::paginate(25);
 
         // return view('inventory.products.index', compact('products'));
         $products = Product::paginate(25);
 
 
-        //return view('inventory.products')
+        return view('inventory.products.index', compact('products'));
     }
 
     /**
@@ -61,13 +61,13 @@ class ProductController extends Controller
 
         $request->image->move(public_path('img/products'), $filename);
 
-        $model->product_name = $request->name;
-        $model->product_description = $request->description;
+        $model->name = $request->name;
+        $model->description = $request->description;
         $model->product_category_id = $request->product_category_id;
-        $model->product_qty = $request->stock;
-        $model->product_minimum = $request->stock_minimum;
-        $model->product_price = $request->price;
-        $model->product_image = $filename;
+        $model->stock_qty = $request->stock_qty;
+        $model->minimum_stock = $request->minimum_stock;
+        $model->price = $request->price;
+        $model->image = $filename;
 
         $model->save();
 
@@ -119,6 +119,8 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->product_category_id = $request->product_category_id;
+        $product->minimum_stock = $request->minimum_stock;
+        $product->stock_qty = $request->stock_qty;
         $product->price = $request->price;
 
         $product->save();
