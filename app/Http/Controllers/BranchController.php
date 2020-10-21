@@ -30,8 +30,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        $cashiers = Cashier::all();
-        return view('branches.create', compact('cashiers'));
+        
+        return view('branches.create');
     }
 
     /**
@@ -57,10 +57,7 @@ class BranchController extends Controller
      */
     public function show(branch $branch)
     {
-        return view('branches.show',  [
-            'branch' => $branch,
-            'cashiers'=> Cashier::where('cashier_id', $branch->id)->paginate(25)
-        ]);
+        return view('branches.show', compact('branch'));
     }
 
     /**

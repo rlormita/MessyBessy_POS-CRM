@@ -86,7 +86,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Category Information</h4>
+                    <h4 class="card-title">Branch Information</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -100,7 +100,7 @@
                             <th>Country</th>
                             <th>Contact Number</th>
                             <th>Operating Hours</th>
-                            <th>Cashier</th>
+                            
                             <th>Additional Information</th>
                         </thead>
                         <tbody>
@@ -114,7 +114,7 @@
                                     <td>{{ $branch->branch_country }}</td>
                                     <td>{{ $branch->branch_contact_number }}</td>
                                     <td>{{ $branch->branch_operating_hours }}</td>
-                                    <td> {{ $branch->cashier_id }}</td>
+                                    
                                     <td>{{ $branch->branch_other_info }}</td>
 
                             </tr>
