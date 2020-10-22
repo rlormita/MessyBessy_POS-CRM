@@ -1,5 +1,5 @@
 <template>
-	<div class="db-modal product-add">
+	<div class="db-bs-modal product-add">
 		<div class="db-modal-container">
 			<div class="db-modal-card cs-scroll">
 				<div class="card-header">

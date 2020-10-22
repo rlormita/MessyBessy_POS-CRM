@@ -1,166 +1,170 @@
-@extends('layouts.app', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('dashboard.main', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img style="width: 90%;" src="{{ asset('img/icon.png') }}" />
+<div class="overview-wrapper product-index">
+    <div class="overview-content">
+        <div class="overview-header">
+            <h3 class="overview-header-title">
+                <strong>Products</strong> Overview
+            </h3>
+            <div class="overview-new">
+                <button onclick="window.location.href=document.referrer" class="new-item">
+                    <i class="fas fa-chevron-left" style="margin-right: 10px;"></i>
+                    <span>Back to List</span>
+                </button>
             </div>
-            <div class="sidebar-brand-text mx-3">EasyBessy Admin</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{url('/dashboard')}}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Interface
         </div>
-
-
-        <div class="nav-items">
-            <!-- Nav Item - Product Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/products')}}">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/categories')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Stocks</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Branches</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Employees</span>
-                </a>
-            </li>
-        </div>
-
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Product Information</h4>
+        <div class="overview-table">
+            <div class="table">
+                <div class="row row-header">
+                    <div class="col">
+                        <span class="col-title">
+                            ID
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Product
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Category
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Warehouse Stocks
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Minimum Stocks
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Price
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Average Price
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Total Sales
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Income Produced
+                        </span>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
-                            <th>Warehouse Stocks</th>
-                            <th>Minimum Stocks</th>
-                            <th>Price</th>
-                            <th>Average Price</th>
-                            <th>Total sales</th>
-                            <th>Income Produced</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $product->id }}</td>
-                                <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->stock_qty }}</td>
-                                <td>{{ $product->minimum_stock }}</td>
-                                <td>{{ $product->price }}</td>
-                                <td>{{ $product->solds->avg('product_price') }}</td>
-                                <td>{{ $product->solds->sum('qty') }}</td>
-                                <td>{{ $product->solds->sum('total_amount') }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col">
+                        <span class="col-title">
+                            <strong>{{ $product->id }}</strong>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $product->name }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $product->category->name }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->stock_qty }}</center>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->minimum_stock }}</center>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->price }}</center>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->solds->avg('product_price') }}</center>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->solds->sum('qty') }}</center>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <center>{{ $product->solds->sum('total_amount') }}</center>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Latest Sales</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <th>Date</th>
-                            <th>Sale ID</th>
-                            <th>Quantity</th>
-                            <th>Price Unit</th>
-                            <th>Total Amount</th>
-                            <th></th>
-                        </thead>
-                        <tbody>
-                            @foreach ($solds as $sold)
-                                <tr>
-                                    <td>{{ date('d-m-y', strtotime($sold->created_at)) }}</td>
-                                    <td><a href="{{ route('sales.show', $sold->sale_id) }}">{{ $sold->sale_id }}</a></td>
-                                    <td>{{ $sold->qty }}</td>
-                                    <td>{{ format_money($sold->price) }}</td>
-                                    <td>{{ format_money($sold->total_amount) }}</td>
-                                    <td class="td-actions text-right">
-                                        <a href="{{ route('sales.show', $sold->sale_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="tim-icons icon-zoom-split"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form method="post" action="{{ route('products.store') }}" autocomplete="off" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Product</h5>
+                        <div class="modal-action">
+                            <a @click="hideModal" class="close-btn" data-dismiss="modal">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" required pattern="\S+.*" value="{{ old('name') }}">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="description" id="description" required pattern="\S+.*" value="{{ old('description') }}">
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="form-group">
+                            <select name="product_category_id" id="category" required pattern="\S+.*" value="{{ old('product_category_id') }}">
+                                <option value="1">Man's Care</option>
+                                <option value="2">Home and House Care</option>
+                            </select>
+                            <label for="category">Category</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="price" id="price" required pattern="\S+.*" value="{{ old('price') }}">
+                            <label for="price">Price</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="stock_qty" id="stock_count" required pattern="\S+.*" value="{{ old('stock_qty') }}">
+                            <label for="stock_count">Stock Count</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="minimum_stock" id="min_stock" required pattern="\S+.*" value="{{ old('stock_qty') }}">
+                            <label for="min_stock">Minimum Stock</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="image" id="input-image" placeholder="Image" value="{{ old('image') }}" required>
+                            <label for="image">Image</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success mt-4">Save</button>
+                    </div>
+                </form>
             </div>
+          </div>
         </div>
     </div>
 </div>

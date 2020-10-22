@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\StockController;
@@ -26,8 +27,8 @@ Route::get('/', function () {
 /* Route::get('/transactions', function () {
     return view('transactions\transaction');
 }); */
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard2');
+Route::get('/dashboard/index', function () {
+    return view('dashboard.main');
 });
 
 Auth::routes(['verify' => true]);
@@ -35,9 +36,6 @@ Auth::routes(['verify' => true]);
 Route::get('/transactions', function () {
     return view('shop.app');
 });
-
-Route::get('/products', 'App\Http\Controllers\ProductController@result');
-Route::post('/products/add', 'App\Http\Controllers\ProductController@store');
 
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
@@ -48,20 +46,16 @@ Route::get('employee/cashier/role/create',  [App\Http\Controllers\CashierRoleCon
 Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
 Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
-Route::get('/products2', function () {
-    return view('inventory.products.index');
-});
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // Route::resource('products', ProductController::class);
-    Route::resource('categories', ProductCategoryController::class);
-    Route::resource('employee', EmployeeController::class);
+    Route::resource('/dashboard/products', ProductController::class);
+    Route::resource('/dashboard/categories', ProductCategoryController::class);
+    Route::resource('/dashboard/employees', EmployeeController::class);
     Route::resource('cashier_role', CashierRoleController::class);
     // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
-    Route::resource('stocks', StockController::class);
-    Route::get('/stocks/{id}', 'StockController@show');
+    Route::resource('/dashboard/stocks', StockController::class);
+    Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('branches', BranchController::class);
     // Route::view('/transactions','transactions/transaction');
 

@@ -19,7 +19,9 @@ class StockController extends Controller
     public function index()
     {
         $branches = Branch::paginate(25);
-        return view('inventory.stocks.index', compact('branches'));
+        $products = Product::all();
+        $stocks = Stock::all();
+        return view('inventory.stocks.index', compact('branches','products','stocks'));
     }
 
     /**
@@ -89,6 +91,7 @@ class StockController extends Controller
     public function update(Request $request, Stock $stock)
     {
         $stock->update($request->all());
+        $stocks = Stock::all();
 
         return redirect()
             ->route('stocks.index')

@@ -1,206 +1,115 @@
-@extends('layouts.app')
-<!-- Page Wrapper -->
-<div id="wrapper">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img style="width: 90%;" src="{{ asset('img/icon.png') }}" />
-            </div>
-            <div class="sidebar-brand-text mx-3">EasyBessy Admin</div>
-        </a>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+    <title>{{ config('app.name', 'Messy Bessy') }}</title>
 
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{url('/dashboard')}}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
+    <!-- Scripts -->
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
+    <!-- Core plugin JavaScript-->
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Interface
-        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" defer></script>
 
-        <div class="nav-items">
-            <!-- Nav Item - Product Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/products')}}">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/categories')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Stocks</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Branches</span>
-                </a>
-            </li>
-        </div>
+    <script src="{{ asset('js/dashboard.min.js')}}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/messy.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="{{ asset('fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/dashboard.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard2.css') }}" rel="stylesheet">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
+</head>
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
-        <div id="content">
-
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+<body>
+    <div id="app">
+        <div class="sidebar-wrapper">
+            <div class="dashboard-sidebar">
+                <div class="sidebar-header">
+                    <div class="header">
+                        <a href="/home">
+                            <div class="header-icon">
+                                <img src="{{ asset('img/icon.png') }}"/>
+                            </div>
+                            <div class="header-title">
+                                <span>EasyBessy</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar-body">
+                    <div class="sidebar-item-group">
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/index') }}" id="link-dashboard">
+                                <i class="far fa-chart-line"></i>
+                                <span>Dashboard</span>
+                            </a>
                         </div>
                     </div>
-                </form>
-
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
-
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-
-
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</span>
-                            @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                                <img class="img-profile rounded-circle" src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
-                            @else
-                                <img class="img-profile rounded-circle" src="{{ asset('img/user/default.jpg') }}">
-                            @endif
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ url('/profile') }}">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Profile') }}
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{url('/logout')}}" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                    <div class="sidebar-item-group">
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/products') }}" id="link-products">
+                                <i class="far fa-shopping-bag"></i>
+                                <span>Products</span>
                             </a>
                         </div>
-                    </li>
-
-                </ul>
-
-            </nav>
-            <!-- End of Topbar -->
-
-
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/categories') }}" id="link-categories">
+                                <i class="far fa-table"></i>
+                                <span>Categories</span>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/stocks') }}" id="link-stocks">
+                                <i class="far fa-table"></i>
+                                <span>Stocks</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-item-group">
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/employees') }}" id="link-employees">
+                                <i class="fas fa-user"></i>
+                                <span>Employees</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-item-group">
+                        <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/settings') }}" id="link-settings">
+                                <i class="fas fa-cogs"></i>
+                                <span>Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>      
         </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-
-                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                </div>
+        <div class="main-content">
+            <div class="dashboard-content">
+                @yield('content')
             </div>
         </div>
     </div>
+    </script>
+
+</body>
+</html>

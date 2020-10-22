@@ -1,4 +1,4 @@
-import Vue from 'vue';
+/* import Vue from 'vue';
 import VueRouter from 'vue-router';
 import ExampleComponent from './components/ExampleComponent';
 import DashboardMain from './components/dashboard/DashboardMain';
@@ -23,3 +23,5 @@ let router = new VueRouter({
 });
 
 export default router;
+
+*/

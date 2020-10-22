@@ -46,7 +46,7 @@
 							</span>
 						</div>
 					</div>
-					<div class="row categoriesList" v-for="(category, index) in listCategories" key="category.id">
+					<div class="row" v-for="(category, index) in categories" :key="category.id">
 						<div class="col">
 							<span class="col-title">
 								{{ category.name }}
@@ -105,15 +105,7 @@
         },
         mounted() {
             this.loadCategories();
-        },
-        computed: {
-        	listCategories() {
-        		if (this.categories.length === 0) {
-        			$('.categoriesList').addClass("error");
-        		} else {
-        			return this.categories;
-        		}
-        	}
+            this.loadProducts();
         },
         methods: {
             /* launchModal() {
@@ -122,11 +114,12 @@
                 $('#productModal').modal('show');
             }, */
             loadCategories: function() {
-                axios.get('/categories')
+                axios.get('/api/v1/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })
                     .catch(function (error) {
+                        console.log(error);
                     });
             }
         }

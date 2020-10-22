@@ -27,7 +27,7 @@
                     <a class="dropdown-item" href="{{ route('profile') }}">
                         {{ __('Profile') }}
                     </a>
-                    <a class="dropdown-item" href="{{ url('employee') }}">
+                    <a class="dropdown-item" href="{{ url('dashboard/employees') }}">
                         {{ __('Manage Employees') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

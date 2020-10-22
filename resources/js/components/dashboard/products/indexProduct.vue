@@ -56,14 +56,14 @@
 							</span>
 						</div>
 					</div>
-					<div class="row" v-for="(product, index) in allProducts" :key="allProducts.id">
+					<div class="row" v-for="(product, index) in products" :key="product.id">
 						<div class="col">
 							<span class="col-title">
 								<strong>{{ product.name }}</strong>
 							</span>
 						</div>
 						<div class="col">
-							<span class="col-title">
+							<span class="col-title" v-for="category in categories">
 								<center>{{ product.product_category_id }}</center>
 							</span>
 						</div>
@@ -74,12 +74,12 @@
 						</div>
 						<div class="col">
 							<span class="col-title">
-								<center>{{ product.stock }}</center>
+								<center>{{ product.in_stock }}</center>
 							</span>
 						</div>
 						<div class="col">
 							<span class="col-title">
-								<center>{{ product.stock_defective }}</center>
+								<center>{{ product.min_stock }}</center>
 							</span>
 						</div>
 						<div class="col">
@@ -126,16 +126,6 @@
             this.loadCategories();
             this.loadProducts();
         },
-        computed: {
-        	allProducts() {
-        		if (this.products.length === 0) {
-        			console.log(this.products);
-        		} else {
-        			return this.products;
-        			console.log(this.products);
-        		}
-        	}
-        },
         methods: {
             /* launchModal() {
                 this.productName = 'Product 1';
@@ -145,7 +135,7 @@
             loadCategories: function() {
                 axios.get('/categories')
                     .then((response) => {
-                        this.categories = response.data;
+                        this.categories = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -155,7 +145,7 @@
             	this.loader = true;
                 axios.get('/products')
                     .then((response) => {
-                        this.products = response.data.data;
+                        this.products = response.data;
                     })
                     .catch(function (error) {
                         console.log(error);

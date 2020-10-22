@@ -9,9 +9,6 @@ use App\Models\Client;
 use App\Models\Sale;
 use App\Http\Requests\ProductCategoryRequest;
 use App\Http\Resources\ProductCategoryResource;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 
 class ProductCategoryController extends Controller
 {
@@ -26,9 +23,6 @@ class ProductCategoryController extends Controller
 
         return view('inventory.categories.index', compact('categories'));
 
-        $categories = ProductCategory::all();
-
-        return ProductCategoryResource::collection(ProductCategory::all());
         // return ProductCategoryResource::collection(ProductCategory::all());
     }
 
@@ -39,8 +33,6 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
-        
         return view('inventory.categories.create');
     }
 

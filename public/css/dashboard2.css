@@ -18,6 +18,9 @@ body {
 }
 .sidebar-wrapper .dashboard-sidebar {
 	position: relative;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 .dashboard-sidebar .sidebar-header {
 	position: relative;
@@ -65,7 +68,7 @@ body {
 	cursor: pointer;
 }
 .dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active {
-	background: #fff;
+	background: #3A78F2;
 	box-shadow: 2px 32px 17px -23px rgba(150,168,205,0.4);
 	transform: scale(1.03);
 }
@@ -79,19 +82,20 @@ body {
 	font-size: 18px;
 }
 .dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active i {
-	color: #3A78F2;
+	color: #fff;
 }
 .dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item span {
 	margin: 0 20px 0 0;
 	display: inline-block;
 	font-weight: bold;
+	font-size: 16px;
 	vertical-align: top;
 	padding: 7px 0;
 	box-shadow: 0 0 0;
 	transition: all .2s ease;
 }
 .dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active span {
-	color: #1D2A64;
+	color: #fff;
 }
 
 /* Dashboard Content - Products */
@@ -259,6 +263,107 @@ body {
 .db-modal .db-modal-card .card-body .form-group select:focus ~ label {
 	color: #3A78F2;
 	border-radius: 5px;
+}
+
+/* Dashboard Bootstrap Modal */
+.modal {
+}
+.modal .modal-content {
+	border: 0;
+	border-radius: 20px;
+	padding: 20px;
+	position: relative;
+}
+.modal .modal-content .modal-header {
+	border-bottom: 0;
+	padding: 20px;
+}
+.modal .modal-content .modal-header .modal-title {
+	font-size: 24px;
+	font-weight: 900;
+}
+.modal .modal-content .modal-header .modal-action .close-btn {
+	position: absolute;
+	top: 32px;
+	right: 40px;
+	height: 50px;
+	width: 50px;
+	background: rgba(0,0,0,0.15);
+	color: #212121;
+	line-height: 50px;
+	text-align: center;
+	font-size: 24px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all .2s ease;
+}
+.modal .modal-content .modal-header .modal-action .close-btn:hover {
+	background: #3A78F2;
+	color: #fff;
+}
+.modal .modal-content .modal-body {
+	margin: 40px 0 0 0;
+}
+.modal .modal-content .modal-body .form-group {
+	position: relative;
+	width: 100%;
+	height: 75px;
+	margin: 0 0 20px 0;
+}
+.modal .modal-content .modal-body .form-group input[type=text],
+.modal .modal-content .modal-body .form-group input[type=number],
+.modal .modal-content .modal-body .form-group select {
+	position: relative;
+	z-index: 3;
+	border: 0;
+	border-bottom: 2px solid rgba(0,0,0,0.15);
+	padding: 10px 3px;
+	width: 100%;
+	outline: none;
+	background: transparent;
+}
+.modal .modal-content .modal-body .form-group input[type=text]:focus,
+.modal .modal-content .modal-body .form-group input[type=text]:valid,
+.modal .modal-content .modal-body .form-group input[type=number]:focus,
+.modal .modal-content .modal-body .form-group input[type=number]:valid,
+.modal .modal-content .modal-body .form-group select:focus {
+	border-color: #3A78F2;
+}
+.modal .modal-content .modal-body .form-group input ~ label,
+.modal .modal-content .modal-body .form-group select ~ label {
+	position: absolute;
+	z-index: 2;
+	left: 0px;
+	top: -30px;
+	transition: all .2s ease;
+	font-weight: bold;
+	color: rgba(0,0,0,0.3);
+	font-size: 16px;
+	padding: 0px 5px;
+}
+.modal .modal-content .modal-body .form-group input:focus ~ label,
+.modal .modal-content .modal-body .form-group input:valid ~ label,
+.modal .modal-content .modal-body .form-group select:focus ~ label {
+	color: #3A78F2;
+	border-radius: 5px;
+}
+
+/* Alerts */
+.toast {
+	position: fixed;
+	top: 30px;
+	right: 40px;
+	border: 0;
+	color: #fff;
+}
+.toast.alert-success {
+	background: #7DC58C;
+}
+.toast.alert-error {
+	background: #DF595A;
+}
+.toast.show {
+	animation: toastSlideIn 1s;
 }
 
 /* Small devices (landscape phones, 576px and up) */

@@ -1,129 +1,119 @@
-@extends('layouts.app', ['page' => 'Edit Category', 'pageSlug' => 'categories', 'section' => 'inventory'])
+@extends('dashboard.main', ['page' => 'Edit Category', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img style="width: 90%;" src="{{ asset('img/icon.png') }}" />
+<div class="overview-wrapper product-index">
+    <div class="overview-content">
+        <div class="overview-header">
+            <h3 class="overview-header-title">
+                <strong>Categories</strong> Overview
+            </h3>
+            <div class="overview-new">
+                <button class="new-item" data-toggle="modal" data-target="#modal">
+                    <i class="fas fa-plus"></i>
+                    <span>New Category</span>
+                </button>
             </div>
-            <div class="sidebar-brand-text mx-3">EasyBessy Admin</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{url('/dashboard')}}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Interface
         </div>
-
-
-        <div class="nav-items">
-            <!-- Nav Item - Product Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/products')}}">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/categories')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Stocks</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Branches</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Employees</span>
-                </a>
-            </li>
-        </div>
-
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-12 order-xl-1">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">Edit Category</h3>
-                            </div>
-                            <div class="col-4 text-right">
-                                <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">Back to List</a>
-                            </div>
-                        </div>
+        @include('alerts.success')
+        <div class="overview-table">
+            <div class="table">
+                <div class="row row-header">
+                    <div class="col">
+                        <span class="col-title">
+                            Name
+                        </span>
                     </div>
-                    <div class="card-body">
-                        <form method="post" action="{{ route('categories.update', $category) }}" autocomplete="off">
-                            @csrf
-                            @method('put')
-
-                            <h6 class="heading-small text-muted mb-4">Category Information</h6>
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">Name</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', $category->name) }}" required autofocus>
-                                    @include('alerts.feedback', ['field' => 'name'])
-                                </div>
-
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">Save</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="col">
+                        <span class="col-title">
+                            Product Count
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Stock Count
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Defective Stock Count
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Product Average Price
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Actions
+                        </span>
                     </div>
                 </div>
+                <form method="post" action="{{ route('categories.update', $category) }}" autocomplete="off">
+                    @csrf
+                    @method('put')
+                    <div class="row">
+                        <div class="col">
+                            <span class="col-title">
+                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', $category->name) }}" required autofocus>
+                                @include('alerts.feedback', ['field' => 'name'])
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="col-title">
+                                {{ count($category->products) }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="col-title">
+                                {{ round($category->products->sum('stock_qty')) }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="col-title">
+                                {{ round($category->products->avg('minimum_stock')) }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="col-title">
+                                {{ round($category->products->avg('price')) }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="col-title">
+                                <button type="submit" class="btn btn-primary ">Save</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form method="post" action="{{ route('categories.store') }}" autocomplete="off">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Category</h5>
+                        <div class="modal-action">
+                            <a @click="hideModal" class="close-btn" data-dismiss="modal">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" required pattern="\S+.*" value="{{ old('name') }}">
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success mt-4">Save</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
     </div>
+</div>
 @endsection
