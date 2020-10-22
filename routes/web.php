@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
-    Route::resource('branches', BranchController::class);
+    Route::resource('/dashboard/branches', BranchController::class);
     // Route::view('/transactions','transactions/transaction');
 
     // Route::get('/transactions','App\Http\Controllers\ProductController@productList');

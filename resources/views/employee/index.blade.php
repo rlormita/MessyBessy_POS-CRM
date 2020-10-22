@@ -9,7 +9,7 @@
                 <strong>Employees</strong> Overview
             </h3>
             <div class="overview-new">
-                <button class="new-item" data-toggle="modal" data-target="#modal">
+                <button onclick="window.location.href='{{ route('register') }}'" class="new-item">
                     <i class="fas fa-plus"></i>
                     <span>Add Employee</span>
                 </button>
@@ -113,7 +113,7 @@
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="post" action="{{ route('cashier.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('employee.create') }}" autocomplete="off">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Add Employee</h5>

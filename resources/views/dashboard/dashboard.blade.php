@@ -86,6 +86,14 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
+                            <a class="nav-link item" href="{{ url('/dashboard/branches') }}" id="link-employees">
+                                <i class="fas fa-store"></i>
+                                <span>Branches</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-item-group">
+                        <div class="sidebar-item">
                             <a class="nav-link item" href="{{ url('/dashboard/employees') }}" id="link-employees">
                                 <i class="fas fa-user"></i>
                                 <span>Employees</span>

@@ -53,11 +53,11 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</span>
-                @if (File::exists(public_path("img/uploads/profile_image/{{ Auth::user()->profile_image }}")))
-                    <img class="img-profile rounded-circle" src="{{ url('img/uploads/profile_image/') }}/{{ Auth::user()->profile_image }}" />
-                @else
-                    <img class="img-profile rounded-circle" src="{{ asset('img/user/default.jpg') }}">
-                @endif
+                @if (is_null(Auth::user()->profile_image))
+                <img src="{{ asset('img/user/default.jpg') }}" width="30" style="border-radius:50%;">
+               @else
+                <img src="{{ asset('./img/uploads/profile_image/'.Auth::user()->profile_image) }}" width="30" style="border-radius:50%;" />
+               @endif
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
