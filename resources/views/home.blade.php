@@ -64,7 +64,7 @@
                 </a>
             </div>
             <div class="row">
-                <a href="{{ url('/dashboard') }}" class="col messy-nav-item">
+                <a href="{{ url('/dashboard/index') }}" class="col messy-nav-item">
                     <img src="{{ asset('sprites/dashboard.svg') }}" />
                     <h3>Dashboard</h3>
                 </a>
