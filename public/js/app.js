@@ -63789,9 +63789,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                        " +
+                              "\n                                        " +
                                 _vm._s(category.name) +
-                                "\r\n                                    "
+                                "\n                                    "
                             )
                           ]
                         )
@@ -79584,7 +79584,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('category-index', __webpack
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('transaction', __webpack_require__(/*! ./components/transaction/TransactionMain.vue */ "./resources/js/components/transaction/TransactionMain.vue")["default"]);
 var routes = [{
-  path: '/employee',
+  path: '/dashboard/employee',
   component: __webpack_require__(/*! ./components/dashboard/admin/indexEmployee.vue */ "./resources/js/components/dashboard/admin/indexEmployee.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
@@ -81318,8 +81318,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Janjan\Documents\MessyBessy_POS-CRM\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Janjan\Documents\MessyBessy_POS-CRM\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MessyBessy_POS-CRM\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MessyBessy_POS-CRM\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

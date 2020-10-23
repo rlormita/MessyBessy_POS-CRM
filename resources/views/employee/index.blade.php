@@ -25,14 +25,9 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ __('First Name') }}
+                            {{ __('Name') }}
                         </span>
-                    </div>
-                    <div class="col">
-                        <span class="col-title">
-                            {{ __('Last Name') }}
-                        </span>
-                    </div>
+                    </div
                     <div class="col">
                         <span class="col-title">
                             {{ __('Email') }}
@@ -72,11 +67,7 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ $user->firstName }}
-                        </span>
-                    </div>
-                    <div class="col">
-                        <span class="col-title">
+                            {{ $user->firstName }} 
                             {{ $user->lastName }}
                         </span>
                     </div>

@@ -93,7 +93,7 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <router-link to="/employee" class="nav-link item" id="link-employees">
+                            <router-link to="/dashboard/employee" class="nav-link item" id="link-employees">
                                 <i class="fas fa-user"></i>
                                 <span>Employees</span>
                             </router-link>
