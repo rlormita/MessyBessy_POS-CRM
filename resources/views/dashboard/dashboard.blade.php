@@ -31,7 +31,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link href="{{ asset('fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/dashboard.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -47,7 +46,7 @@
                     <div class="header">
                         <a href="/home">
                             <div class="header-icon">
-                                <img src="{{ asset('img/icon.png') }}"/>
+                                <img src="{{ asset('img/icon.png') }}" />
                             </div>
                             <div class="header-title">
                                 <span>EasyBessy</span>
@@ -94,10 +93,10 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/employees') }}" id="link-employees">
+                            <router-link to="/employee" class="nav-link item" id="link-employees">
                                 <i class="fas fa-user"></i>
                                 <span>Employees</span>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="sidebar-item-group">
@@ -109,15 +108,16 @@
                         </div>
                     </div>
                 </div>
-            </div>      
+            </div>
         </div>
         <div class="main-content">
             <div class="dashboard-content">
-                @yield('content')
+                <router-view></router-view>
             </div>
         </div>
     </div>
     </script>
 
 </body>
+
 </html>

@@ -4,25 +4,23 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+
 // import router from './routes';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
+import moment from 'moment'
+import { Form, HasError, AlertError } from 'vform'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+window.Form = Form;
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
 
 // ProductList vue components
 Vue.component('messy-transact', require('./components/shop/FrontPage.vue').default);
@@ -48,17 +46,23 @@ Vue.component('category-index', require('./components/dashboard/categories/index
 Vue.component('transaction', require('./components/transaction/TransactionMain.vue').default);
 
 
-/* Vue Router */
-// Vue.use(VueRouter);
+const routes = [
+    { path: '/employee', component: require('./components/dashboard/admin/indexEmployee.vue').default },
 
+]
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
- 
+Vue.filter('date', function(created) {
+    if (!created) return ''
+    return moment(created).format('MMMM Do YYYY, h:mm:ss a');
+});
+
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
 const app = new Vue({
     el: '#app',
     router

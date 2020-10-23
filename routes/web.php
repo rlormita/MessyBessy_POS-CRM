@@ -9,7 +9,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +36,8 @@ Auth::routes(['verify' => true]);
 Route::get('/transactions', function () {
     return view('shop.app');
 });
+
+
 
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
@@ -73,6 +75,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
     Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
-
-
 });
+
+
