@@ -65,16 +65,16 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/products') }}" id="link-products">
+                            <router-link class="nav-link item" to="/product" id="link-products">
                                 <i class="far fa-shopping-bag"></i>
                                 <span>Products</span>
-                            </a>
+                            </router-link>
                         </div>
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/categories') }}" id="link-categories">
+                            <router-link class="nav-link item" to="/category" id="link-categories">
                                 <i class="far fa-table"></i>
                                 <span>Categories</span>
-                            </a>
+                            </router-link>
                         </div>
                         <div class="sidebar-item">
                             <a class="nav-link item" href="{{ url('/dashboard/stocks') }}" id="link-stocks">
@@ -85,10 +85,10 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/branches') }}" id="link-employees">
+                            <router-link class="nav-link item" to="/branch" id="link-employees">
                                 <i class="fas fa-store"></i>
                                 <span>Branches</span>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="sidebar-item-group">

@@ -9,7 +9,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
-use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +38,7 @@ Route::get('/transactions', function () {
 });
 
 
+// Route::get('{path}', [DashboardController::class, 'index'])->where( 'path', '([A-z]+)?' );
 
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
