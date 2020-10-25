@@ -1,127 +1,101 @@
 <template>
-	<div class="overview-wrapper product-index">
-		<div class="overview-content">
-			<div class="overview-header">
-				<h3 class="overview-header-title">
-					<strong>Categories</strong> Overview
-				</h3>
-				<div class="overview-new">
-					<button class="new-item" @click="component = 'addCategory'">
-						<i class="fas fa-plus"></i>
-						<span>New Category</span>
-					</button>
-				</div>
-			</div>
-			<div class="overview-table">
-				<div class="table">
-					<div class="row row-header">
-						<div class="col">
-							<span class="col-title">
-								Name
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Product Count
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Stock Count
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Defective Stock Count
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Product Average Price
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Actions
-							</span>
-						</div>
-					</div>
-					<div class="row" v-for="(category, index) in categories" :key="category.id">
-						<div class="col">
-							<span class="col-title">
-								{{ category.name }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								{{ category.product_count }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								{{ category.total_stock }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								{{ category.defective_stock }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								{{ category.ave_price }}
-							</span>
-						</div>
-						<div class="col">
-							<span class="col-title">
-								Actions
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<component v-bind:is="component" v-on:update:is="component = $event"></component>
-		</div>
-	</div>
+  <div class="overview-wrapper product-index">
+    <div class="overview-content">
+      <div class="overview-header">
+         <h3 class="overview-header-title">
+          <strong>Categories</strong> Overview
+        </h3>
+        <div class="overview-new">
+          <modal ref="modal"></modal>
+          <button class="new-item" @click="openModal">
+            <i class="fas fa-plus"></i>
+           <span>New Category</span>
+          </button>
+        </div>
+      </div>
+      <div class="overview-table">
+        <div class="table">
+         <div class="row row-header">
+            <div class="col">
+              <span class="col-title"> Name </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Product Count </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Stock Count </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Defective Stock Count </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Product Average Price </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Actions </span>
+            </div>
+          </div>
+            <div class="row" v-for="categories in category" :key="categories.id">
+            <div class="col">
+              <span class="col-title">
+                {{ categories.name }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="col-title">
+                {{ category.product_count }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="col-title">
+                {{ category.total_stock }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="col-title">
+                {{ category.defective_stock }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="col-title">
+                {{ category.ave_price }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="col-title"> Actions </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <component
+        v-bind:is="component"
+        v-on:update:is="component = $event"
+      ></component>
+    </div>
+  </div>
 </template>
 
-
 <script>
-	import addCategory from './addCategory.vue';
+import modal from "./addCategory.vue";
+export default {
+  components: { modal },
+  data() {
+    return {
+      category: {},
+    };
+  },
 
-    export default {
-    	components: {
-    		'addCategory': addCategory,
-    	},
-        data: function () {
-            return {
-                categories: [],
-                products: [],
-                message: '',
-                productName: '',
-                productDesc: '',
-				component: '',
-            }
-        },
-        mounted() {
-            this.loadCategories();
-            this.loadProducts();
-        },
-        methods: {
-            /* launchModal() {
-                this.productName = 'Product 1';
-                this.productDesc = 'Product Description 1';
-                $('#productModal').modal('show');
-            }, */
-            loadCategories: function() {
-                axios.get('/api/v1/categories')
-                    .then((response) => {
-                        this.categories = response.data.data;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }
-        }
-    }
+  methods: {
+   loadCategory() {
+      axios.get("api/category").then(({ data }) => (this.category = data.data));
+      console.log(this.category);
+    },
+    openModal() {
+      this.$refs.modal.show();
+    },
+  },
+  created() {
+    this.loadCategory();
+  },
+};
 </script>

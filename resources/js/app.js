@@ -21,6 +21,8 @@ Vue.component(AlertError.name, AlertError)
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
 
 // ProductList vue components
 Vue.component('messy-transact', require('./components/shop/FrontPage.vue').default);
@@ -50,7 +52,6 @@ const routes = [
     //dashboard components
     { path: '/product', component: require('./components/dashboard/products/indexProduct.vue').default },
     { path: '/category', component: require('./components/dashboard/categories/indexCategory.vue').default },
-    { path: '/branch', component: require('./components/dashboard/branches/indexBranch.vue').default },
     { path: '/employee', component: require('./components/dashboard/admin/indexEmployee.vue').default },
 
 ]

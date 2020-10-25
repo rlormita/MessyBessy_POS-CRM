@@ -13,13 +13,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+
+class ProductController extends Controller 
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
+     
     public function index()
     {
         // $products = Product::all();
@@ -40,8 +44,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
+    
     {
+        
         $categories = ProductCategory::all();
 
         return view('inventory.products.create', compact('categories'));
@@ -57,7 +65,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request, Product $model)
     {
 
-        $filename = $request->image->getClientOriginalName();
+        $filename = $request->file('image')->getClientOriginalName();
 
         $request->image->move(public_path('img/products'), $filename);
 

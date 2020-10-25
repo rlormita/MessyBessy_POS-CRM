@@ -73,22 +73,22 @@
                         <div class="sidebar-item">
                             <router-link class="nav-link item" to="/category" id="link-categories">
                                 <i class="far fa-table"></i>
-                                <span>Categories</span>
+                                <span>Category</span>
                             </router-link>
                         </div>
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/stocks') }}" id="link-stocks">
+                            <router-link  class="nav-link item" to="/categoryList" id="link-stocks">
                                 <i class="far fa-table"></i>
                                 <span>Stocks</span>
-                            </a>
+                            </router-link >
                         </div>
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <router-link class="nav-link item" to="/branch" id="link-employees">
+                            <a class="nav-link item" href="/dashboard/branches" id="link-employees">
                                 <i class="fas fa-store"></i>
                                 <span>Branches</span>
-                            </router-link>
+                            </a>
                         </div>
                     </div>
                     <div class="sidebar-item-group">
