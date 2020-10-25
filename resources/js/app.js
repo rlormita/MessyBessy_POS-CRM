@@ -49,6 +49,7 @@ Vue.component('transaction', require('./components/transaction/TransactionMain.v
 
 
 const routes = [
+    { path: '/dashboard/employee', component: require('./components/dashboard/admin/indexEmployee.vue').default },
     //dashboard components
     { path: '/product', component: require('./components/dashboard/products/indexProduct.vue').default },
     { path: '/category', component: require('./components/dashboard/categories/indexCategory.vue').default },
