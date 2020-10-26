@@ -1,5 +1,5 @@
 <template>
-  <div class="db-modal product-add">
+  <div class="db-modal product-add" id="addNew">
     <div class="db-modal-container">
       <div class="db-modal-card cs-scroll">
         <div class="card-header">
@@ -10,7 +10,11 @@
             </a>
           </div>
         </div>
-        <form enctype="multipart/form-data" class="card-form" v-on:submit.prevent="createProduct()">
+        <form
+          enctype="multipart/form-data"
+          class="card-form"
+          v-on:submit.prevent="createProduct()"
+        >
           <div class="card-body">
             <div class="form-group">
               <input
@@ -23,14 +27,22 @@
               <label for="name">Name</label>
             </div>
             <div class="form-group">
-              <select id="category"  v-model="product.product_category_id" required pattern="\S+.*">
-                <option v-for="(categories, index) in category" :key="index"  :value="categories.id">
+              <select
+                id="category"
+                v-model="product.product_category_id"
+                required
+                pattern="\S+.*"
+              >
+                <option
+                  v-for="(categories, index) in category"
+                  :key="index"
+                  :value="categories.id"
+                >
                   {{ categories.name }}
                 </option>
                 <input type="hidden" />
               </select>
-            <label for="category">Category</label>
-
+              <label for="category">Category</label>
             </div>
             <div class="form-group">
               <input
@@ -117,35 +129,30 @@ export default {
       this.$emit("update:is", "");
     },
     uploadImage(e) {
-          let file = e.target.files[0];
-          console.log(file);
-          let reader = new FileReader();
-          if(file['size'] < 2111775){
-          reader.onloadend = (file)=>{
-              this.product.image = reader.result;
-          }
-           reader.readAsDataURL(file)
-          }else{
-            console.log('file size can not be bigger than 2mb');
-          }
-        
+      let file = e.target.files[0];
+      console.log(file);
+      let reader = new FileReader();
+      if (file["size"] < 2111775) {
+        reader.onloadend = (file) => {
+          this.product.image = reader.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.log("file size can not be bigger than 2mb");
+      }
     },
-    
+
     loadCategory() {
       axios.get("api/category").then(({ data }) => (this.category = data.data));
-      console.log(this.category);
     },
 
     async createProduct() {
-      await this.product
-        .post("api/product")
-        .then((response) => {
-          console.log(response.data);
-          this.$emit("update:is", "");
-        })
-        .catch((response) => {
-          console.log(response.data);
-        });
+      await this.product.post("api/product");
+      this.hideModal();
+      Toast.fire({
+        icon: "success",
+        title: "New user created",
+      });
     },
   },
   created() {
