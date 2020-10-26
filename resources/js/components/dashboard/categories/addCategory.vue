@@ -48,7 +48,7 @@ export default {
     createCategory() {
       this.form.post("api/category");
        this.hide();
-      Toast.fire({
+        Toast.fire({
         icon: "success",
         title: "New Category created",
       });

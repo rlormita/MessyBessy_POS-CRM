@@ -59,10 +59,9 @@
               </span>
             </div>
             <div class="col">
-               <!-- v-for="categories in category" :key="categories.id" -->
+              <!-- v-for="categories in category" :key="categories.id" -->
               <span class="col-title">
-
-                <center>{{products.product_category_id}}</center>
+                <center>{{ products.product_category_id }}</center>
               </span>
             </div>
             <div class="col">
@@ -87,34 +86,50 @@
             </div>
             <div class="col">
               <span class="col-title">
-                <center><img v-bind:src="
-                    '/img/products/' + products.image" /></center>
+                <center>
+                  <img v-bind:src="'/img/products/' + products.image" />
+                </center>
               </span>
             </div>
             <div class="col">
-                
-            </div>
-             <div class="col">
-                        <span class="col-title">
-                            <a href="#" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </span>
-                        <span class="col-title">
-                            <a href="#" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
-                                <i class="far fa-edit"></i>
-                            </a>
-                        </span>
-                        <span class="col-title">
-                            <form action="#" method="post" class="d-inline">
-                                <!-- @csrf
+              <span class="col-title">
+                <a
+                  href="#"
+                  class="btn btn-link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="More Details"
+                >
+                  <i class="far fa-eye"></i>
+                </a>
+              </span>
+              <span class="col-title">
+                <a
+                  href="#"
+                  class="btn btn-link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Edit Product"
+                >
+                  <i class="far fa-edit"></i>
+                </a>
+              </span>
+              <span class="col-title">
+                <form action="#" method="post" class="d-inline">
+                  <!-- @csrf
                                 @method('delete') -->
-                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </span>
-                    </div>
+                  <a
+                    @click="deleteProduct(products.id)"
+                    class="btn btn-link"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Delete Product"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+                </form>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -127,6 +142,7 @@
 </template>
 
 <script>
+import CodeScanVue from "../../shop/CodeScan.vue";
 import addProduct from "./addProduct.vue";
 
 export default {
@@ -136,7 +152,9 @@ export default {
   data() {
     return {
       // categories: [],
-      product: {},
+      product: {
+        id: "",
+      },
       category: {},
       // message: '',
       // productName: '',
@@ -148,8 +166,8 @@ export default {
   //     this.loadCategories();
   //     this.loadProducts();
   // },
-   methods: {
-   loadProduct() {
+  methods: {
+    loadProduct() {
       axios.get("api/product").then(({ data }) => (this.product = data.data));
       console.log(this.product);
     },
@@ -157,12 +175,31 @@ export default {
       axios.get("api/category").then(({ data }) => (this.category = data.data));
       console.log(this.category);
     },
-   },
+    deleteProduct(id) {
+         Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        axios.delete("api/products/" + id).then(() => {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }).catch(()=>{
+          Swal.fire("Failed!", "There was something wrong.", "warning");
+        });
+      });
+    },
+  },
 
   created() {
     this.loadProduct();
-    setInterval(() => {this.loadProduct()}, 3000);
-    this.loadCategory()
+    setInterval(() => {
+      this.loadProduct();
+    }, 3000);
+    this.loadCategory();
   },
 };
 </script>

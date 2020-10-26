@@ -38,9 +38,9 @@ class ProductController extends Controller
             // $filename = $request->file('image')->getClientOriginalName();
 
             // $filename = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
-            $filename = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
-            Image::make($request->image)->resize(300, 300)->save( public_path('/img/products/' . $filename));
-            $request->merge(['image' => $filename]);
+        $filename = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+        Image::make($request->image)->resize(300, 300)->save( public_path('/img/products/' . $filename));
+        $request->merge(['image' => $filename]);
         }
         
 
@@ -107,6 +107,14 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+
+
+        return ['message', 'Successfully Deleted'];
+
+        
     }
 }

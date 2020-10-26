@@ -2338,7 +2338,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
-      this.form.post("api/users");
+      this.form.post("api/users"); //  this.hide();
+      // Toast.fire({
+      // icon: "success",
+      // title: "New Category created",
+      // });
     },
     show: function show() {
       this.showModal = true;
@@ -2480,6 +2484,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2502,10 +2544,32 @@ __webpack_require__.r(__webpack_exports__);
     },
     openModal: function openModal() {
       this.$refs.modal.show();
+    },
+    deleteUser: function deleteUser(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        axios["delete"]("api/users/" + id).then(function () {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        })["catch"](function () {
+          Swal.fire("Failed!", "There was something wrong.", "warning");
+        });
+      });
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    setInterval(function () {
+      _this2.loadUsers();
+    }, 3000);
   }
 });
 
@@ -2640,6 +2704,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2662,6 +2762,23 @@ __webpack_require__.r(__webpack_exports__);
     },
     openModal: function openModal() {
       this.$refs.modal.show();
+    },
+    deleteCategory: function deleteCategory(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        axios["delete"]("api/category/" + id).then(function () {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        })["catch"](function () {
+          Swal.fire("Failed!", "There was something wrong.", "warning");
+        });
+      });
     }
   },
   created: function created() {
@@ -2857,6 +2974,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this3.product.post("api/product");
 
               case 2:
+                Fire.$emit('AfterCreated');
+
                 _this3.hideModal();
 
                 Toast.fire({
@@ -2864,7 +2983,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   title: "New user created"
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2889,7 +3008,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _addProduct_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addProduct.vue */ "./resources/js/components/dashboard/products/addProduct.vue");
+/* harmony import */ var _shop_CodeScan_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shop/CodeScan.vue */ "./resources/js/components/shop/CodeScan.vue");
+/* harmony import */ var _addProduct_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addProduct.vue */ "./resources/js/components/dashboard/products/addProduct.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3019,14 +3154,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    addProduct: _addProduct_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    addProduct: _addProduct_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
       // categories: [],
-      product: {},
+      product: {
+        id: ""
+      },
       category: {},
       // message: '',
       // productName: '',
@@ -3056,6 +3194,23 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.category = data.data;
       });
       console.log(this.category);
+    },
+    deleteProduct: function deleteProduct(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        axios["delete"]("api/products/" + id).then(function () {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        })["catch"](function () {
+          Swal.fire("Failed!", "There was something wrong.", "warning");
+        });
+      });
     }
   },
   created: function created() {
@@ -66740,7 +66895,42 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2, true)
+                  _vm._m(2, true),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col" }, [
+                    _vm._m(3, true),
+                    _vm._v(" "),
+                    _vm._m(4, true),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "col-title" }, [
+                      _c(
+                        "form",
+                        {
+                          staticClass: "d-inline",
+                          attrs: { action: "#", method: "post" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-link",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "bottom",
+                                title: "Delete Product"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteUser(user.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "far fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
                 ])
               })
             ],
@@ -66807,6 +66997,46 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col" }, [
       _c("span", { staticClass: "col-title" }, [_vm._v(" Role ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "More Details"
+          }
+        },
+        [_c("i", { staticClass: "far fa-eye" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "Edit Product"
+          }
+        },
+        [_c("i", { staticClass: "far fa-edit" })]
+      )
     ])
   }
 ]
@@ -66989,7 +67219,40 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2, true)
+                  _c("div", { staticClass: "col" }, [
+                    _vm._m(2, true),
+                    _vm._v(" "),
+                    _vm._m(3, true),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "col-title" }, [
+                      _c(
+                        "form",
+                        {
+                          staticClass: "d-inline",
+                          attrs: { action: "#", method: "post" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-link",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "bottom",
+                                title: "Delete Product"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteCategory(categories.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "far fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
                 ])
               })
             ],
@@ -67038,8 +67301,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("span", { staticClass: "col-title" }, [_vm._v(" Actions ")])
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "More Details"
+          }
+        },
+        [_c("i", { staticClass: "far fa-eye" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "Edit Product"
+          }
+        },
+        [_c("i", { staticClass: "far fa-edit" })]
+      )
     ])
   }
 ]
@@ -67543,9 +67838,40 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col" }),
-                  _vm._v(" "),
-                  _vm._m(3, true)
+                  _c("div", { staticClass: "col" }, [
+                    _vm._m(3, true),
+                    _vm._v(" "),
+                    _vm._m(4, true),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "col-title" }, [
+                      _c(
+                        "form",
+                        {
+                          staticClass: "d-inline",
+                          attrs: { action: "#", method: "post" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-link",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "bottom",
+                                title: "Delete Product"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteProduct(products.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "far fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
                 ])
               })
             ],
@@ -67596,62 +67922,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("span", { staticClass: "col-title" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-link",
-            attrs: {
-              href: "#",
-              "data-toggle": "tooltip",
-              "data-placement": "bottom",
-              title: "More Details"
-            }
-          },
-          [_c("i", { staticClass: "far fa-eye" })]
-        )
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "col-title" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-link",
-            attrs: {
-              href: "#",
-              "data-toggle": "tooltip",
-              "data-placement": "bottom",
-              title: "Edit Product"
-            }
-          },
-          [_c("i", { staticClass: "far fa-edit" })]
-        )
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "col-title" }, [
-        _c(
-          "form",
-          { staticClass: "d-inline", attrs: { action: "#", method: "post" } },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-link",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "tooltip",
-                  "data-placement": "bottom",
-                  title: "Delete Product",
-                  onclick:
-                    "confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''"
-                }
-              },
-              [_c("i", { staticClass: "far fa-trash-alt" })]
-            )
-          ]
-        )
-      ])
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "More Details"
+          }
+        },
+        [_c("i", { staticClass: "far fa-eye" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "col-title" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-link",
+          attrs: {
+            href: "#",
+            "data-toggle": "tooltip",
+            "data-placement": "bottom",
+            title: "Edit Product"
+          }
+        },
+        [_c("i", { staticClass: "far fa-edit" })]
+      )
     ])
   }
 ]
@@ -83788,7 +84092,9 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.mixin({
     toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.resumeTimer);
   }
 });
-window.Toast = Toast; // ProductList vue components
+window.Toast = Toast;
+var Fire = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
+window.Fire = Fire; // ProductList vue components
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('messy-transact', __webpack_require__(/*! ./components/shop/FrontPage.vue */ "./resources/js/components/shop/FrontPage.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('messy-trans-catnav', __webpack_require__(/*! ./components/shop/TransCatNav.vue */ "./resources/js/components/shop/TransCatNav.vue")["default"]);

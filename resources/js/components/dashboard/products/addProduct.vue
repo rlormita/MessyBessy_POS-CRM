@@ -148,11 +148,14 @@ export default {
 
     async createProduct() {
       await this.product.post("api/product");
+      Fire.$emit('AfterCreated');
       this.hideModal();
+
       Toast.fire({
         icon: "success",
         title: "New user created",
       });
+
     },
   },
   created() {

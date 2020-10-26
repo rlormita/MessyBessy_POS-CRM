@@ -65,6 +65,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $category = ProductCategory::findOrFail($id);
+
+        $category->delete();
+
+
+
+        return ['message', 'Successfully Deleted'];    }
 }

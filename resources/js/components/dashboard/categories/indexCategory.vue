@@ -29,8 +29,44 @@
                 {{ categories.name }}
               </span>
             </div>
-            <div class="col">
-              <span class="col-title"> Actions </span>
+             <div class="col">
+              <span class="col-title">
+                <a
+                  href="#"
+                  class="btn btn-link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="More Details"
+                >
+                  <i class="far fa-eye"></i>
+                </a>
+              </span>
+              <span class="col-title">
+                <a
+                  href="#"
+                  class="btn btn-link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Edit Product"
+                >
+                  <i class="far fa-edit"></i>
+                </a>
+              </span>
+              <span class="col-title">
+                <form action="#" method="post" class="d-inline">
+                  <!-- @csrf
+                                @method('delete') -->
+                  <a
+                    @click="deleteCategory(categories.id)"
+                    class="btn btn-link"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Delete Product"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+                </form>
+              </span>
             </div>
           </div>
         </div>
@@ -60,6 +96,23 @@ export default {
     },
     openModal() {
       this.$refs.modal.show();
+    },
+      deleteCategory(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        axios.delete("api/category/" + id).then(() => {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }).catch(()=>{
+          Swal.fire("Failed!", "There was something wrong.", "warning");
+        });
+      });
     },
   },
   created() {

@@ -38,6 +38,9 @@ const Toast = Swal.mixin({
 
 window.Toast = Toast;
 
+let Fire = new Vue();
+window.Fire = Fire;
+
 // ProductList vue components
 Vue.component('messy-transact', require('./components/shop/FrontPage.vue').default);
 Vue.component('messy-trans-catnav', require('./components/shop/TransCatNav.vue').default);

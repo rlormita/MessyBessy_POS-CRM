@@ -80,6 +80,12 @@ export default {
   methods: {
     createUser() {
       this.form.post("api/users");
+      //  this.hide();
+        // Toast.fire({
+        // icon: "success",
+        // title: "New Category created",
+        // });
+
     },
     show() {
       this.showModal = true;
