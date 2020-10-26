@@ -18,7 +18,8 @@ class BranchController extends Controller
     public function index(branch $branches)
     {
         $branches = branch::paginate(25);
-        return view('branches.index', compact('branches'));
+        $cashiers = Cashier::paginate(25);
+        return view('branches.index', compact('branches','cashiers'));
     }
 
     /**

@@ -79,7 +79,9 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ $branch->cashiers->id }}
+                            @foreach ($cashiers as $cashier)
+                                {{ $cashier->username }}
+                            @endforeach
                         </span>
                     </div>
                     <div class="col">
