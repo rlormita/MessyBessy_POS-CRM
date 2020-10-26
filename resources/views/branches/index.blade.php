@@ -39,6 +39,11 @@
                             Operating Hours
                         </span>
                     </div>
+                     <div class="col">
+                        <span class="col-title">
+                            Cashier
+                        </span>
+                    </div>
                     <div class="col">
                         <span class="col-title">
                             Actions
@@ -68,9 +73,7 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title">
-<<<<<<< HEAD
-=======
+                         <span class="col-title">
                             @foreach ($cashiers as $cashier)
                                 {{ $cashier->username }}
                             @endforeach
@@ -78,7 +81,6 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
->>>>>>> cb63320aa11319f7ba3e21048c81af85df8128e3
                             <a href="{{ route('branches.show', $branch) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                 <i class="far fa-eye"></i>
                             </a>
