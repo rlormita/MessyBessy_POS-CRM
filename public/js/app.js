@@ -2568,7 +2568,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createCategory: function createCategory() {
       this.form.post("api/category");
-      console.log(this.category);
+      this.hide();
+      Toast.fire({
+        icon: "success",
+        title: "New Category created"
+      });
     },
     show: function show() {
       this.showModal = true;
