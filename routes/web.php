@@ -37,9 +37,6 @@ Route::get('/transactions', function () {
     return view('shop.app');
 });
 
-
-// Route::get('{path}', [DashboardController::class, 'index'])->where( 'path', '([A-z]+)?' );
-
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
 Route::post('employee/cashier/store', [App\Http\Controllers\CashierController::class, 'store'])->name('cashier.store');
@@ -76,6 +73,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
     Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
+
+
 });
-
-

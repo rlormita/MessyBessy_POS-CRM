@@ -1,164 +1,124 @@
 <template>
-  <div class="overview-wrapper product-index">
-    <div class="overview-content">
-      <div class="overview-header">
-        <h3 class="overview-header-title"><strong>Manage</strong> Employees</h3>
-        <div class="overview-new">
-          <modal ref="modal"></modal>
-          <button class="new-item" @click="openModal">
-            <i class="fas fa-plus"></i>
-            <span>New Employee</span>
-          </button>
-        </div>
-      </div>
-      <div class="overview-table">
-        <div class="table">
-          <div class="row row-header">
-            <div class="col">
-              <span class="col-title"> Profile Photo </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Last Name </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> First Name </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Email </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Last Login </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Role </span>
-            </div>
-          </div>
-          <div class="row" v-for="user in users" :key="user.id">
-            <div class="col">
-              <span class="col-title">
-                <img
-                  v-bind:src="
-                    '/img/uploads/profile_image/' + user.profile_image
-                  "
-                  style="border-radius: 50px"
-                />
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                <strong>{{ user.lastName }} </strong>
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                <strong>{{ user.firstName }}</strong>
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                <strong>{{ user.email }}</strong>
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                <strong>{{ user.last_login_at | date }}</strong>
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Role </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                <a
-                  href="#"
-                  class="btn btn-link"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="More Details"
-                >
-                  <i class="far fa-eye"></i>
-                </a>
-              </span>
-              <span class="col-title">
-                <a
-                  href="#"
-                  class="btn btn-link"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Edit Product"
-                >
-                  <i class="far fa-edit"></i>
-                </a>
-              </span>
-              <span class="col-title">
-                <form action="#" method="post" class="d-inline">
-                  <!-- @csrf
-                                @method('delete') -->
-                  <a
-                    @click="deleteUser(user.id)"
-                    class="btn btn-link"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Delete Product"
-                  >
-                    <i class="far fa-trash-alt"></i>
-                  </a>
-                </form>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <component
-        v-bind:is="component"
-        v-on:update:is="component = $event"
-      ></component>
-    </div>
-  </div>
+	<div class="overview-wrapper product-index">
+		<div class="overview-content">
+			<div class="overview-header">
+				<h3 class="overview-header-title">
+					<strong>Manage</strong> Employees
+				</h3>
+				<div class="overview-new">
+					<button class="new-item" @click="component = 'addEmployee'">
+						<i class="fas fa-plus"></i>
+						<span>New Employee</span>
+					</button>
+				</div>
+			</div>
+			<div class="overview-table">
+				<div class="table">
+					<div class="row row-header">
+						<div class="col">
+							<span class="col-title">
+								Profile Photo
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								Last Name
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								First Name
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								Email
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								Last Login
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								Actions
+							</span>
+						</div>
+					</div>
+					<div class="row" v-for="(user, index) in user" :key="user.id">
+						<div class="col">
+							<span class="col-title">
+								<img :src="`img/uploads/profile_image/${ user.image }`" style="border-radius: 50px;" />
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								<strong>{{ user.lastName }}</strong>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								<strong>{{ user.firstName }}</strong>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								<strong>{{ user.email }}</strong>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								<strong>{{ user.last_log }}</strong>
+							</span>
+						</div>
+						<div class="col">
+							<span class="col-title">
+								Actions
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<component v-bind:is="component" v-on:update:is="component = $event"></component>
+		</div>
+	</div>
 </template>
 
 <script>
-import modal from "./addEmployee.vue";
-export default {
-  components: { modal },
-  data() {
-    return {
-      users: {},
-    };
-  },
+	import addEmployee from './addEmployee.vue';
 
-  methods: {
-    loadUsers() {
-      axios.get("api/users").then(({ data }) => (this.users = data.data));
+    export default {
+    	components: {
+    		'addEmployee': addEmployee,
+    	},
+        data: function () {
+            return {
+				component: '',
+				user: []
+            }
+        },
+        mounted() {
+            this.loadEmployees();
+        },
+        methods: {
+            /* launchModal() {
+                this.productName = 'Product 1';
+                this.productDesc = 'Product Description 1';
+                $('#productModal').modal('show');
+            }, */
+            loadEmployees: function() {
+                axios.get('/employees')
+                    .then((response) => {
+                        this.user = response.data.data;
+                        console.log(this.user);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+            
+        }
+    }
 
-      console.log(this.users);
-    },
-    openModal() {
-      this.$refs.modal.show();
-    },
-    deleteUser(id) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        axios.delete("api/users/" + id).then(() => {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        }).catch(()=>{
-          Swal.fire("Failed!", "There was something wrong.", "warning");
-        });
-      });
-    },
-  },
-  created() {
-    this.loadUsers();
-    setInterval(() => {
-      this.loadUsers();
-    }, 3000);
-  },
-};
 </script>

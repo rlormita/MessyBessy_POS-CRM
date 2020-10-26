@@ -15,10 +15,12 @@ class BranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(branch $branches)
+    public function index()
     {
         $branches = branch::paginate(25);
-        return view('branches.index', compact('branches'));
+        $cashiers = Cashier::paginate(25);
+
+        return view('branches.index', compact('branches','cashiers'));
     }
 
     /**

@@ -14,8 +14,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
-        // return auth()->check();
+        return auth()->check();
     }
 
     /**
