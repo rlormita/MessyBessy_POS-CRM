@@ -2665,7 +2665,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadCategory();
+    setInterval(function () {
+      _this2.loadCategory();
+    }, 3000);
   }
 });
 
@@ -3054,7 +3059,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this3 = this;
+
     this.loadProduct();
+    setInterval(function () {
+      _this3.loadProduct();
+    }, 3000);
     this.loadCategory();
   }
 });

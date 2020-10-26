@@ -161,6 +161,7 @@ export default {
 
   created() {
     this.loadProduct();
+    setInterval(() => {this.loadProduct()}, 3000);
     this.loadCategory()
   },
 };

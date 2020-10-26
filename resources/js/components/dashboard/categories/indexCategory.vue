@@ -64,6 +64,7 @@ export default {
   },
   created() {
     this.loadCategory();
+    setInterval(() => {this.loadCategory()}, 3000);
   },
 };
 </script>
