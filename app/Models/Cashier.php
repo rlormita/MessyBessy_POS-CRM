@@ -11,13 +11,18 @@ class Cashier extends Model
     protected $table = 'cashiers';
     protected $fillable = [
         'branch_id',
+        'cashier_role_id',
         'username',
         'firstName',
         'lastName',
         'email',
-        'phone_no',
+        'phone',
         'password',
     ];
+
+    public function branch(){
+        return $this->belongsTo('App\Models\Cashier');
+    }
 
     public function role(){
         return $this->belongsTo('App\Models\CashierRole');

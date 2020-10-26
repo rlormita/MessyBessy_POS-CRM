@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard/categories', ProductCategoryController::class);
     Route::resource('/dashboard/employees', EmployeeController::class);
     Route::resource('cashier_role', CashierRoleController::class);
+    Route::resource('cashier', CashierController::class);
     // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');

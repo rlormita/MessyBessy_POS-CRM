@@ -1,156 +1,223 @@
-@extends('layouts.app')
+@extends('dashboard.main', ['page' => 'List of Categories', 'pageSlug' => 'categories', 'section' => 'inventory'])
 
 @section('content')
 
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img style="width: 90%;" src="{{ asset('img/icon.png') }}" />
+<div class="overview-wrapper product-index">
+    <div class="overview-content">
+        <div class="overview-header">
+            <h3 class="overview-header-title">
+                <strong>Employees Overview</strong> - Cashiers  <br>
+            </h3>
+            <div class="overview-new">
+                <button class="new-item" data-toggle="modal" data-target="#modal">
+                    <i class="fas fa-plus"></i>
+                    <span>Cashier</span>
+                </button>
             </div>
-            <div class="sidebar-brand-text mx-3">EasyBessy Admin</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{url('/dashboard')}}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Interface
+            <div class="overview-new">
+                <button onclick="window.location.href='{{ route('cashier_role.view') }}'" class="new-item">
+                    <i class="fas"></i>
+                    <span>View Cashier Roles</span>
+                </button>
+            </div>
         </div>
-
-
-        <div class="nav-items">
-            <!-- Nav Item - Product Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/products')}}">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/categories')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/stocks')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Stocks</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/branches')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Branches</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 0px !important;" class="nav-item">
-                <a style="padding: 15px; padding-bottom:0px" class="nav-link" href="{{url('/employee')}}">
-                    <i class="fas fa-table"></i>
-                    <span>Employees</span>
-                </a>
-            </li>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-12 order-xl-1">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">{{ __('Employee Management') }}</h3>
-                                <h4 class="mb-0">{{ __('Cashiers') }}</h4>
-                            </div>
-                            <div class="createAccount-btn">
-                            <a href="{{ route('cashier.create') }}" class="btn btn-primary card-shadow-hover">
-                                    + Cashier
-                                    <i class="far fa-chevron-right"></i>
-                                </a>
-                            </div>
-
-                            <div class="login-btn">
-                            <a href="{{ route('cashier_role.view')}}" class="btn btn-primary card-shadow-hover">
-                                    View Cashier Roles
-                                    <i class="far fa-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            @include('alerts.success')
-
-                            <div class="">
-                                <table class="table tablesorter " id="">
-                                    <thead class=" text-primary">
-                                        <th scope="col">{{ __('Cashier Role') }}</th>
-                                        <th scope="col">{{ __('First Name') }}</th>
-                                        <th scope="col">{{ __('Last Name') }}</th>
-                                        <th scope="col">{{ __('Phone') }}</th>
-                                        <th scope="col">{{ __('Email') }}</th>
-                                        <th scope="col">{{ __('Created at') }}</th>
-                                        <th scope="col">{{ __('Updated at') }}</th>
-                                        <th scope="col">{{ __('Last Login') }}</th>
-                                        <th scope="col"></th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($cashiers as $cashier)
-                                            <tr>
-                                            <td>{{ $cashier->cashier_role_id}}</td>
-                                                <td>{{ $cashier->firstName }}</td>
-                                                <td>{{ $cashier->lastName }}</td>
-                                                <td>{{ $cashier->phone}}</td>
-                                                <td>
-                                                    <a href="mailto:{{ $cashier->email }}">{{ $cashier->email }}</a>
-                                                </td>
-                                                <td>{{ $cashier->created_at->format('d/m/Y H:i') }}</td>
-                                                <td>{{ $cashier->updated_at->format('d/m/Y H:i') }}</td>
-                                                <td>{{ $cashier->last_login_at }}</td>
-                                                <td class="text-right">
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="tim-icons icon-settings-gear-63"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                                                <form action="{{ route('employee.destroy', $user) }}" method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __('Are you sure you want to delete this user?') }}') ? this.parentElement.submit() : ''">
-                                                                                {{ __('Delete') }}
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="card-footer py-4">
-                            <nav class="d-flex justify-content-end" aria-label="...">
-                                {{ $cashiers->links() }}
-                            </nav>
-                        </div>
+        <div class="overview-table">
+            <div class="table">
+                <div class="row row-header">
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Branch') }}
+                        </span>
                     </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Cashier Role') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('First Name') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Last Name') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Phone') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Email') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Created at') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Last Login') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ __('Actions') }}
+                        </span>
+                    </div>
+                </div>
+                @foreach($cashiers as $cashier)
+                <div class="row">
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->branch_id }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title"  v-for="role in roles">
+                            {{ $cashier->cashier_role_id }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->firstName }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->lastName }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->phone }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->email }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->created_at->format('d/m/Y H:i') }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $cashier->last_login_at }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <span class="col-title">
+                                <form action="{{ route('cashier.destroy', $cashier) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this cashier? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <form method="post" action="{{ route('cashier.store') }}" autocomplete="off" enctype="multipart/form-data">
+                      @csrf
+                      <div class="modal-header">
+                          <h5 class="modal-title">Add Cashier</h5>
+                          <div class="modal-action">
+                              <a @click="hideModal" class="close-btn" data-dismiss="modal">
+                                  <i class="fas fa-times"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="modal-body">
+                            <div class="form-group">
+                                <select name="branch_id" id="branch" required pattern="\S+.*" value="{{ old('branch_id') }}">
+                                    @foreach ($branches as $branch)
+                                         @if($branch['id'] == old('document'))
+                                            <option value="{{$branch['id']}}" selected>{{$branch['branch_name']}}</option>
+                                        @else
+                                            <option value="{{$branch['id']}}">{{$branch['branch_name']}}</option>
+                                         @endif
+                                    @endforeach
+                                </select>
+                                <label for="branch_id">Branch</label>
+                            </div>
+                            <div class="form-group">
+                                <select name="cashier_role_id" id="role" required pattern="\S+.*" value="{{ old('cashier_role_id') }}">
+                                    @foreach ($roles as $role)
+                                         @if($role['id'] == old('document'))
+                                            <option value="{{$role['id']}}" selected>{{$role['cashier_role_title']}}</option>
+                                        @else
+                                            <option value="{{$role['id']}}">{{$role['cashier_role_title']}}</option>
+                                         @endif
+                                    @endforeach
+                                </select>
+                                <label for="branch_id">Cashier Role</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" required pattern="\S+.*" value="{{ old('username') }}">
+                                <label for="username">Username</label>
+                              </div>
+                            <div class="form-group">
+                              <input type="text" name="firstName" id="firstName" required pattern="\S+.*" value="{{ old('firstName') }}">
+                              <label for="firstName">First Name</label>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" name="lastName" id="lastName" required pattern="\S+.*" value="{{ old('lastName') }}">
+                              <label for="lastName">Last Name</label>
+                            </div>
+                            <div class="form-group">
+                              <input type="email" name="email" id="email" required pattern="\S+.*" value="{{ old('email') }}">
+                              <label for="email">Email Address</label>
+                            </div>
+                            <div class="form-group">
+                              <input type="phone" name="phone" id="phone" required pattern="\S+.*" value="{{ old('phone') }}">
+                              <label for="phone">Phone Number</label>
+                            </div>
+                            <div class="form-group row label">
+                                <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+                            </div>
+                            <div class="form-group row">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                 @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group row label">
+                                <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-input">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success mt-4">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 @endsection

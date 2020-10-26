@@ -6,12 +6,18 @@
     <div class="overview-content">
         <div class="overview-header">
             <h3 class="overview-header-title">
-                <strong>Employees</strong> Overview
+                <strong>Employees Overview</strong> - Admin  <br>
             </h3>
             <div class="overview-new">
                 <button onclick="window.location.href='{{ route('register') }}'" class="new-item">
                     <i class="fas fa-plus"></i>
                     <span>Add Employee</span>
+                </button>
+            </div>
+            <div class="overview-new">
+                <button onclick="window.location.href='{{ route('cashier.index') }}'" class="new-item">
+                    <i class="fas"></i>
+                    <span>View Cashier</span>
                 </button>
             </div>
         </div>
@@ -40,12 +46,12 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ __('Created at') }}
+                            {{ __('') }}
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ __('Updated at') }}
+                            {{ __('Created at') }}
                         </span>
                     </div>
                     <div class="col">
@@ -64,7 +70,7 @@
                     <div class="col">
                         <span class="col-title">
                             @if (is_null($user->profile_image))
-                                <img src="{{ asset('img/user/default.jpg') }}" style="width:50px; height:50px; border-radius:50%;"> 
+                                <img src="{{ asset('img/user/default.jpg') }}" style="width:50px; height:50px; border-radius:50%;">
                             @else
                                 <img src="{{ asset('./img/uploads/profile_image/'.$user->profile_image) }}" style="width:50px; height:50px; border-radius:50%;" />
                             @endif
@@ -81,18 +87,18 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title">
+                        <span class="col-title" wrap="hard">
                             {{ $user->email }}
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ $user->created_at->format('d/m/Y H:i') }}
+
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            {{ $user->updated_at->format('d/m/Y H:i') }}
+                            {{ $user->created_at->format('d/m/Y H:i') }}
                         </span>
                     </div>
                     <div class="col">
