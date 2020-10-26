@@ -41,11 +41,16 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
+                            Cashier
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
                             Actions
                         </span>
                     </div>
                 </div>
-                @foreach($branches as $branch)
+            @foreach($branches as $branch)
                 <div class="row">
                     <div class="col">
                         <span class="col-title">
@@ -64,7 +69,17 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
+                            {{ $branch->branch_country }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
                             {{ $branch->branch_operating_hours }}
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            {{ $branch->cashiers->id }}
                         </span>
                     </div>
                     <div class="col">
