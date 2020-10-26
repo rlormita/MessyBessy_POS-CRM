@@ -19,10 +19,7 @@ class BranchController extends Controller
     {
         $branches = branch::paginate(25);
         $cashiers = Cashier::paginate(25);
-<<<<<<< HEAD
 
-=======
->>>>>>> cb63320aa11319f7ba3e21048c81af85df8128e3
         return view('branches.index', compact('branches','cashiers'));
     }
 
