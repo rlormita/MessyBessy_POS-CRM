@@ -10,7 +10,7 @@
             </a>
           </div>
         </div>
-        <form class="card-form" v-on:submit.prevent="createProduct()">
+        <form enctype="multipart/form-data" class="card-form" v-on:submit.prevent="createProduct()">
           <div class="card-body">
             <div class="form-group">
               <input
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
               <select id="category"  v-model="product.product_category_id" required pattern="\S+.*">
-                <option v-for="(categories, index) in category" :key="index"  :value="categories.name">
+                <option v-for="(categories, index) in category" :key="index"  :value="categories.id">
                   {{ categories.name }}
                 </option>
                 <input type="hidden" />
@@ -73,7 +73,7 @@
               <label for="price">Price</label>
             </div>
             <div class="form-group">
-              <input type="file" id="image" @change="uploadImage" />
+              <input type="file" ref="file" id="image" @change="uploadImage" />
               <label for="image">Upload Image</label>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default {
         stock_qty: "",
         minimum_stock: "",
         price: "",
-        // image: "",
+        image: "",
       }),
 
       seen: true,
@@ -116,17 +116,29 @@ export default {
     hideModal(event) {
       this.$emit("update:is", "");
     },
-    uploadImage(event) {
-      console.log(event.target.files);
+    uploadImage(e) {
+          let file = e.target.files[0];
+          console.log(file);
+          let reader = new FileReader();
+          if(file['size'] < 2111775){
+          reader.onloadend = (file)=>{
+              this.product.image = reader.result;
+          }
+           reader.readAsDataURL(file)
+          }else{
+            console.log('file size can not be bigger than 2mb');
+          }
+        
     },
+    
     loadCategory() {
       axios.get("api/category").then(({ data }) => (this.category = data.data));
       console.log(this.category);
     },
 
     async createProduct() {
-      this.product
-        .post("api/product", {})
+      await this.product
+        .post("api/product")
         .then((response) => {
           console.log(response.data);
           this.$emit("update:is", "");

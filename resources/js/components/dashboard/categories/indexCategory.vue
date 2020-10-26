@@ -20,18 +20,6 @@
               <span class="col-title"> Name </span>
             </div>
             <div class="col">
-              <span class="col-title"> Product Count </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Stock Count </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Defective Stock Count </span>
-            </div>
-            <div class="col">
-              <span class="col-title"> Product Average Price </span>
-            </div>
-            <div class="col">
               <span class="col-title"> Actions </span>
             </div>
           </div>
@@ -39,26 +27,6 @@
             <div class="col">
               <span class="col-title">
                 {{ categories.name }}
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                {{ category.product_count }}
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                {{ category.total_stock }}
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                {{ category.defective_stock }}
-              </span>
-            </div>
-            <div class="col">
-              <span class="col-title">
-                {{ category.ave_price }}
               </span>
             </div>
             <div class="col">

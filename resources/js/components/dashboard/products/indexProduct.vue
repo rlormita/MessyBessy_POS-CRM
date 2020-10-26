@@ -59,8 +59,10 @@
               </span>
             </div>
             <div class="col">
-              <span class="col-title" v-for="categories in category" :key="categories.id">
-                <center>{{ categories.name }}</center>
+               <!-- v-for="categories in category" :key="categories.id" -->
+              <span class="col-title">
+
+                <center>{{products.product_category_id}}</center>
               </span>
             </div>
             <div class="col">
@@ -70,12 +72,12 @@
             </div>
             <div class="col">
               <span class="col-title">
-                <center>{{ products.in_stock }}</center>
+                <center>{{ products.stock_qty }}</center>
               </span>
             </div>
             <div class="col">
               <span class="col-title">
-                <center>{{ products.min_stock }}</center>
+                <center>{{ products.minimum_stock }}</center>
               </span>
             </div>
             <div class="col">
@@ -85,12 +87,34 @@
             </div>
             <div class="col">
               <span class="col-title">
-                <center><img :src="`img/products/${product.image}`" /></center>
+                <center><img v-bind:src="
+                    '/img/products/' + products.image" /></center>
               </span>
             </div>
             <div class="col">
-              <span class="col-title"> Actions </span>
+                
             </div>
+             <div class="col">
+                        <span class="col-title">
+                            <a href="#" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                <i class="far fa-eye"></i>
+                            </a>
+                        </span>
+                        <span class="col-title">
+                            <a href="#" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </span>
+                        <span class="col-title">
+                            <form action="#" method="post" class="d-inline">
+                                <!-- @csrf
+                                @method('delete') -->
+                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </span>
+                    </div>
           </div>
         </div>
       </div>

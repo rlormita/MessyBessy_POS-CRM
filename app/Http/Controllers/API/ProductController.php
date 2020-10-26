@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Http\Requests\ProductRequest;
+use Intervention\Image\Facades\Image as Image;
+use Illuminate\Http\Request;
 
 
 class ProductController extends Controller
@@ -25,32 +27,53 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, Product $model)
+    public function store(Request $request, Product $model)
 
-    {
-        // $filename = $request->file('image')->getClientOriginalName();
+    {        
+        $this->validate($request, [
+            'image' => 'required',
+        ]);
+        
+        if($request-> image){
+            // $filename = $request->file('image')->getClientOriginalName();
 
-        // $request->image->move(public_path('img/products'), $filename);
+            // $filename = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+            $filename = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+            Image::make($request->image)->resize(300, 300)->save( public_path('/img/products/' . $filename));
+            $request->merge(['image' => $filename]);
+        }
+        
 
-        // $model->name = $request->name;
-        // $model->description = $request->description;
-        // $model->product_category_id = $request->product_category_id;
-        // $model->stock_qty = $request->stock_qty;
-        // $model->minimum_stock = $request->minimum_stock;
-        // $model->price = $request->price;
-        // $model->image = $filename;
+        $model->name = $request->name;
+        $model->description = $request->description;
+        $model->product_category_id = $request->product_category_id;
+        $model->stock_qty = $request->stock_qty;
+        $model->minimum_stock = $request->minimum_stock;
+        $model->price = $request->price;
+        $model->image = $filename;
 
-        // $model->save();
+        $model->save();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'User registered successfully'
+            ]
+        );
 
-         return Product::create([
-             'name' => $request['name'],
-             'description' => $request['description'],
-             'product_category_id' => $request['product_category_id'],
-             'stock_qty' => $request['stock_qty'],
-             'minimum_stock' => $request['minimum_stock'],
-             'price' => $request['price'],
-             'image' => ['image']
-         ]);
+        // return redirect()
+        //     ->route('products.index')
+        //     ->withStatus('Product successfully registered.');
+
+        //  return Product::create([
+        //      'name' => $request['name'],
+        //      'description' => $request['description'],
+        //      'product_category_id' => $request['product_category_id'],
+        //      'stock_qty' => $request['stock_qty'],
+        //      'minimum_stock' => $request['minimum_stock'],
+        //      'price' => $request['price'],
+        //      'image' => $request[$filename]
+        //  ]);
+  
     }
 
     /**

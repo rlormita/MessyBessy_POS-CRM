@@ -67,6 +67,7 @@
             <div class="col">
               <span class="col-title"> Role </span>
             </div>
+            
           </div>
         </div>
       </div>

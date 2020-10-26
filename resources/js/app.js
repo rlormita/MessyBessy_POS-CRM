@@ -21,9 +21,6 @@ Vue.component(AlertError.name, AlertError)
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import vSelect from 'vue-select'
-Vue.component('v-select', vSelect)
-
 // ProductList vue components
 Vue.component('messy-transact', require('./components/shop/FrontPage.vue').default);
 Vue.component('messy-trans-catnav', require('./components/shop/TransCatNav.vue').default);
