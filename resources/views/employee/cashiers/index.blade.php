@@ -189,6 +189,13 @@
                               <label for="phone">Phone Number</label>
                             </div>
                             <div class="form-group">
+                              <input type="phone" name="phone" id="phone" required pattern="\S+.*" value="{{ old('phone') }}">
+                              <label for="phone">Phone Number</label>
+                            </div>
+                            <div class="form-group row label">
+                                <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
+                            </div>
+                            <div class="form-group row">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                  @error('password')
@@ -202,6 +209,15 @@
                             <div class="form-group">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            </div>
+
+                            <div class="form-group row label">
+                                <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-input">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
                             </div>
 
                         </div>
