@@ -21,24 +21,15 @@ use App\Http\Controllers\CashierController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 /* Route::get('/transactions', function () {
     return view('transactions\transaction');
 }); */
-Route::get('/dashboard/index', function () {
-    return view('dashboard.main');
-});
 
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
     return view('shop.app');
 });
-
-
-// Route::get('{path}', [DashboardController::class, 'index'])->where( 'path', '([A-z]+)?' );
 
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');
 Route::get('employee/cashier/create', [App\Http\Controllers\CashierController::class, 'create'])->name('cashier.create');
@@ -50,12 +41,17 @@ Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleContr
 Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard/index', function () {
+        return view('dashboard.main');
+    });
     Route::resource('/dashboard/products', ProductController::class);
     Route::resource('/dashboard/categories', ProductCategoryController::class);
     Route::resource('/dashboard/employees', EmployeeController::class);
     Route::resource('cashier_role', CashierRoleController::class);
+    Route::resource('cashier', CashierController::class);
     // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
@@ -76,6 +72,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
     Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
+
+
 });
-
-

@@ -68,7 +68,7 @@
                     </div>
                     <div class="col">
                         <span class="col-title" v-for="category in categories">
-                            <center>{{ $product->product_category_id }}</center>
+                            <center>{{ $product->category->name }}</center>
                         </span>
                     </div>
                     <div class="col">

@@ -3,11 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\API\UserController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,11 +14,13 @@ use App\Http\Controllers\API\UserController;
 |
 */
 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategoryController;
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('users', UserController::class);
-
-Route::get('categories', 'ProductCategoryController@result');
-Route::resource('/products', ProductController::class);
+Route::get('/categories', 'App\Http\Controllers\ProductCategoryController@result');
+Route::get('/products', 'App\Http\Controllers\ProductController@result');

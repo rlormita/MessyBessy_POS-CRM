@@ -39,7 +39,7 @@
 					</div>
 					<div class="sidebar-item-group">
 						<div class="sidebar-item">
-							<router-link to="/employee" tag="a" class="nav-link item" exact>
+							<router-link to="/dashboard/admin/employees" tag="a" class="nav-link item" exact>
 								<i class="far fa-user"></i>
 								<span>Employees</span>
 							</router-link>

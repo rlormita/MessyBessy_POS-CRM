@@ -26,7 +26,7 @@ class CashierRoleController extends Controller
 
     public function edit(CashierRole $role)
     {
-        
+
         return view('employee.cashiers.roles.edit', compact('role'));
     }
 
@@ -70,7 +70,7 @@ class CashierRoleController extends Controller
 
         $role->delete();
 
-        return back()->withStatus('User successfully deleted.');
+        return back()->withStatus('Cashier Role successfully deleted.');
     }
 
 }

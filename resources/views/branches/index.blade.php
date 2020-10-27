@@ -39,6 +39,11 @@
                             Operating Hours
                         </span>
                     </div>
+                     <div class="col">
+                        <span class="col-title">
+                            Cashier
+                        </span>
+                    </div>
                     <div class="col">
                         <span class="col-title">
                             Actions
@@ -65,6 +70,13 @@
                     <div class="col">
                         <span class="col-title">
                             {{ $branch->branch_operating_hours }}
+                        </span>
+                    </div>
+                    <div class="col">
+                         <span class="col-title">
+                            @foreach ($cashiers as $cashier)
+                                {{ $cashier->username }}
+                            @endforeach
                         </span>
                     </div>
                     <div class="col">

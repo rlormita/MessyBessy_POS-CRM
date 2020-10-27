@@ -31,6 +31,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="{{ asset('fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/dashboard.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -46,10 +47,10 @@
                     <div class="header">
                         <a href="/home">
                             <div class="header-icon">
-                                <img src="{{ asset('img/icon.png') }}" />
+                                <img src="{{ asset('img/icon.png') }}"/>
                             </div>
                             <div class="header-title">
-                                <span>EasyBessy</span>
+                                Easy<span>Bessy</span>
                             </div>
                         </a>
                     </div>
@@ -65,16 +66,16 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <router-link class="nav-link item" to="/product" id="link-products">
+                            <a class="nav-link item" href="{{ url('/dashboard/products') }}" id="link-products">
                                 <i class="far fa-shopping-bag"></i>
                                 <span>Products</span>
-                            </router-link>
+                            </a>
                         </div>
                         <div class="sidebar-item">
-                            <router-link class="nav-link item" to="/category" id="link-categories">
+                            <a class="nav-link item" href="{{ url('/dashboard/categories') }}" id="link-categories">
                                 <i class="far fa-table"></i>
                                 <span>Categories</span>
-                            </router-link>
+                            </a>
                         </div>
                         <div class="sidebar-item">
                             <a class="nav-link item" href="{{ url('/dashboard/stocks') }}" id="link-stocks">
@@ -85,18 +86,18 @@
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <router-link class="nav-link item" to="/branch" id="link-employees">
+                            <a class="nav-link item" href="{{ url('/dashboard/branches') }}" id="link-employees">
                                 <i class="fas fa-store"></i>
                                 <span>Branches</span>
-                            </router-link>
+                            </a>
                         </div>
                     </div>
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <router-link to="/dashboard/employee" class="nav-link item" id="link-employees">
+                            <a class="nav-link item" href="{{ url('/dashboard/employees') }}" id="link-employees">
                                 <i class="fas fa-user"></i>
                                 <span>Employees</span>
-                            </router-link>
+                            </a>
                         </div>
                     </div>
                     <div class="sidebar-item-group">
@@ -108,16 +109,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
         <div class="main-content">
             <div class="dashboard-content">
-                <router-view></router-view>
+                @yield('content')
             </div>
         </div>
     </div>
     </script>
 
 </body>
-
 </html>

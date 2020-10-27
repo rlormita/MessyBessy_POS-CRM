@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Http\Requests\ProductCategoryRequest;
 
-
-class UserController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
-        
+        return ProductCategory::latest()->paginate(10);
+
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -28,18 +29,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8'
-        ]);
-
-        return User::create([
-            'firstName' => $request['firstName'],
-            'lastName' => $request['lastName'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+        return ProductCategory::create([
+            'name' => $request['name'],
         ]);
     }
 
@@ -74,10 +65,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $category = ProductCategory::findOrFail($id);
 
-        $user->delete();
+        $category->delete();
 
-        return ['message' => "User Deleted"];
-    }
+
+
+        return ['message', 'Successfully Deleted'];    }
 }

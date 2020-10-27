@@ -36,6 +36,16 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
+                            Sold
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Unsold
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
                             Action
                         </span>
                     </div>
@@ -59,11 +69,59 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
+                            <strong>10</strong>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            <strong>70</strong>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
                             <a href="{{ route('stocks.show', $branch->id ) }}">View Stock Level</a>
                         </span>
                     </div>
                 </div>
                 @endforeach
+                <div class="row row-header">
+                    <div class="col">
+                        <span class="col-title">
+                            
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            Unsold = 69
+                        </span><br/>
+                        <span class="col-title">
+                            Sold = 19
+                        </span><br/>
+                        <span class="col-title">
+                            Total = 79
+                        </span>
+                    </div>
+                    <div class="col">
+                        <span class="col-title">
+                            
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
 

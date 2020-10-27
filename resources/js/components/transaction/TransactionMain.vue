@@ -117,7 +117,7 @@
                 $('#productModal').modal('show');
             }, */
             loadCategories: function() {
-                axios.get('/categories')
+                axios.get('/api/categories')
                     .then((response) => {
                         this.categories = response.data.data;
                     })
@@ -127,9 +127,9 @@
             },
             loadProducts: function() {
             	this.loader = true;
-                axios.get('/products')
+                axios.get('/api/products')
                     .then((response) => {
-                        this.products = response.data;
+                        this.products = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);

@@ -4,11 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Stock;
 
 
-class UserController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,30 +16,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
         
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,  Stock $stock)
     {
-        $this->validate($request, [
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8'
-        ]);
+        $stock->create($request->all());
 
-        return User::create([
-            'firstName' => $request['firstName'],
-            'lastName' => $request['lastName'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+        return['message', 'store successfully'];
     }
 
     /**
@@ -74,10 +63,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-
-        $user->delete();
-
-        return ['message' => "User Deleted"];
+        //
     }
 }

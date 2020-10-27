@@ -5,6 +5,7 @@ use App\Models\Cashier;
 use App\Models\branch;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CashierRequest;
+use App\Models\CashierRole;
 use Illuminate\Http\Request;
 
 class CashierController extends Controller
@@ -12,8 +13,9 @@ class CashierController extends Controller
     public function index(Cashier $model)
     {
         $cashiers = Cashier::paginate(25);
-
-        return view('employee.cashiers.index', compact('cashiers'));
+        $branches = Branch::paginate(25);
+        $roles = CashierRole::paginate(25);
+        return view('employee.cashiers.index', compact('cashiers', 'branches', 'roles'));
     }
 
     public function create(branch $model)
@@ -25,6 +27,7 @@ class CashierController extends Controller
     public function store(CashierRequest $request, Cashier $model)
     {
         $model->branch_id = $request->branch_id;
+        $model->cashier_role_id = $request->cashier_role_id;
         $model->username = $request->username;
         $model->firstName = $request->firstName;
         $model->lastName = $request->lastName;
@@ -37,6 +40,15 @@ class CashierController extends Controller
         return redirect()
             ->route('cashier.index')
             ->withStatus('Product successfully registered.');
+    }
+
+    public function destroy(cashier $cashier)
+    {
+        $cashier->delete();
+
+        return redirect()
+            ->route('cashier.index')
+            ->withStatus('Cashier successfully deleted');
     }
 
 }
