@@ -67,8 +67,8 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title" v-for="category in categories">
-                            <center>{{ $product->category->name }}</center>
+                        <span class="col-title">
+                            <center>{{$product->category->name}}</center>
                         </span>
                     </div>
                     <div class="col">
