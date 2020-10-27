@@ -73,9 +73,13 @@
                         </span>
                     </div>
                     <div class="col">
+                         @foreach($cashiers as $cashier)
                          <span class="col-title">
-                            {{$branch->cashier->firstName}}
+                            @if($cashier['branch_id']==$branch['id'])
+                                {{$cashier->username}}
+                            @endif
                         </span>
+                        @endforeach
                     </div>
                     <div class="col">
                         <span class="col-title">
