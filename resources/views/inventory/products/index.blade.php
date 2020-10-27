@@ -146,8 +146,13 @@
                         </div>
                         <div class="form-group">
                             <select name="product_category_id" id="category" required pattern="\S+.*" value="{{ old('product_category_id') }}">
-                                <option value="1">Man's Care</option>
-                                <option value="2">Home and House Care</option>
+                                @foreach ($categories as $category)
+                                            @if($category['id'] == old('document'))
+                                                <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
+                                            @else
+                                                <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                            @endif
+                                @endforeach
                             </select>
                             <label for="category">Category</label>
                         </div>

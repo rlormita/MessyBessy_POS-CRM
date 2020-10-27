@@ -29,10 +29,11 @@ class ProductController extends Controller
         // $products = Product::paginate(25);
 
         // return view('inventory.products.index', compact('products'));
+        $categories = ProductCategory::paginate(25);
         $products = Product::paginate(25);
 
 
-        return view('inventory.products.index', compact('products'));
+        return view('inventory.products.index', compact('products','categories'));
     }
 
     /**
