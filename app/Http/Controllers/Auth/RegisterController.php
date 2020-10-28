@@ -40,7 +40,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+//Hello
     /**
      * Get a validator for an incoming registration request.
      *
