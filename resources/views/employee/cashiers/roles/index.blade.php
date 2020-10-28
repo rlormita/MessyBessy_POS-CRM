@@ -53,7 +53,7 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title"  v-for="role in roles">
+                        <span class="col-title">
                             {{ $role->cashier_role_title }}
                         </span>
                     </div>

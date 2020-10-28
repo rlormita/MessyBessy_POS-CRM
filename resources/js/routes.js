@@ -1,4 +1,4 @@
-/* import Vue from 'vue';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import ExampleComponent from './components/ExampleComponent';
 import DashboardMain from './components/dashboard/DashboardMain';
@@ -8,7 +8,6 @@ import IndexCategories from './components/dashboard/categories/indexCategory';
 import IndexEmployees from './components/dashboard/admin/indexEmployee';
 
 Vue.use(VueRouter);
-
 
 let router = new VueRouter({
 	base: '/',
@@ -23,5 +22,3 @@ let router = new VueRouter({
 });
 
 export default router;
-
-*/

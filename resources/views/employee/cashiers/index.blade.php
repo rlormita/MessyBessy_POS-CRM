@@ -78,9 +78,13 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title"  v-for="role in roles">
-                            {{ $cashier->cashier_role_id }}
+                        @foreach($roles as $role)
+                        <span class="col-title">
+                            @if($cashier['cashier_role_id']==$role['id'])
+                                {{ $role->cashier_role_title }}
+                            @endif
                         </span>
+                        @endforeach
                     </div>
                     <div class="col">
                         <span class="col-title">
@@ -188,13 +192,6 @@
                               <input type="tel" name="phone" id="phone" required pattern="\S+.*" value="{{ old('phone') }}" maxlength="13">
                               <label for="phone">Phone Number</label>
                             </div>
-                            <div class="form-group">
-                              <input type="phone" name="phone" id="phone" required pattern="\S+.*" value="{{ old('phone') }}">
-                              <label for="phone">Phone Number</label>
-                            </div>
-                            <div class="form-group row label">
-                                <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
-                            </div>
                             <div class="form-group row">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
@@ -210,16 +207,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
                             </div>
-
-                            <div class="form-group row label">
-                                <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                            </div>
-                            <div class="form-group row">
-                                <div class="form-input">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn btn-success mt-4">Save</button>
