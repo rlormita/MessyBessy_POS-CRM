@@ -18,6 +18,7 @@ return [
         'passwords' => 'users',
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -46,6 +47,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'cashier' => [
+            'driver' => 'session',
+            'provider' => 'cashiers',
+        ],
+
+        'api-cashier' => [
+            'driver' => 'token',
+            'provider' => 'cashiers',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +80,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'cashiers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Cashier::class,
         ],
 
         // 'users' => [
@@ -95,6 +111,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'cashiers' => [
+            'provider' => 'cashiers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

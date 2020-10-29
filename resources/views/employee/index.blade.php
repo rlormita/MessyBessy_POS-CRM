@@ -15,7 +15,7 @@
                 </button>
             </div>
             <div class="overview-new">
-                <button onclick="window.location.href='{{ route('cashier.index') }}'" class="new-item">
+                <button onclick="window.location.href='{{ route('cashier.view') }}'" class="new-item">
                     <i class="fas"></i>
                     <span>View Cashier</span>
                 </button>
@@ -87,7 +87,7 @@
                         </span>
                     </div>
                     <div class="col">
-                        <span class="col-title" wrap="hard">
+                        <span class="col-title">
                             {{ $user->email }}
                         </span>
                     </div>
@@ -108,7 +108,15 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            Actions
+                            <span class="col-title">
+                                <form action="{{ route('employee.destroy') }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this cashier? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </span>
                         </span>
                     </div>
                 </div>

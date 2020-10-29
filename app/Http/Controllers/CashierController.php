@@ -10,7 +10,14 @@ use Illuminate\Http\Request;
 
 class CashierController extends Controller
 {
-    public function index(Cashier $model)
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+
+    public function view(Cashier $model)
     {
         $cashiers = Cashier::paginate(25);
         $branches = Branch::paginate(25);
@@ -38,7 +45,7 @@ class CashierController extends Controller
         $model->save();
 
         return redirect()
-            ->route('cashier.index')
+            ->route('cashier.view')
             ->withStatus('Product successfully registered.');
     }
 
@@ -47,7 +54,7 @@ class CashierController extends Controller
         $cashier->delete();
 
         return redirect()
-            ->route('cashier.index')
+            ->route('cashier.view')
             ->withStatus('Cashier successfully deleted');
     }
 
