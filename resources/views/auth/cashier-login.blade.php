@@ -12,23 +12,28 @@
     <section class="welcome-login">
         <div class="login-btn">
             <a @click="currentForm = 'LoginForm', routeLink ='routeLink'" class="btn btn-primary card-shadow-hover">
-                Login as Admin
+                Login as Cashier
                 <i class="far fa-chevron-right"></i>
             </a>
         </div>
+        <!-- div class="login-btn">
+            <a @click="currentForm = 'RegisterForm'" class="btn btn-primary card-shadow-hover">
+                Register
+                <i class="far fa-chevron-right"></i>
+            </a>
+        </div -->
     </section>
-
     <section class="welcome-form">
         <div class="form @error('email')with-error @enderror @error('password')with-error @enderror">
             <div class="card card-shadow">
                 <div class="card-header">
                     <!-- i class="far fa-chevron-left card-nav-back"></i -->
                     <h1 class="header-title">
-                        Login
+                        Cashier Login
                     </h1>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('cashier.login.submit') }}">
                         @csrf
                         <div class="form-group row">
                             <div class="form-input @error('email')error @enderror">
