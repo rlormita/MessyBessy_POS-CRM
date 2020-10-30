@@ -15,10 +15,7 @@
 						<h5>Store ID: <span id="branch-location">Messy-MOA</span></h5>
 					</div>
 					<div class="header-actions header-right">
-						<button type="button" class="btn search-btn">
-							<i class="far fa-search"></i>
-							<span>Search</span>
-						</button>
+							<input type="text"  class="form-control" placeholder="Search" wire:model="searchText"/></i>
 						<button type="button" class="btn barcode-btn">
 							<i class="far fa-barcode"></i>
 							<span>Scan</span>

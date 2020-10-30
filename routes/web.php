@@ -10,6 +10,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +30,7 @@ use App\Http\Controllers\CashierController;
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
-    return view('shop.app');
+    return view('searchform');
 });
 
 Route::get('employee/cashier', [App\Http\Controllers\CashierController::class, 'index'])->name('cashier.index');

@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!DOCTYPE html>
+<html>
 <head>
+    <title>Messy Bessy</title>
+    @livewireStyles
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,21 +40,27 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-
 <body>
-    <div id="app">
-        <main class="py-4 main-content">
-
-            @yield('content')
-        </main>
+  <div class="transaction-content">
+    <div class="transaction-container">
+      <div class="transaction-shop">
+         <div class="shop-header">
+          @livewire('search')
+          <div class="shop-body">
+            @livewire('search')
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Scripts -->
-
-
-    @livewireScripts
-
+</div>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" defer></script>
 
+    <script src="{{ asset('js/dashboard.min.js')}}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/messy.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
+@livewireScripts
 </html>
