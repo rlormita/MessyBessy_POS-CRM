@@ -14,13 +14,21 @@
                             <h5>Store ID: <span id="branch-location">Messy-MOA</span></h5>
                         </div>
                         <div class="header-actions header-right">
-                                <input type="text"  class="form-control" placeholder="Search" wire:model="searchText"/></i>
+                                <input type="text"  class="form-control" placeholder="Search" wire:model="searchText"/>
                             <button type="button" class="btn barcode-btn">
                                 <i class="far fa-barcode"></i>
                                 <span>Scan</span>
                             </button>
+                            <label for = "categories">Select Category</label>
+                            <select wire:model="categories" class="form-select form-control">
+                                @foreach ($categories as $category)
+                                     <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                @endforeach
+                            </select>
+
                         </div>
-                    </div>
+                </div>
+                
                 <div class="shop-body">
                     @foreach($products as $product)
                     <div class="product-items row">
