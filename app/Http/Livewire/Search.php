@@ -15,15 +15,15 @@ class Search extends Component
  
     public function render()
     {
-        $searchText = '%'.$this->searchText.'%';
+        $searchText = $this->searchText;
         return view('livewire.search',[
-            'products' => Product::where('name','like', $searchText)->paginate(10)
+            'products' => Product::where('name','like', '%'.$searchText.'%')->paginate(10)
         ]);
 
-        $category = '%'.$this->category.'%';
+        /* $category = '%'.$this->category.'%';
         return view('livewire.search', [
-        	'categories' => ProductCategory::where('name','like', $category)->paginate(10)
-        ]);
+        	'categories' => Product::where('name','like', $category)->paginate(10)
+        ]); */
 
 
 

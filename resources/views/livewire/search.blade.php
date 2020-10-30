@@ -21,35 +21,25 @@
                             </button>
                         </div>
                     </div>
-                    <div class="header-actions">
-                        @foreach($categories as $category)
-                        <label for="">Category</label>
-                        <select class="form-control" wire:model="category" >
-                            <option value="">Choose One</option>
-                            <option value="{{$category->name}}"></option>
-                        </select>
-                        @endforeach
-                        {{ $categories->links() }}
-                    </div>
                 <div class="shop-body">
                     @foreach($products as $product)
                     <div class="product-items row">
-                                <div class="product-item col-4">
-                                    <div class="item-info">
-                                        <div class="item-main-info">
-                                            <h4 class="item-name">
-                                                {{ $product->name }}
-                                            </h4>
-                                            <span class="item-weight">
-                                                240ml
-                                            </span>
-                                        </div>
-                                        <span class="item-price">
-                                            Php {{ $product->price }}
-                                        </span>
-                                        <img src="{{ url('img/products/') }}/{{ $product->image }}"/>
-                                    </div>
+                        <div class="product-item col-4">
+                            <div class="item-info">
+                                <div class="item-main-info">
+                                    <h4 class="item-name">
+                                        {{ $product->name }}
+                                    </h4>
+                                    <span class="item-weight">
+                                        240ml
+                                    </span>
                                 </div>
+                                <span class="item-price">
+                                    Php {{ $product->price }}
+                                </span>
+                                <img src="{{ url('img/products/') }}/{{ $product->image }}"/>
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 {{ $products->links() }}
@@ -57,7 +47,6 @@
                     
         </div>
         <div class="transaction-cart">hwh
-
         </div>
     </div>
 </div>

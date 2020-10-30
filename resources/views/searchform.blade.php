@@ -38,22 +38,13 @@
     <link href="{{ asset('css/dashboard.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/transaction.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
 <body>
-  <div class="transaction-content">
-    <div class="transaction-container">
-      <div class="transaction-shop">
-         <div class="shop-header">
-          @livewire('search')
-          <div class="shop-body">
-            @livewire('search')
-          </div>
-        </div>
-      </div>
-    </div>
+    @livewire('search')
 </div>
-</body>
+@livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" defer></script>
@@ -62,5 +53,5 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/messy.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
-@livewireScripts
+</body>
 </html>

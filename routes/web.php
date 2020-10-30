@@ -9,12 +9,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
-<<<<<<< HEAD
-
-
-=======
 use App\Http\Controllers\CashierHomeController;
->>>>>>> 6aaf2f35dd8630a889a7a22c2f5548dfaf325a3b
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +29,6 @@ use App\Http\Controllers\CashierHomeController;
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
-<<<<<<< HEAD
     return view('searchform');
 });
 
@@ -51,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
     return view('shop.app');
 });
 
@@ -107,7 +100,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cashier', [App\Http\Controllers\CashierHomeController::class, 'index'])->name('cashier.dashbaord');
 
     //Admin features
->>>>>>> 6aaf2f35dd8630a889a7a22c2f5548dfaf325a3b
     Route::get('/dashboard/index', function () {
         return view('dashboard.main');
     });
@@ -116,22 +108,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard/employees', EmployeeController::class);
     Route::resource('cashier_role', CashierRoleController::class);
     Route::resource('cashier', CashierController::class);
-<<<<<<< HEAD
     // Route::resource('employee', [App\Http\Controllers\EmployeeController::class]);
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
-=======
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
 
->>>>>>> 6aaf2f35dd8630a889a7a22c2f5548dfaf325a3b
     // Route::view('/transactions','transactions/transaction');
 
     // Route::get('/transactions','App\Http\Controllers\ProductController@productList');
 
-<<<<<<< HEAD
 	Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 	Route::get('/profile/edit',  [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 	Route::post('/profile/upload',  [App\Http\Controllers\ProfileController::class, 'upload'])->name('profile.upload');
@@ -143,9 +131,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
     Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
-
-
-=======
->>>>>>> 6aaf2f35dd8630a889a7a22c2f5548dfaf325a3b
 
 });
