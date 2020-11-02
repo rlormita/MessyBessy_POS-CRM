@@ -110,7 +110,7 @@
                         <div class="col">
                             <span class="col-title">
                                 <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image', $product->image) }}" hidden>
-                                <label for="input-image" style="border: 2px dashed #DEDFDF; padding: 10px; border-radius: 10px; width: 100%; text-align: center; cursor: pointer;">
+                                <label for="input-image" style="border: 2px dashed #DEDFDF; padding: 10px; border-radius: 10px; text-align: center; cursor: pointer;">
                                     <img src="{{ asset('sprites/upload.svg') }}" height=" 100"/><br/>
                                     <small>Upload Image</small>
                                 </label>
