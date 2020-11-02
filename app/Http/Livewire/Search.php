@@ -11,22 +11,21 @@ class Search extends Component
 {
     use WithPagination;
     public $searchText;
-    public $category;
- 
+    public $categories;
+    protected $rules = [
+        'searchText' => 'required|min:1',
+        'categories'=> 'nullable',
+    ];
     public function render()
     {
-        $searchText = '%'.$this->searchText.'%';
+        $searchText = $this->searchText;
+        $categories = $this->categories;
+        $this->categories= ProductCategory::all();
         return view('livewire.search',[
-            'products' => Product::where('name','like', $searchText)->paginate(10)
+            'products' => Product::where('name','like', '%'.$searchText.'%')->paginate(10),
+            'products' => Product::where('product_category_id', 'like', '%'.$categories.'%')->paginate(10)
+
         ]);
-
-        $category = '%'.$this->category.'%';
-        return view('livewire.search', [
-        	'categories' => ProductCategory::where('name','like', $category)->paginate(10)
-        ]);
-
-
-
     }
 }
 ?>
