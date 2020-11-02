@@ -30,8 +30,9 @@
                 </div>
                 
                 <div class="shop-body">
-                    @foreach($products as $product)
                     <div class="product-items row">
+                @if(!empty($products))
+                    @foreach($products as $product)
                         <div class="product-item col-4">
                             <div class="item-info">
                                 <div class="item-main-info">
@@ -48,8 +49,13 @@
                                 <img src="{{ url('img/products/') }}/{{ $product->image }}"/>
                             </div>
                         </div>
-                    </div>
                     @endforeach
+                @else
+                    <div class="error">
+                        <span>No products found.</span>
+                    </div>
+                @endif
+                    </div>
                 {{ $products->links() }}
                 </div>
                     
