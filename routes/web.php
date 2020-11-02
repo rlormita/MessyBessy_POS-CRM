@@ -9,15 +9,10 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
-<<<<<<< HEAD
 
 
 
 use App\Http\Controllers\CashierHomeController;
-
-=======
-use App\Http\Controllers\CashierHomeController;
->>>>>>> 54669d1ff30b4f01aecec0590c90b75b94c8f026
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +32,7 @@ use App\Http\Controllers\CashierHomeController;
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
-<<<<<<< HEAD
 
-=======
->>>>>>> 54669d1ff30b4f01aecec0590c90b75b94c8f026
     return view('searchform');
 });
 
@@ -57,10 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-<<<<<<< HEAD
 
-=======
->>>>>>> 54669d1ff30b4f01aecec0590c90b75b94c8f026
     return view('shop.app');
 });
 
@@ -128,10 +117,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
-<<<<<<< HEAD
 
-=======
->>>>>>> 54669d1ff30b4f01aecec0590c90b75b94c8f026
+
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
@@ -152,8 +139,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/cashier/role/edit',  [App\Http\Controllers\CashierRoleController::class, 'edit'])->name('cashier_role.edit');
     Route::post('employee/cashier/role/store',  [App\Http\Controllers\CashierRoleController::class, 'store'])->name('cashier_role.store');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 54669d1ff30b4f01aecec0590c90b75b94c8f026
 });

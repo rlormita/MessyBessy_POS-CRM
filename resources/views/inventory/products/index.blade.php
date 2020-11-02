@@ -52,9 +52,9 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }}</span>
                 @if (is_null(Auth::user()->profile_image))
                 <img src="{{ asset('img/user/default.jpg') }}" width="30" style="border-radius:50%;">
-               @else
+                @else
                 <img src="{{ asset('./img/uploads/profile_image/'.Auth::user()->profile_image) }}" width="30" style="border-radius:50%;" />
-               @endif
+                @endif
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -79,26 +79,8 @@
 
 </nav>
 <!-- End of Topbar -->
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  
-  </tbody>
-</table>
-<!-- <div class="overview-wrapper product-index">
+
+<div class="overview-wrapper product-index">
     <div class="overview-content">
         <div class="overview-header">
             <h3 class="overview-header-title">
@@ -117,40 +99,40 @@
                 <div class="row row-header">
                     <div class="col">
                         <span class="col-title">
-                            Product
+                           Product
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>Category</center>
+                           Category
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>Price</center>
+                            Price
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>Stock</center>
+                         Stock
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>Minimum Stocks</center>
+                            Minimum Stocks
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>Total Sold</center>
+                            Total Sold
                         </span>
                     </div>
-                    <div class="col">
+                    <div class="col image-col">
                         <span class="col-title">
-                            <center>Image</center>
+                          Image
                         </span>
                     </div>
-                    <div class="col">
+                    <div class="col tool-col">
                         <span class="col-title">
                             Actions
                         </span>
@@ -170,112 +152,114 @@
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>{{ $product->price }}</center>
+                        <center>{{ $product->price }}</center>
+                        </span>
+                    </div>
+                    <div class="col col-stock">
+                        <span class="col-title ">
+                        <center> {{ $product->stock_qty }}</center>
                         </span>
                     </div>
                     <div class="col">
                         <span class="col-title">
-                            <center>{{ $product->stock_qty }}</center>
+                        <center>  {{ $product->minimum_stock }}</center>
                         </span>
                     </div>
-                    <div class="col">
+                    <div class="col ">
                         <span class="col-title">
-                            <center>{{ $product->minimum_stock }}</center>
+                        <center> {{ $product->total_sold }}</center>
                         </span>
                     </div>
-                    <div class="col">
-                        <span class="col-title">
-                            <center>{{ $product->total_sold }}</center>
-                        </span>
+                    <div class="image">
+                        <div class="col col-image">
+                            <span class="col-title">
+                                <img src="{{ url('img/products/') }}/{{ $product->image }}" /></center>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col">
-                        <span class="col-title">
-                            <center><img src="{{ url('img/products/') }}/{{ $product->image }}"/></center>
-                        </span>
-                    </div>
-                    <div class="col">
-                        <span class="col-title">
-                            <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </span>
-                        <span class="col-title">
-                            <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
-                                <i class="far fa-edit"></i>
-                            </a>
-                        </span>
-                        <span class="col-title">
-                            <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </span>
-                    </div>
+                        <div class="col col-tools">
+                            <span class="col-title">
+                                <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            </span>
+                            <span class="col-title">
+                                <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </span>
+                            <span class="col-title">
+                                <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </span>
+                        </div>
                 </div>
                 @endforeach
             </div>
-        </div> -->
+        </div>
 
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{ route('products.store') }}" autocomplete="off" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Product</h5>
-                        <div class="modal-action">
-                            <a @click="hideModal" class="close-btn" data-dismiss="modal">
-                                <i class="fas fa-times"></i>
-                            </a>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form method="post" action="{{ route('products.store') }}" autocomplete="off" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Product</h5>
+                            <div class="modal-action">
+                                <a @click="hideModal" class="close-btn" data-dismiss="modal">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" required pattern="\S+.*" value="{{ old('name') }}">
-                            <label for="name">Name</label>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" required pattern="\S+.*" value="{{ old('name') }}">
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="description" id="description" required pattern="\S+.*" value="{{ old('description') }}">
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="form-group">
+                                <select name="product_category_id" id="category" required pattern="\S+.*" value="{{ old('product_category_id') }}">
+                                    @foreach ($categories as $category)
+                                    @if($category['id'] == old('document'))
+                                    <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
+                                    @else
+                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                <label for="category">Category</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="price" id="price" required pattern="\S+.*" value="{{ old('price') }}">
+                                <label for="price">Price</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="stock_qty" id="stock_count" required pattern="\S+.*" value="{{ old('stock_qty') }}">
+                                <label for="stock_count">Stock Count</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="minimum_stock" id="min_stock" required pattern="\S+.*" value="{{ old('stock_qty') }}">
+                                <label for="min_stock">Minimum Stock</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="image" id="input-image" placeholder="Image" value="{{ old('image') }}" required>
+                                <label for="image">Image</label>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="description" id="description" required pattern="\S+.*" value="{{ old('description') }}">
-                            <label for="description">Description</label>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
-                        <div class="form-group">
-                            <select name="product_category_id" id="category" required pattern="\S+.*" value="{{ old('product_category_id') }}">
-                                @foreach ($categories as $category)
-                                            @if($category['id'] == old('document'))
-                                                <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
-                                            @else
-                                                <option value="{{$category['id']}}">{{$category['name']}}</option>
-                                            @endif
-                                @endforeach
-                            </select>
-                            <label for="category">Category</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="price" id="price" required pattern="\S+.*" value="{{ old('price') }}">
-                            <label for="price">Price</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="stock_qty" id="stock_count" required pattern="\S+.*" value="{{ old('stock_qty') }}">
-                            <label for="stock_count">Stock Count</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="minimum_stock" id="min_stock" required pattern="\S+.*" value="{{ old('stock_qty') }}">
-                            <label for="min_stock">Minimum Stock</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" name="image" id="input-image" placeholder="Image" value="{{ old('image') }}" required>
-                            <label for="image">Image</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success mt-4">Save</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
     </div>
 </div>

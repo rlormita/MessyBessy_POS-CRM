@@ -1,6 +1,7 @@
 @extends('dashboard.main', ['page' => 'Edit Product', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
+
 <div class="overview-wrapper product-index">
     <div class="overview-content">
         <div class="overview-header">
@@ -19,7 +20,71 @@
             @csrf
             @method('put')
             <div class="overview-table">
-                <div class="table">
+                <!-- <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Minimum Stocks</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <div>
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ $product->id }}</th>
+                                <td> <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', $product->name) }}" required autofocus>
+                                </td>
+                                <td data-labe>
+                                    <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                        @foreach ($categories as $category)
+                                        @if($category['id'] == old('document'))
+                                        <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
+                                        @else
+                                        <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    @include('alerts.feedback', ['field' => 'product_category_id'])
+                                </td>
+                                <td> <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description', $product->description) }}" required>
+                                    @include('alerts.feedback', ['field' => 'description'])
+                                </td>
+                                <td> <input type="number" name="stock_qty" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock_qty', $product->stock_qty) }}" required>
+                                    @include('alerts.feedback', ['field' => 'stock_qty'])
+                                </td>
+                                <td> <input type="number" name="minimum_stock" id="input-stock_minimum" class="form-control form-control-alternative" placeholder="Minimum Stock" value="{{ old('minimum_stock', $product->minimum_stock) }}" required>
+                                    @include('alerts.feedback', ['field' => 'minimum_stock'])
+                                </td>
+
+                                <td><input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price', $product->price) }}" required>
+                                    @include('alerts.feedback', ['field' => 'price'])
+                                </td>
+                                <td> <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image', $product->image) }}" hidden>
+                                    <label for="input-image" style="border: 2px dashed #DEDFDF; padding: 10px; border-radius: 10px; text-align: center; cursor: pointer;">
+                                        <img style="height: 30%; width: 60%;" src="{{ asset('sprites/upload.svg') }}" height=" 100" /><br />
+                                        <small>Upload Image</small>
+                                    </label>
+                                    @include('alerts.feedback', ['field' => 'image'])
+                                </td>
+                                <td>
+                                    <span class="col-title">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </span>
+                                </td>
+                    </div>
+                    </tr>
+
+                    </tbody>
+
+            </table> -->
+              <div class="table">
                     <div class="row row-header">
                         <div class="col">
                             <span class="col-title">
@@ -62,7 +127,6 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col">
                             <span class="col-title">
@@ -73,11 +137,11 @@
                             <span class="col-title">
                                 <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
                                     @foreach ($categories as $category)
-                                        @if($category['id'] == old('document'))
-                                            <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
-                                        @else
-                                            <option value="{{$category['id']}}">{{$category['name']}}</option>
-                                        @endif
+                                    @if($category['id'] == old('document'))
+                                    <option value="{{$category['id']}}" selected>{{$category['name']}}</option>
+                                    @else
+                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                                 @include('alerts.feedback', ['field' => 'product_category_id'])
@@ -111,7 +175,7 @@
                             <span class="col-title">
                                 <input type="file" name="image" id="input-image" class="form-control form-control-alternative" placeholder="Image" value="{{ old('image', $product->image) }}" hidden>
                                 <label for="input-image" style="border: 2px dashed #DEDFDF; padding: 10px; border-radius: 10px; text-align: center; cursor: pointer;">
-                                    <img src="{{ asset('sprites/upload.svg') }}" height=" 100"/><br/>
+                                    <img style="height: 30%; width: 60%;" src="{{ asset('sprites/upload.svg') }}" height=" 100" /><br />
                                     <small>Upload Image</small>
                                 </label>
                                 @include('alerts.feedback', ['field' => 'image'])
@@ -128,13 +192,13 @@
         </form>
     </div>
 </div>
-    
+
 @endsection
 
 @push('js')
-    <script>
-        new SlimSelect({
-            select: '.form-select'
-        })
-    </script>
+<script>
+    new SlimSelect({
+        select: '.form-select'
+    })
+</script>
 @endpush
