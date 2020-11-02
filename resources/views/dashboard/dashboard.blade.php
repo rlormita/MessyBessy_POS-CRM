@@ -41,13 +41,13 @@
 
 <body>
     <div id="app">
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper" id="collapsibleNavbar">
             <div class="dashboard-sidebar">
                 <div class="sidebar-header">
                     <div class="header">
                         <a href="/home">
                             <div class="header-icon">
-                                <img src="{{ asset('img/icon.png') }}"/>
+                                <img src="{{ asset('img/icon.png') }}" />
                             </div>
                             <div class="header-title">
                                 Easy<span>Bessy</span>
@@ -108,9 +108,12 @@
                             </a>
                         </div>
                     </div>
+
                 </div>
-            </div>      
+            </div>
+
         </div>
+
         <div class="main-content">
             <div class="dashboard-content">
                 @yield('content')
@@ -120,4 +123,5 @@
     </script>
 
 </body>
+
 </html>

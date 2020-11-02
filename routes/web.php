@@ -9,6 +9,9 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CashierRoleController;
 use App\Http\Controllers\CashierController;
+
+
+
 use App\Http\Controllers\CashierHomeController;
 
 /*
@@ -29,6 +32,7 @@ use App\Http\Controllers\CashierHomeController;
 Auth::routes(['verify' => true]);
 
 Route::get('/transactions', function () {
+
     return view('searchform');
 });
 
@@ -45,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     return view('shop.app');
 });
 
@@ -112,6 +117,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
+
+
     Route::resource('/dashboard/stocks', StockController::class);
     Route::get('/dashboard/stocks/{id}', 'StockController@show');
     Route::resource('/dashboard/branches', BranchController::class);
